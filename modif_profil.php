@@ -47,11 +47,16 @@ include "html/header.html"
             <label for ="password"> Modifier mon mot de passe </label>
             <input type="password" name="password"placeholder="Mot de passe" minlength="8"/>
 
+               <label for ="password"> Modifier mon mot de passe </label>
+            <input type="password" name="password"placeholder="Mot de passe" minlength="8"/>
+
             <p> Le mot de passe doit comporter au moins 8 caractères dont 1 majuscule, 1 chiffre et 1 caractère spécial.</p>
 
             <input type="submit" name="valider" value="Mettre à jour mes informations" id="btnInscription"/>
         </form>
 </body>
+
+
 
 <?php
 }else{

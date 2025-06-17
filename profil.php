@@ -30,6 +30,7 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
         <div class = "userInfo">
             <a href= "photo profil" id="photoProfil"><img src="asset/images/icone_photo_150.png"></a>
             <p> <?php echo $userInfo['last_name'] . " " . $userInfo['first_name']?></p>
+            <p> <?php echo $userInfo['adresse'] ?></p>
             <p> <?php echo $userInfo['email']?></p>
             <p> <?php echo $userInfo['phone_number']?></p>
             <p> Crédit en cours : <!--</p> <?php echo $userInfo['credit']?></p>-->

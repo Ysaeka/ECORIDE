@@ -33,7 +33,7 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
             <p> <?php echo $userInfo['adresse'] ?></p>
             <p> <?php echo $userInfo['email']?></p>
             <p> <?php echo $userInfo['phone_number']?></p>
-            <p> Crédit en cours : <!--</p> <?php echo $userInfo['credit']?></p>-->
+            <p> Crédit en cours : <?php echo $userInfo['Credit']?>
         </div>
         <hr>
     
@@ -69,13 +69,13 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
                 <label for="modèle"> Modèle :  </label>
                 <input type="text" name="modele" id="modele" placeholder="Ex: Clio">
 
-                <label for="couleur"> Couleur*: </label>
+                <label for="couleur"> Couleur: </label>
                 <input type="text" name="couleur" id="couleur" placeholder="Ex: Rouge" required>
 
-                <label for="energie"> 100% Electrique </label> <!--A changer-->
-                <input type="radio" name="carburant" id="energie"required>
-                <label for="hybride"> Hybride </label>
-                <input type="radio" name="carburant" id="carburant"required>
+                <label for="energie"> Energie : </label> 
+                <input type="radio" name="carburant" value="100% electrique" required> 100% Electrique
+                <input type="radio" name="carburant" value="hybride"required>
+                <input type="radio" name="carburant" value="100% essence ou diesel"required>
 
                 <label for="numPlaque"> Numéro de la plaque d'immatriculation : </label>
                 <input type="text" name="numPlaque" id="numPlaque" placeholder="Ex: AB-123-CD">
@@ -106,7 +106,7 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
    
     </div>
 
-    <script src="asset/JS/btn_login.js"></script> <!--Faire un bouton deconnexion-->
+    <script src="asset/JS/btn_login.js"></script> 
     <?php
     include 'html/footer.html'
     ?>

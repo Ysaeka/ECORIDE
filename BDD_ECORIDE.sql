@@ -3,7 +3,7 @@
 CREATE DATABASE IF NOT EXISTS Ecoride;
 USE Ecoride;
 
--- Table des utilisateurs (ne pas oublié d'ajouter les rôles - admin/ employe/ clients - mettre les libelle en cle étrangere et les credit)
+-- Table des utilisateurs (ne pas oublié d'ajouter les rôles - admin/ employe/ clients - mettre les libelle en cle étrangere)
 CREATE TABLE users (
     users_id INT AUTO_INCREMENT PRIMARY KEY,
     last_name VARCHAR(100),
@@ -12,10 +12,10 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     photo BLOB,
     phone_number VARCHAR(20),
-    adresse VARCHAR (20),
-    credit INT,
+    adresse VARCHAR (50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    Credit INT
 );
 
 CREATE TABLE configuration (

@@ -38,7 +38,7 @@ if (isset($_POST['formConnexion'])) {
     require_once 'html/header.html'
     ?>
 
-        <div id="seConnecter">
+        <div class="seConnecter">
             <h2> CONNECTEZ-VOUS </h2>
             <form method ="POST" action ="" id="formConnect">
                 <label for="email"> Email* : </label>
@@ -48,7 +48,7 @@ if (isset($_POST['formConnexion'])) {
                 <input type="password" name="passwordConnect"placeholder="Entrer votre mot de passe" id= "password" required/>
 
                 <input type="submit" name="formConnexion" value="Se connecter" id="btnConnexion">
-                <p> J'ai oublié mon mot de passe <p>
+                <a href=""> J'ai oublié mon mot de passe </a>
                 <P> *champs obligatoires</p>
             </form>
         </div>

@@ -9,7 +9,7 @@
     </div>
 
     <div class="searchBar">
-      <form method="GET" id="formSearch" action="resultat.php">
+      <form method="GET" id="formSearch" action="covoiturage.php">
         <input type="text" name="depart" placeholder="Départ">
         <input type="text" name="arrivee"placeholder="Arrivée">
         <input type="date" name="date"placeholder="Date ?">

@@ -29,11 +29,6 @@
         </form>
     <div id="champs"><p>*Champs obligatoires</P></div>
 
-    
-<footer>
-    <p> contact@ecoride.com</p>
-    <p><a href="#">Mentions légales</a></p>
-</footer>
     <?php
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -67,9 +62,11 @@
                 }
         }
     ?>
-
- <script src="asset/JS/btn_login.js"></script>
+    
+   <?php
+    require_once 'html/footer.html'
+    ?>
+    <script src="asset/JS/btn_login.js"></script>
 </body>
-
 
 </html>

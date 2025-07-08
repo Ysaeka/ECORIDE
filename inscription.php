@@ -3,10 +3,6 @@ session_start();
 
 $bdd = new PDO('mysql:host=localhost;dbname=ecoride', 'root', '');
 
-if (isset($_GET['debug']) && $_GET['debug'] == 1){
-    var_dump($_POST);
-}
-
 if(isset($_POST['valider'])){
     if(!empty($_POST['last_name']) AND !empty($_POST['first_name']) AND !empty($_POST['password']) AND !empty($_POST['email'])){
         $last_name = htmlspecialchars($_POST['last_name']);

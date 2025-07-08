@@ -16,7 +16,7 @@
                     <h3> x trajets disponibles </h3>
                 </div>
                 <div class="linkResult">
-                    <a href = "">
+                    <a href = "reservation.php">
                         <span class = "detailsTrajet">
                             <span class ="horaires"> 21:30 o----- 1h20 ----o 22:50 <br> Cannes Toulon </span>
                             <span class ="prixTrajet"> 8.99€ </span>
@@ -32,5 +32,5 @@
     <?php
     require_once 'html/footer.html'
     ?>
-
+    <script src="asset/JS/btn_login.js"></script> 
 </body>

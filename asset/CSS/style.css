@@ -1,10 +1,12 @@
+html, body{
+  height : 100%;
+}
 body {
   font-family: inter;
   margin: 0;
   padding: 0;
   background-color: #F5F1E6;
   color: #148B4B;
-  height:684px;
 }
 .navbar{
   height: 120px ;
@@ -193,13 +195,17 @@ label {
 }
 
 /*FORMULAIRE CONNEXION et INSCRiPTIiON*/
+
 #formConnect{
   display : flex;
   flex-direction: column;
   width: 30%;
   margin: auto;
-  height: 600px;
-  gap : 5%;
+  height: 100%;
+  gap : 3%;
+}
+.inscription{
+  height: 80%;
 }
 .inscription p{
   font-size: 12px;
@@ -219,6 +225,15 @@ input{
     background-color: transparent;
     outline: none;
 }
+.seConnecter{
+  height : 100%;
+}
+.seConnecter p{
+  font-size: 12px;
+}
+.seConnecter a{
+  font-size : 14px;
+  }
 #btnConnexion{
     background-color: #0b7e34;
     color: white;
@@ -227,6 +242,7 @@ input{
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+  
 }
 #btnInscription{
     background-color: #0b7e34;
@@ -322,10 +338,38 @@ input{
       border-radius: 4px;
     }
 
+/*COVOITURAGE*/
+.containerResult{
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  height: 100%;
+  
 
-
-
-
+}
+.triResult{
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
+.trajetResult
+{
+  width: 60%;
+}
+.trajet{
+  display: flex;
+  justify-content: space-between;
+}
+.linkresult{
+  background-color: #F5F1E6;
+  border-radius: 1em;
+  padding:1%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.detailsTrajet{
+  display: flex;
+  justify-content: space-between;
+}
 
 
 /* FOOTER */
@@ -333,6 +377,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5%;
   border-bottom: 0;
   color: #148B4B;
   font-size: small;

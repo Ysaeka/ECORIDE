@@ -10,20 +10,9 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
     $userInfo = $reqUser -> fetch();
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="asset/CSS/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <title>Mon profil</title>
-</head>
 <body>
     <?php
-    include 'html/header.html'
+    require_once 'html/header.html'
     ?>
    
     <div class ="profil">
@@ -108,7 +97,7 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
 
     <script src="asset/JS/btn_login.js"></script> 
     <?php
-    include 'html/footer.html'
+    require_once 'html/footer.html'
     ?>
 </body>
 

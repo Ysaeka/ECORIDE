@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecoride</title>
-  <link rel="stylesheet" href="asset/CSS/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-</head>
-
 <body>
   <?php
   include 'html/header.html'
@@ -49,9 +37,10 @@
       </div>
     </div>
 
-   </main>
-    <?php
-    include 'html/footer.html'
+  </main>
+
+   <?php
+    require_once 'html/footer.html'
     ?>
 
     <script src="asset/JS/btn_login.js"></script>

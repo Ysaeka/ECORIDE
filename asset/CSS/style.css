@@ -1,132 +1,132 @@
 html, body{
-  height : 100%;
+    height : 100%;
 }
 body {
-  font-family: inter;
-  margin: 0;
-  padding: 0;
-  background-color: #F5F1E6;
-  color: #148B4B;
+    font-family: inter;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F1E6;
+    color: #148B4B;
 }
 .navbar{
-  height: 120px ;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    height: 120px ;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .logo{
-  margin-left : 20px;
-  height : 120px;
-  width: 120px;
+    margin-left : 20px;
+    height : 120px;
+    width: 120px;
 }
 img{
-  height : 115px;
-  width: max-content;
+    height : 115px;
+    width: max-content;
 }
 .link{
-  display: flex;
-  width: 500px;
-  margin-right: 20px;
-  align-items: center;
-  gap : 2%;
+    display: flex;
+    width: 500px;
+    margin-right: 20px;
+    align-items: center;
+    gap : 2%;
 }
 .link a{
-  text-decoration :none;
-  color: #148B4B;
+    text-decoration :none;
+    color: #148B4B;
 }
 .link a:hover{
-  color: #21c56e;
+    color: #21c56e;
 }
 .acceuil{
-  justify-content: center;
+    justify-content: center;
 }
 .imgSlogan{
-  width: 100%;
-  height: 310px;
-  background-image: url(../images/voiture2.png);
-  background-size: cover;
-  text-align: center;
-  color: #F5F1E6; 
-  font-size: 20px;
+    width: 100%;
+    height: 310px;
+    background-image: url(../images/voiture2.png);
+    background-size: cover;
+    text-align: center;
+    color: #F5F1E6; 
+    font-size: 20px;
 }
 .imgSlogan p{
-  padding-top: 2%;
-  margin: 0;
+    padding-top: 2%;
+    margin: 0;
 }
 
 .searchBar{
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 43%;
-  left: 25%;
-  height : 77px;
-  color: #148B4B;
-  width: 50%;
-  justify-content: space-between;
-  background-color: #F5F1E6;
-  border-radius: 1em;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 43%;
+    left: 25%;
+    height : 77px;
+    color: #148B4B;
+    width: 50%;
+    justify-content: space-between;
+    background-color: #F5F1E6;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 #formSearch{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 952.5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 952.5px;
 }
 .searchBar input{
-  border:none;
-  height : 77px;
-  width: 160px;
-  background-color: #F5F1E6;
-  margin: auto;
-  outline: none;
-  z-index: 1;
+    border:none;
+    height : 77px;
+    width: 160px;
+    background-color: #F5F1E6;
+    margin: auto;
+    outline: none;
+    z-index: 1;
 }
 .searchBar button{
-  border:none;
-  background-color: #148B4B;
-  height : 77px;
-  width: 20%;
-  cursor: pointer;
-  border-top-right-radius: 1em;
-  border-bottom-right-radius : 1em;
-  color: #F5F1E6;
+    border:none;
+    background-color: #148B4B;
+    height : 77px;
+    width: 20%;
+    cursor: pointer;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius : 1em;
+    color: #F5F1E6;
 }
 .presentation{
-  padding-top: 4%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  color: #148B4B;
-  padding-bottom: 2%;
+    padding-top: 4%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #148B4B;
+    padding-bottom: 2%;
 }
 .imgIcone{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
-  margin: auto;
-  color: #148B4B;
-  padding-bottom: 1%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    color: #148B4B;
+    padding-bottom: 1%;
 }
 .imgIcone img{
-  width: 10%;
-  height: 10%;
+    width: 10%;
+    height: 10%;
 }
 .accroche{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
-  margin: auto;
-  color: #148B4B;
-  padding-bottom: 1%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    color: #148B4B;
+    padding-bottom: 1%;
 }
 h2{
-  display: flex;
-  justify-content: center;
-  color:#148B4B;
+    display: flex;
+    justify-content: center;
+    color:#148B4B;
 }
 
 /* BUTTON LOGIN */
@@ -138,56 +138,56 @@ h2{
     height: 60px;  
 }
 .avatar-btn {
-  border: none;
-  border-radius: 50%;
-  overflow: hidden;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  background-color: transparent;
-  position: relative;
-  background-color: #148B4B;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background-color: transparent;
+    position: relative;
+    background-color: #148B4B;
 }
 
 .avatar-btn img {
-  width: 80%;
-  height: 80%;
-  object-fit: cover;
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
 }
 
 .arrow {
-  position: absolute;
-  bottom: 25px;
-  right: 0px;
-  font-size: 18px;
-  width: 21px;
-  height: 21px;
-  transition: transform 0.3s ease;
-  pointer-events: none;
-  color: beige;
+    position: absolute;
+    bottom: 25px;
+    right: 0px;
+    font-size: 18px;
+    width: 21px;
+    height: 21px;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+    color: beige;
 }
 
 .menu {
-  display: none;
-  position: absolute;
-  top: 70px;
-  right: 0;
-  background-color: #F5F1E6;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  padding: 10px;
-  z-index: 100;
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #F5F1E6;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 100;
 }
 
 .menu a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: #148B4B;
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #148B4B;
 }
 
 .rotate {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 label {
     color: #148B4B;
@@ -197,26 +197,26 @@ label {
 /*FORMULAIRE CONNEXION et INSCRiPTIiON*/
 
 #formConnect{
-  display : flex;
-  flex-direction: column;
-  width: 30%;
-  margin: auto;
-  height: 100%;
-  gap : 3%;
+    display : flex;
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    height: 100%;
+    gap : 3%;
 }
 .inscription{
-  height: 80%;
+    height: 80%;
 }
 .inscription p{
-  font-size: 12px;
+    font-size: 12px;
 }
 #formInscription{
-  display : flex;
-  flex-direction: column;
-  width: 30%;
-  margin: auto;
-  height: 635px;
-  gap : 3%;
+    display : flex;
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    height: 635px;
+    gap : 3%;
 }
 input{
     border: none;
@@ -226,14 +226,14 @@ input{
     outline: none;
 }
 .seConnecter{
-  height : 100%;
+    height : 100%;
 }
 .seConnecter p{
-  font-size: 12px;
+    font-size: 12px;
 }
 .seConnecter a{
-  font-size : 14px;
-  }
+    font-size : 14px;
+}
 #btnConnexion{
     background-color: #0b7e34;
     color: white;
@@ -242,7 +242,6 @@ input{
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-  
 }
 #btnInscription{
     background-color: #0b7e34;
@@ -256,132 +255,133 @@ input{
 /*FORMULAIRE "Proposer un trajet"*/
 
 #formTrajet{
-  display : flex;
-  flex-direction: column;
-  width: 30%;
-  margin: auto;
-  height: 650 px;
-  gap : 3%;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr 1fr; 
+    grid-template-rows: repeat(4, 1fr);
+    width: 50%;
+    margin: auto;
+    height: 50%;
+    gap : 2%;
 }
 /*PROFIL*/
-    .profil{
-      width: 50%;
-      height: 750px;
-      margin: auto;
-    }
-    .userInfo{
-      display: grid;
-      grid-template-columns: 0.3fr 1fr; 
-      grid-template-rows: repeat(4, 1fr);
-    }
-    #photoProfil{
-      grid-column: 1/2;
-      grid-row: 1/5;
-      place-content: center;
-    }
+.profil{
+    width: 50%;
+    height: 750px;
+    margin: auto;
+}
+.userInfo{
+    display: grid;
+    grid-template-columns: 0.3fr 1fr; 
+    grid-template-rows: repeat(4, 1fr);
+}
+#photoProfil{
+    grid-column: 1/2;
+    grid-row: 1/5;
+    place-content: center;
+}
 
-    a{
-        text-decoration: none;
-        color: #0b7e34;
-    }
-    .preferVoyage{
-      width: 20%;
-      color: #0b7e34;
-    }
-    hr{
-      width: 50%;
-    }
+a{
+    text-decoration: none;
+    color: #0b7e34;
+}
+.preferVoyage{
+    width: 20%;
+    color: #0b7e34;
+}
+hr{
+    width: 50%;
+}
 
-    /*BOUTON "Ajouter vehicule"*/
-    .dropdownCars {
-      width: 250px;
-      position: relative;
-    }
+/*BOUTON "Ajouter vehicule"*/
+.dropdownCars {
+    width: 250px;
+    position: relative;
+}
 
-    .carsBtn {
-      border-radius: 0.5em;
-      color: #f9f9f9;
-      padding: 10px;
-      cursor: pointer;
-      border: none;
-      width: 100%;
-      text-align: left;
-      font-size: 16px;
-      background-color: #0b7e34;
-    }
+.carsBtn {
+    border-radius: 0.5em;
+    color: #f9f9f9;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    background-color: #0b7e34;
+}
 
-    .carsForm {
-      display: none;
-      background-color: #f9f9f9;
-      padding: 15px;
-      border: 1px solid #ccc;
-      margin-top: 5px;
-    }
+.carsForm {
+    display: none;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
 
-    .carsForm.show {
-      display: block;
-    }
+.carsForm.show {
+    display: block;
+}
 
-    form {
-      display: flex;
-      margin : 0;
-      flex-direction: column;
-      gap: 8px;
-    }
+form {
+    display: flex;
+    margin : 0;
+    flex-direction: column;
+    gap: 8px;
+}
 
-    #btnEnregistrer {
-      background-color: #28a745;
-      color: white;
-      padding: 10px;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-    }
+#btnEnregistrer {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
 
 /*COVOITURAGE*/
 .containerResult{
-  display: flex;
-  justify-content: space-around;
-  width: 80%;
-  height: 100%;
-  
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    height: 100%;
+
 
 }
 .triResult{
-  display: flex;
-  width: 30%;
-  justify-content: space-between;
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
 }
 .trajetResult
 {
-  width: 60%;
+    width: 60%;
 }
 .trajet{
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 .linkresult{
-  background-color: #F5F1E6;
-  border-radius: 1em;
-  padding:1%;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #F5F1E6;
+    border-radius: 1em;
+    padding:1%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .detailsTrajet{
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 
 /* FOOTER */
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5%;
-  border-bottom: 0;
-  color: #148B4B;
-  font-size: small;
-  background-color: #dad2bd;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    border-bottom: 0;
+    color: #148B4B;
+    font-size: small;
+    background-color: #dad2bd;
+    width: 100%;
 }
 

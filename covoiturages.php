@@ -22,7 +22,11 @@
                             <span class ="prixTrajet"> 8.99€ </span>
                         </span>
                         <hr>
-                        <span class = "chauffeur"> GINETTE ----- * 4.7 </span>
+                        <br>
+                        <span class = "detailsTrajet">
+                            <span class = "chauffeur"> GINETTE ----- * 4.7 </span>
+                            <span class = "placesDispo"> Places dispo : 1 </span>
+                        </span>
                     </a>
                 </div>
             </div>

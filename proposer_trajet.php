@@ -1,6 +1,6 @@
 <body>
     <?php
-    include 'html/header.html'
+    require_once 'html/header.html'
     ?>
 
     <div class = "imgSlogan">
@@ -44,7 +44,7 @@
     <script src="asset/JS/btn_login.js"></script>
 
     <?php
-    include 'html/footer.html'
+    require_once 'html/footer.html'
     ?>
     
 </body>

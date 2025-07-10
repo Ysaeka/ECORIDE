@@ -82,6 +82,10 @@ CREATE TABLE covoiturage (
 );
 
 ALTER TABLE covoiturage
+MODIFY heure_depart TIME,
+MODIFY heure_arrivee TIME;
+
+ALTER TABLE covoiturage
 ADD COLUMN voiture_id INT,
 ADD FOREIGN KEY (voiture_id) REFERENCES voiture(voiture_id);
 

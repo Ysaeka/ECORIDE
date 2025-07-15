@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=ecoride', 'root', '');
+require_once "libs/bdd.php";
 
-if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
-    $getId = intval($_GET['users_id']);
+if(isset($_SESSION['users_id']) AND $_SESSION['users_id'] > 0){
+    $getId = intval($_SESSION['users_id']);
     $reqUser = $bdd -> prepare('SELECT * FROM users WHERE users_id = ?');
     $reqUser-> execute([$getId]);
     $userInfo = $reqUser -> fetch();

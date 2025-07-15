@@ -1,6 +1,6 @@
 <body>
     <?php
-    require_once 'html/header.html'
+    require_once 'templates/header.html'
     ?>
 
     <section>
@@ -34,7 +34,7 @@
     </section>
 
     <?php
-    require_once 'html/footer.html'
+    require_once 'templates/footer.html'
     ?>
     <script src="asset/JS/btn_login.js"></script> 
 </body>

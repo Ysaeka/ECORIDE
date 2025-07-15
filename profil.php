@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=ecoride', 'root', '');
+require_once "libs/bdd.php";
+require_once 'templates/header.html';
 
 if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
     $getId = intval($_GET['users_id']);
@@ -11,9 +12,6 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
 ?>
 
 <body>
-    <?php
-    require_once 'html/header.html'
-    ?>
    
     <div class ="profil">
         <div class = "userInfo">
@@ -45,7 +43,34 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
                 <label for="deux"> Les deux </label>
                 <input type="radio" id="deux" name="type" checked />
         </div>
+                <div Class="mesVoitures">
+            <p> Mes vehicules : </p>
 
+            <table class = "tableauVoiture">
+                <thead>
+                    <tr>
+                        <th> Marque </th>
+                        <th> Modèle </th>
+                        <th> Couleur </th>
+                        <th> Energie </th>
+                        <th> Numéro de la plaque </th>
+                        <th> Date de la 1ere immatriculation </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td> Marque </td>
+                        <td> Modèle </td>
+                        <td> Couleur </td>
+                        <td> Energie </td>
+                        <td> Numéro de la plaque </td>
+                        <td> Date de la 1ere immatriculation </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <br>
         <div class="dropdownCars">
             <button class="carsBtn" onclick="toggleCarsList()"> Ajouter un vehicule</button>
 
@@ -62,9 +87,9 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
                 <input type="text" name="couleur" id="couleur" placeholder="Ex: Rouge" required>
 
                 <label for="energie"> Energie : </label> 
-                <input type="radio" name="carburant" value="100% electrique" required> 100% Electrique
-                <input type="radio" name="carburant" value="hybride"required>
-                <input type="radio" name="carburant" value="100% essence ou diesel"required>
+                <input type="radio" name="energie" required> 100% Electrique
+                <input type="radio" name="energie" value="hybride"required> Hybride
+                <input type="radio" name="energie" value="essence ou diesel"required> Essence ou Diesel
 
                 <label for="numPlaque"> Numéro de la plaque d'immatriculation : </label>
                 <input type="text" name="numPlaque" id="numPlaque" placeholder="Ex: AB-123-CD">
@@ -72,11 +97,11 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
                 <label for="datePlaque"> Date de première immatriculation : </label>
                 <input type="date" name="datePlaque" id="datePlaque">
             
-                <button type="submit" id="btnEnregistrer"> Enregistrer le vehicule </button>
+                <button type="submit" id="btnEnregistrer" name="submit"> Enregistrer le vehicule </button>
                 </form>  
             </div>
         </div>
-        </br>
+        <br>
         <div class="preferVoyage">
             <fieldset>
                 <legend>Préférence de voyage :</legend>
@@ -97,7 +122,7 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
 
     <script src="asset/JS/btn_login.js"></script> 
     <?php
-    require_once 'html/footer.html'
+    require_once 'templates/footer.html'
     ?>
 </body>
 

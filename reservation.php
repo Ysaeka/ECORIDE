@@ -1,6 +1,7 @@
 <body>
     <?php
-    require_once 'html/header.html'
+    require_once 'templates/header.html';
+    require_once 'libs/bdd.php';
     ?>
 
 

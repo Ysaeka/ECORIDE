@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=ecoride', 'root', '');
+require_once "libs/bdd.php";
 
 if(isset($_SESSION['users_id'])){
         $recupUser = $bdd->prepare('SELECT * FROM users WHERE users_id = ?');
@@ -32,7 +32,7 @@ if(isset($_SESSION['users_id'])){
 ?>
 
 <?php
-include "html/header.html"
+require_once "templates/header.html"
 ?>
 <body>
     <h2> Modifier mes informations </h2>

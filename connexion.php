@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=ecoride', 'root', '');
+require_once "libs/bdd.php";
 
 if (isset($_POST['formConnexion'])) {
     $emailConnect = filter_var($_POST['emailConnect'], FILTER_SANITIZE_EMAIL);
@@ -35,7 +35,7 @@ if (isset($_POST['formConnexion'])) {
 
 <body>
     <?php
-    require_once 'html/header.html'
+    require_once 'templates/header.html'
     ?>
 
         <div class="seConnecter">
@@ -43,19 +43,19 @@ if (isset($_POST['formConnexion'])) {
             <form method ="POST" action ="" id="formConnect">
                 <label for="email"> Email* : </label>
                 <input type="email" name="emailConnect" placeholder="Entrer votre e-mail" id="email" required/>
-
                 <label for="password"> Mot de passe* : </label>
                 <input type="password" name="passwordConnect"placeholder="Entrer votre mot de passe" id= "password" required/>
-
-                <input type="submit" name="formConnexion" value="Se connecter" id="btnConnexion">
                 <a href=""> J'ai oublié mon mot de passe </a>
+                <input type="submit" name="formConnexion" value="Se connecter" id="btnConnexion">
                 <P> *champs obligatoires</p>
+                <div class="inscrire"> <p> Pas encore incrit ? </P> <a href="inscription.php">Inscrivez-vous ici !</a></div>
             </form>
         </div>
+        
 
    <script src="asset/JS/btn_login.js"></script>
    <?php
-    require_once 'html/footer.html'
+    require_once 'template/footer.html'
     ?>
     
 </body>

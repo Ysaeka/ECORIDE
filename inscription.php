@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=ecoride', 'root', '');
+require_once "libs/bdd.php";
 
 if(isset($_POST['valider'])){
     if(!empty($_POST['last_name']) AND !empty($_POST['first_name']) AND !empty($_POST['password']) AND !empty($_POST['email'])){
@@ -53,7 +53,7 @@ if(isset($_POST['valider'])){
 
 <body>
     <?php
-    require_once 'html/header.html'
+    require_once 'templates/header.html'
     ?>
 
     <div class="inscription">
@@ -81,7 +81,7 @@ if(isset($_POST['valider'])){
 
     <script src="asset/JS/btn_login.js"></script> 
     <?php
-    require_once 'html/footer.html'
+    require_once 'templates/footer.html'
     ?>
 </body>
 

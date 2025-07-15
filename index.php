@@ -1,6 +1,7 @@
 <body>
   <?php
-  include 'html/header.html'
+  require_once 'templates/header.html';
+  require_once 'libs/bdd.php';
   ?>
 
   <main> 
@@ -40,7 +41,7 @@
   </main>
 
    <?php
-    require_once 'html/footer.html'
+    require_once 'templates/footer.html'
     ?>
 
     <script src="asset/JS/btn_login.js"></script>

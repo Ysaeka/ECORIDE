@@ -1,6 +1,7 @@
 <body>
     <?php
-    require_once 'html/header.html'
+    require_once 'templates/header.html';
+    require_once 'libs/bdd.php';
     ?>
 
     <div class = "imgSlogan">
@@ -35,7 +36,7 @@
             <label for="details"> Details du trajet :  </label>
             <textarea name="details" id="details" placeholder="Lieu de rendez-vous..." required></textarea>
 
-            <button type="submit"> SOUMETTRE </button>
+            <button type="submit" id="valider"> SOUMETTRE </button>
         </form>
         <div id="champs"><p>*Champs obligatoires</P></div>
     </div>
@@ -44,7 +45,7 @@
     <script src="asset/JS/btn_login.js"></script>
 
     <?php
-    require_once 'html/footer.html'
+    require_once 'templates/footer.html'
     ?>
     
 </body>

@@ -1,14 +1,14 @@
 <body>
     <?php
-    require_once 'html/header.html'
+    require_once 'templates/header.html'
     ?>
 
     <div class = "imgSlogan">
       <p>Solution économique pour les voyageurs soucieux de l’environnement.</p>
     </div>
 
-    <div id="nousContacter"><p> NOUS CONTACTER </p></div>
-        <form method ="POST" action="" novalidate>
+    <div id="nousContacter"><h2> NOUS CONTACTER </h2></div>
+        <form method ="POST" action="" id= formContact novalidate>
 
             <label for="last_name"> Nom* :  </label>
             <input type="text" name="last_name" id="last_name" placeholder="Entrez votre nom" required/>
@@ -25,9 +25,9 @@
             <label for="message"> Votre message*  </label>
             <textarea name="message" id="message" placeholder="Entrez votre message" required></textarea>
 
-            <button type="submit"> SOUMETTRE </button>
+            <button type="submit" id=btnContact> SOUMETTRE </button>
         </form>
-    <div id="champs"><p>*Champs obligatoires</P></div>
+        <div id="champs"><p>*Champs obligatoires</P></div>
 
     <?php
         
@@ -64,7 +64,7 @@
     ?>
     
    <?php
-    require_once 'html/footer.html'
+    require_once 'templates/footer.html'
     ?>
     <script src="asset/JS/btn_login.js"></script>
 </body>

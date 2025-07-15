@@ -86,6 +86,9 @@ MODIFY heure_depart TIME,
 MODIFY heure_arrivee TIME;
 
 ALTER TABLE covoiturage
+MODIFY prix_personne DECIMAL(10,2);
+
+ALTER TABLE covoiturage
 ADD COLUMN voiture_id INT,
 ADD FOREIGN KEY (voiture_id) REFERENCES voiture(voiture_id);
 
@@ -96,6 +99,9 @@ ADD FOREIGN KEY (conducteur_id) REFERENCES users(users_id);
 ALTER TABLE covoiturage
 ADD COLUMN trajet_Ecologique BOOLEAN,
 ADD COLUMN Details VARCHAR(255);
+
+ALTER TABLE covoiturage
+MODIFY Details TEXT (5000);
 
 ALTER TABLE covoiturage
 DROP COLUMN statut;

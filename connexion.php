@@ -19,12 +19,12 @@ if (isset($_POST['formConnexion'])) {
                 $_SESSION['users_id'] = $userInfo['users_id'];
                 $_SESSION['email'] = $userInfo['email'];
                 header("Location: profil.php?users_id=" .$_SESSION['users_id']);
-                return;
+                exit;
             } else {
-                echo "<script>alert('Mot de passe incorrect !')</script>";
+                echo "<script>alert('Email ou Mot de passe incorrect !')</script>";
             }
         } else {
-            echo "<script>alert('Aucun compte trouvé avec cet email !')</script>";
+            echo "<script>alert('Identifiants incorrects !')</script>";
         }
     } else {
         echo "<script>alert('Veuillez remplir tous les champs !')</script>";

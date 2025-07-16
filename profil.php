@@ -4,11 +4,15 @@ session_start();
 require_once "libs/bdd.php";
 require_once 'templates/header.html';
 
-if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
-    $getId = intval($_GET['users_id']);
+if(isset($_SESSION['users_id']) AND $_SESSION['users_id'] > 0){
+    $getId = intval($_SESSION['users_id']);
     $reqUser = $bdd -> prepare('SELECT * FROM users WHERE users_id = ?');
     $reqUser-> execute([$getId]);
     $userInfo = $reqUser -> fetch();
+} else {
+        echo "<p>Utilisateur introuvable.</p>";
+        header('Location: index.php');
+}
 ?>
 
 <body>
@@ -43,6 +47,9 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
                 <label for="deux"> Les deux </label>
                 <input type="radio" id="deux" name="type" checked />
         </div>
+        <div class = "soumettreTrajet">
+            <a href = "proposer_trajet.php"> Proposer un trajet </a>
+        </div>
                 <div Class="mesVoitures">
             <p> Mes vehicules : </p>
 
@@ -75,21 +82,26 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
             <button class="carsBtn" onclick="toggleCarsList()"> Ajouter un vehicule</button>
 
             <div class="carsForm" id="dropdownCarsList">
-                <form method ="POST" action="" novalidate>
+                <form method ="POST" action="ajouter_vehicule.php" novalidate>
 
                 <label for="marque"> Marque :  </label>
                 <input type="text" name="marque" id="marque" placeholder="Ex: Renault" required>
 
-                <label for="modèle"> Modèle :  </label>
+                <label for="modele"> Modèle :  </label>
                 <input type="text" name="modele" id="modele" placeholder="Ex: Clio">
 
                 <label for="couleur"> Couleur: </label>
                 <input type="text" name="couleur" id="couleur" placeholder="Ex: Rouge" required>
 
-                <label for="energie"> Energie : </label> 
-                <input type="radio" name="energie" required> 100% Electrique
-                <input type="radio" name="energie" value="hybride"required> Hybride
-                <input type="radio" name="energie" value="essence ou diesel"required> Essence ou Diesel
+                <label>
+                <input type="radio" name="energie" value="electrique"> 100% Électrique
+                </label>
+                <label>
+                <input type="radio" name="energie" value="hybride"> Hybride
+                </label>
+                <label>
+                    <input type="radio" name="energie" value="essenceDiesel"> Essence ou Diesel
+                </label>
 
                 <label for="numPlaque"> Numéro de la plaque d'immatriculation : </label>
                 <input type="text" name="numPlaque" id="numPlaque" placeholder="Ex: AB-123-CD">
@@ -125,11 +137,3 @@ if(isset($_GET['users_id']) AND $_GET['users_id'] > 0){
     require_once 'templates/footer.html'
     ?>
 </body>
-
-
-<?php
-} else {
-        echo "<p>Utilisateur introuvable.</p>";
-}
-?>
-

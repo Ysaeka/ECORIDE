@@ -1,6 +1,16 @@
 <body>
     <?php
-    require_once 'templates/header.html'
+    session_start();
+
+    require_once 'templates/header.html';
+    require_once 'libs/bdd.php';
+
+    if(!isset($_SESSION['users_id'])) {
+        header("Location: connexion.php");
+        exit;
+    }
+
+
     ?>
 
     <section>

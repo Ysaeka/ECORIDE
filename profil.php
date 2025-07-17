@@ -10,10 +10,10 @@ require_once 'templates/header.html';
         <div class = "userInfo">
             <a href= "photo profil" id="photoProfil"><img src="asset/images/icone_photo_150.png"></a>
             <p> <?php echo $userInfo['last_name'] . " " . $userInfo['first_name']?></p>
-            <p> <?php echo $userInfo['adresse'] ?></p>
+            <p><a href="modif_profil.php"> Adresse : </a> <?php echo $userInfo['adresse'] ?></p>
             <p> <?php echo $userInfo['email']?></p>
-            <p> <?php echo $userInfo['phone_number']?></p>
-            <p> Crédit en cours : <?php echo $userInfo['Credit']?>
+            <p> <a href="modif_profil.php"> Téléphone : </a><?php echo $userInfo['phone_number']?></p>
+            <p> Crédit en cours : <?php echo $userInfo['Credit']?> € </p>
         </div>
         <hr>
     

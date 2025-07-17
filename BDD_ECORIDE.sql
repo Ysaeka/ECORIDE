@@ -106,6 +106,15 @@ MODIFY Details TEXT (5000);
 ALTER TABLE covoiturage
 DROP COLUMN statut;
 
+ALTER TABLE covoiturage
+ADD COLUMN statut ENUM('non_démarré', 'en_cours', 'termniné') DEFAULT 'non_demarré';
+
+ALTER TABLE covoiturage
+MODIFY statut ENUM ('non_démarré', 'en_cours', 'terminé') DEFAULT 'non_démarré';
+
+ALTER TABLE covoiturage
+MODIFY statut ENUM ('non_démarré', 'terminé') DEFAULT 'non_démarré';
+
 CREATE TABLE reservation (
     reservation_id INT AUTO_INCREMENT PRIMARY KEY,
     covoiturage_id INT NOT NULL,

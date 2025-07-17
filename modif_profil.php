@@ -39,7 +39,7 @@ require_once "templates/header.html"
             <input type="text" name="first_name" placeholder="Votre prenom" value=<?php echo $userInfo['first_name'];?>>
 
             <label for="adresse"> Adresse :  </label>
-            <input type="text" name="adresse" placeholder="Votre adresse" value=<?php echo $userInfo['adresse'];?>/>
+            <input type="text" name="adresse" placeholder="Votre adresse" value="<?php echo $userInfo['adresse'];?>"/>
 
             <label for="phone_number"> Ajouter un numéro de téléphone :  </label>
             <input type="tel" name="phone_number" placeholder="Votre numéro de téléphone" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" value=<?php echo $userInfo['phone_number'];?>>

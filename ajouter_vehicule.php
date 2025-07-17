@@ -34,7 +34,6 @@ if($marqueData) {
 $insertionVoiture = $bdd->prepare("INSERT INTO voiture (modele, immatriculation,energie, couleur, date_premiere_immatriculation, marque_id, users_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
 $insertionVoiture->execute([$modele, $numPlaque, $energie, $couleur, $datePlaque, $marque_id, $userId]);
 
-echo "Insertion effectuée.";
 header("Location: profil.php");
 exit;
 

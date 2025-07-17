@@ -9,16 +9,20 @@ if(isset($_SESSION['users_id']) AND $_SESSION['users_id'] > 0){
     $reqUser-> execute([$getId]);
     $userInfo = $reqUser -> fetch();
 
+    $recupVoiture = $bdd->prepare('SELECT v.*, m.libelle AS marque FROM voiture v LEFT JOIN marque m ON v.marque_id = m.marque_id WHERE v.users_id = ?');
+    $recupVoiture->execute([$getId]);
+    $voitures = $recupVoiture->fetchAll();
+
         if(!$userInfo){
             session_destroy();
             $_SESSION['redirection'] = $_SERVER['REQUEST_URI'];
             header('Location: connexion.php');
             exit();
         }
-
+        
 } else {
     $_SESSION['redirection'] = $_SERVER['REQUEST_URI'];
-    header('Location; connexion.php');
+    header('Location: connexion.php');
     exit();
 }
 ?>

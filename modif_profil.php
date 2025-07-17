@@ -1,12 +1,6 @@
 <?php
-session_start();
-
+require_once "libs/auth_users.php";
 require_once "libs/bdd.php";
-
-if(isset($_SESSION['users_id'])){
-        $recupUser = $bdd->prepare('SELECT * FROM users WHERE users_id = ?');
-        $recupUser->execute([$_SESSION['users_id']]);
-        $user = $recupUser->fetch();
 
         if(isset($_POST['valider'])){
             $last_name = htmlspecialchars($_POST['last_name']);
@@ -39,19 +33,19 @@ require_once "templates/header.html"
         <form method ="POST" action ="" id="formInscription">
 
             <label for="last_name"> Nom :  </label>
-            <input type="text" name="last_name" placeholder="Votre nom" value=<?php echo $user['last_name'];?>>
+            <input type="text" name="last_name" placeholder="Votre nom" value=<?php echo $userInfo['last_name'];?>>
 
             <label for="first_name"> Prenom :  </label>
-            <input type="text" name="first_name" placeholder="Votre prenom" value=<?php echo $user['first_name'];?>>
+            <input type="text" name="first_name" placeholder="Votre prenom" value=<?php echo $userInfo['first_name'];?>>
 
             <label for="adresse"> Adresse :  </label>
-            <input type="text" name="adresse" placeholder="Votre adresse" value=<?php echo $user['adresse'];?>/>
+            <input type="text" name="adresse" placeholder="Votre adresse" value=<?php echo $userInfo['adresse'];?>/>
 
             <label for="phone_number"> Ajouter un numéro de téléphone :  </label>
-            <input type="tel" name="phone_number" placeholder="Votre numéro de téléphone" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" value=<?php echo $user['phone_number'];?>/>
+            <input type="tel" name="phone_number" placeholder="Votre numéro de téléphone" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" value=<?php echo $userInfo['phone_number'];?>>
 
             <label for="email"> Modifier mon email : </label>
-            <input type="email" name="email" placeholder="Votre e-mail" value=<?php echo $user['email'];?>>
+            <input type="email" name="email" placeholder="Votre e-mail" value=<?php echo $userInfo['email'];?>>
 
             <label for ="password"> Modifier mon mot de passe </label>
             <input type="password" name="password"placeholder="Mot de passe" minlength="8"/>
@@ -63,10 +57,3 @@ require_once "templates/header.html"
 
         <script src = "asset/JS/btn_login.js"></script>
 </body>
-
-
-<?php
-}else{
-    header("Location: connexion.php");
-}
-?>

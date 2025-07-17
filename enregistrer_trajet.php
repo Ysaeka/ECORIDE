@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $recupVoiture = $bdd->prepare("SELECT voiture_id FROM voiture WHERE users_id = ? LIMIT 1");
-    $recupVoiture->execute(['conducteur_id']);
+    $recupVoiture->execute([$conducteur_id]);
     $voiture = $recupVoiture->fetch();
     $voiture_id = $voiture ? $voiture['voiture_id'] : null;
 
@@ -51,13 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $reqInsertion = $bdd->prepare("INSERT INTO covoiturage (date_depart, heure_depart, lieu_depart, date_arrivee, heure_arrivee,lieu_arrivee, nb_place, prix_personne, voiture_id, conducteur_id, trajet_Ecologique, Details)
-                                    VALUES ( ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ? ");
+                                    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    $insertion = $recupVoiture->execute([
-        $date_depart, $heure_depart, $ville_depart_ok, $ville_arrivee_ok, $places, $prix, $voiture_id, $conducteur_id, $trajetEco, $details]);
+    $insertion = $reqInsertion->execute([
+        $date_depart, $heure_depart, $ville_depart_ok, $date_arrivee, $heure_arrivee, $ville_arrivee_ok, $places, $prix, $voiture_id, $conducteur_id, $trajetEco, $details]);
 
     if ($insertion) {
-        echo "Trajet enregistré avec succès !";
         header("Location: mes_trajets.php");
         exit;
     }else{

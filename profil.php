@@ -9,6 +9,10 @@ if(isset($_SESSION['users_id']) AND $_SESSION['users_id'] > 0){
     $reqUser = $bdd -> prepare('SELECT * FROM users WHERE users_id = ?');
     $reqUser-> execute([$getId]);
     $userInfo = $reqUser -> fetch();
+
+    $recupVoiture = $bdd->prepare('SELECT v.*, m.libelle AS marque FROM voiture v LEFT JOIN marque m ON v.marque_id = m.marque_id WHERE v.users_id = ?');
+    $recupVoiture->execute([$getId]);
+    $voitures = $recupVoiture->fetchAll();
 } else {
         echo "<p>Utilisateur introuvable.</p>";
         header('Location: index.php');
@@ -66,14 +70,17 @@ if(isset($_SESSION['users_id']) AND $_SESSION['users_id'] > 0){
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td> Marque </td>
-                        <td> Modèle </td>
-                        <td> Couleur </td>
-                        <td> Energie </td>
-                        <td> Numéro de la plaque </td>
-                        <td> Date de la 1ere immatriculation </td>
-                    </tr>
+                <?php if ($voitures): ?>
+                    <?php foreach ($voitures as $voiture) ?>
+                        <tr>
+                            <td> <?php echo ($voiture['marque']); ?></td>
+                            <td> <?php echo ($voiture['modele']); ?></td>
+                            <td> <?php echo ($voiture['couleur']); ?> </td>
+                            <td> <?php echo ($voiture['energie']); ?> </td>
+                            <td> <?php echo ($voiture['immatriculation']); ?> </td>
+                            <td> <?php echo ($voiture['date_premiere_immatriculation']); ?> </td>
+                        </tr>
+                <?php endif; ?>
                 </thead>
             </table>
         </div>
@@ -94,13 +101,16 @@ if(isset($_SESSION['users_id']) AND $_SESSION['users_id'] > 0){
                 <input type="text" name="couleur" id="couleur" placeholder="Ex: Rouge" required>
 
                 <label>
-                <input type="radio" name="energie" value="electrique"> 100% Électrique
+                <input type="radio" name="energie" value="Electrique"> 100% Électrique
                 </label>
                 <label>
-                <input type="radio" name="energie" value="hybride"> Hybride
+                <input type="radio" name="energie" value="Hybride"> Hybride
                 </label>
                 <label>
-                    <input type="radio" name="energie" value="essenceDiesel"> Essence ou Diesel
+                    <input type="radio" name="energie" value="Diesel"> Essence
+                </label>
+                  <label>
+                    <input type="radio" name="energie" value="Essence"> Diesel
                 </label>
 
                 <label for="numPlaque"> Numéro de la plaque d'immatriculation : </label>

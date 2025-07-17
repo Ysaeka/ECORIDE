@@ -5,7 +5,7 @@ require_once "libs/bdd.php";
 
 if (isset($_POST['formConnexion'])) {
     $emailConnect = filter_var($_POST['emailConnect'], FILTER_SANITIZE_EMAIL);
-    $passwordConnect = $_POST['passwordConnect'];
+    $passwordConnect = $_POST['passwordConnect']; 
 
     if (!filter_var($emailConnect, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Votre adresse mail est invalide !')</script>";
@@ -18,8 +18,17 @@ if (isset($_POST['formConnexion'])) {
             if (password_verify($passwordConnect, $userInfo['password'])) {
                 $_SESSION['users_id'] = $userInfo['users_id'];
                 $_SESSION['email'] = $userInfo['email'];
-                header("Location: profil.php?users_id=" .$_SESSION['users_id']);
-                exit;
+
+                if (isset($_SESSION['redirection']) && !empty($_SESSION['redirection'])) {
+                    $redirectionUrl = $_SESSION['redirection'];
+                    unset($_SESSION['redirection']);
+                    header("Location: " . $redirectionUrl);
+                    exit();
+                } else {
+                    header("Location: profil.php?users_id=" .$_SESSION['users_id']);
+                    exit();
+                }
+
             } else {
                 echo "<script>alert('Email ou Mot de passe incorrect !')</script>";
             }

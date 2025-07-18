@@ -323,8 +323,8 @@ input{
 }
 /*PROFIL*/
 .profil{
-    width: 50%;
-    height: 750px;
+    width: 60%;
+    height: 100%;
     margin: auto;
 }
 .userInfo{
@@ -511,6 +511,7 @@ form {
 
 /* FOOTER */
 footer {
+    
     display: flex;
     align-items: center;
     justify-content: center;

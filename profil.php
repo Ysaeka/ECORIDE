@@ -5,7 +5,6 @@ require_once 'templates/header.html';
 ?>
 
 <body>
-   
     <div class ="profil">
         <div class = "userInfo">
             <a href= "photo profil" id="photoProfil"><img src="asset/images/icone_photo_150.png"></a>
@@ -51,20 +50,25 @@ require_once 'templates/header.html';
                         <th> Energie </th>
                         <th> Numéro de la plaque </th>
                         <th> Date de la 1ere immatriculation </th>
+                        <th> Modifier/supprimer le vehicule </th>
                     </tr>
                 </thead>
 
                 <tbody>
                 <?php if ($voitures): ?>
-                    <?php foreach ($voitures as $voiture) ?>
-                        <tr>
-                            <td> <?php echo ($voiture['marque']); ?></td>
-                            <td> <?php echo ($voiture['modele']); ?></td>
-                            <td> <?php echo ($voiture['couleur']); ?> </td>
-                            <td> <?php echo ($voiture['energie']); ?> </td>
-                            <td> <?php echo ($voiture['immatriculation']); ?> </td>
-                            <td> <?php echo ($voiture['date_premiere_immatriculation']); ?> </td>
+                    <?php foreach ($voitures as $voiture): ?>
+                        <tr data-id ="<?= $voiture['voiture_id'] ?>">
+                            <td class="marque"> <?php echo ($voiture['marque']); ?></td>
+                            <td class="modele"> <?php echo ($voiture['modele']); ?></td>
+                            <td class="couleur"> <?php echo ($voiture['couleur']); ?> </td>
+                            <td class="energie"> <?php echo ($voiture['energie']); ?> </td>
+                            <td class="immatriculation"> <?php echo ($voiture['immatriculation']); ?> </td>
+                            <td class="datePlaque"> <?php echo ($voiture['date_premiere_immatriculation']); ?> </td>
+                            <td> 
+                                <button class="btnModifier"> Modifier </button>
+                            </td>
                         </tr>
+                    <?php endforeach; ?>
                 <?php endif; ?>
                 </thead>
             </table>
@@ -128,7 +132,9 @@ require_once 'templates/header.html';
     </div>
 
     <script src="asset/JS/btn_login.js"></script> 
+    <script src="asset/JS/btn_modif_voiture.js"></script>
     <?php
     require_once 'templates/footer.html'
     ?>
 </body>
+

@@ -7,13 +7,13 @@
 
   <main> 
     <div class = "imgSlogan">
-      <p>Solution économique pour les voyageurs soucieux de l’environnement.</p>
+        <p>Solution économique pour les voyageurs soucieux de l’environnement.</p>
     </div>
 
     <div class="searchBar">
       <form method="GET" id="formSearch" action="covoiturage.php">
-        <input type="text" name="depart" placeholder="Départ">
-        <input type="text" name="arrivee"placeholder="Arrivée">
+        <input type="text" name="lieu_depart" placeholder="Ville de départ">
+        <input type="text" name="lieu_arrivee"placeholder="Ville d'arrivée">
         <input type="date" name="date"placeholder="Date ?">
         <button type ="submit">Rechercher</button>
       </form>

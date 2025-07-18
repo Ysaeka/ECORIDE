@@ -1,42 +1,44 @@
-<body>
     <?php
-    
-    require_once 'libs/auth_users.php';
+    session_start();
+
     require_once 'templates/header.html';
     require_once 'libs/bdd.php';
-
     ?>
 
-    <section>
-        <div class = "containerResult">
-            <div class = "triResult">
-                <h3> TRIER PAR : </h3>
-                <h3> <a href = ""> Tout effacer </a>
-            </div>
-
-            <div class = "trajetResult">
-                <div class = trajet>
-                    <h3> Date, Ville de départ -> Ville d'arrivée </h3>
-                    <h3> x trajets disponibles </h3>
+<body>
+        <section>
+            <div class = "containerResult">
+                <div class = "triResult">
+                    <h3> TRIER PAR : </h3>
+                    <h3> <a href = ""> Tout effacer </a>
                 </div>
-                <div class="linkResult">
-                    <a href = "reservation.php">
-                        <span class = "detailsTrajet">
-                            <span class ="horaires"> 21:30 o----- 1h20 ----o 22:50 <br> Cannes Toulon </span>
-                            <span class ="prixTrajet"> 8.99€ </span>
-                        </span>
-                        <hr>
-                        <br>
-                        <span class = "detailsTrajet">
-                            <span class = "chauffeur"> GINETTE ----- * 4.7 </span>
-                            <span class = "placesDispo"> Places dispo : 1 </span>
-                        </span>
-                    </a>
+
+                <div class = "trajetResult">
+                    <div class = trajet>
+                        <h3> Date, Ville de départ -> Ville d'arrivée </h3>
+                        <h3> x trajets disponibles </h3>
+                    </div>
+                    <div class="linkResult">
+                        <a href = "reservation.php">
+                            <span class = "detailsTrajet">
+                                <span class ="horaires"> 21:30 o----- 1h20 ----o 22:50</span>
+                                <span class = "placesDispo"> Places restantes : 1 </span>
+                                <span class ="prixTrajet"> 8.99€ </span>
+                            </span>
+                            <hr>
+                            <br>
+                            <span class = "detailsTrajet">
+                                <span class = "chauffeur"> Photo/ GINETTE ----- * 4.7 </span>
+                                <span class =  "voyageEco"> Voyage écologique </span>
+                                <span class = "details"> Details ---> </span>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    
+    
     <?php
     require_once 'templates/footer.html'
     ?>

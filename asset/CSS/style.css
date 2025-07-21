@@ -263,16 +263,16 @@ input{
 #formTrajet{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; 
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr, 1fr);
     width: 50%;
     margin: auto;
-    height: 50%;
+    height: 70%;
     gap : 2%;
     align-items: center;
 }
 #valider{
   grid-column: 1/5;
-  grid-row: 5/6;
+  grid-row: 6/7;
 }
 /*FORMULAIRE CONTACT*/
 #formContact{

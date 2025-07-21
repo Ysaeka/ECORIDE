@@ -59,6 +59,25 @@
                 <label for="details"> Details du trajet :  </label>
                 <textarea name="details" id="details" placeholder="Lieu de rendez-vous..." required></textarea>
 
+                <label for="voiture_id"> Choisir un vehicule </label>
+                <select name= "voiture_id" id="voiture_id" required>
+                    <?php 
+                        $userId = $_SESSION['users_id'];
+                        $stmt = $bdd->prepare("SELECT voiture.voiture_id, voiture.modele, voiture.immatriculation, marque.libelle AS marque FROM voiture JOIN marque ON voiture.marque_id = marque.marque_id WHERE voiture.users_id = :userId");
+                        $stmt->execute(['userId' => $userId]);
+
+                        $voitures = $stmt-> fetchAll();
+
+                        if (count($voitures) > 0) {
+                            foreach ($voitures as $voiture) {
+                                echo '<option value = "' . ($voiture['voiture_id']) . '"> '.($voiture['marque']) .' '.($voiture['modele']) . '</option>';
+                            }
+                            }else{
+                                echo '<option value =""> Aucun véhicule disponible </option>';
+                            }
+                    ?>
+                </select>
+
                 <button type="submit" id="valider"> SOUMETTRE </button>
             </form>
             <div id="champs"><p>*Champs obligatoires</P></div>

@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prix = $_POST['prix'] ?? 0;
     $trajetEco = isset($_POST['VoyageEco']) ? 1 : 0;
     $details = $_POST['details'] ?? '';
+    $voiture_id = $_POST['voiture_id'] ?? null;
     $conducteur_id = $_SESSION['users_id'];
 
     if (empty($ville_depart) || empty($ville_arrivee) || empty($date_depart) || empty($heure_depart) || $places < 1 || $places > 7 || empty($prix)){
@@ -40,14 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $recupVoiture = $bdd->prepare("SELECT voiture_id FROM voiture WHERE users_id = ? LIMIT 1");
-    $recupVoiture->execute([$conducteur_id]);
-    $voiture = $recupVoiture->fetch();
-    $voiture_id = $voiture ? $voiture['voiture_id'] : null;
+    $verifVoiture = $bdd->prepare('SELECT voiture_id FROM voiture WHERE voiture_id = ? AND users_id = ?');
+    $verifVoiture-> execute([$voiture_id, $conducteur_id]);
 
-    if(!$voiture_id) {
-        echo "Vous devez avoir au moins un vehicule enregistré pour proposer un trajet";
-        exit;
+    if (!$verifVoiture->fetch()) {
+        echo "Vehicule invalide.";
+        exit();
     }
 
     $reqInsertion = $bdd->prepare("INSERT INTO covoiturage (date_depart, heure_depart, lieu_depart, date_arrivee, heure_arrivee,lieu_arrivee, nb_place, prix_personne, voiture_id, conducteur_id, trajet_Ecologique, Details)

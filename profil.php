@@ -1,6 +1,6 @@
 <?php
-require_once "libs/auth_users.php";
-require_once "libs/bdd.php";
+require_once 'libs/auth_users.php';
+require_once 'libs/bdd.php';
 require_once 'templates/header.html';
 ?>
 
@@ -9,9 +9,10 @@ require_once 'templates/header.html';
         <div class = "userInfo">
             <a href= "photo profil" id="photoProfil"><img src="asset/images/icone_photo_150.png"></a>
             <p> <?php echo $userInfo['last_name'] . " " . $userInfo['first_name']?></p>
-            <p><a href="modif_profil.php"> Adresse : </a> <?php echo $userInfo['adresse'] ?></p>
+            <p> <a href="modif_profil.php"> Adresse : </a> <?php echo $userInfo['adresse'] ?></p>
             <p> <?php echo $userInfo['email']?></p>
             <p> <a href="modif_profil.php"> Téléphone : </a><?php echo $userInfo['phone_number']?></p>
+            <p> <?php include 'notes_conducteur.php';?> </P>
             <p> Crédit en cours : <?php echo $userInfo['Credit']?> € </p>
         </div>
         <hr>
@@ -65,7 +66,7 @@ require_once 'templates/header.html';
                             <td class="immatriculation"> <?php echo ($voiture['immatriculation']); ?> </td>
                             <td class="datePlaque"> <?php echo ($voiture['date_premiere_immatriculation']); ?> </td>
                             <td> 
-                                <button class="btnModifier"> Modifier </button>
+                                <button class="btnModifier"> Modifier </button> <button class="btnSupprimer" data-id="<?= $voiture['voiture_id'] ?>"> Supprimer </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -115,10 +116,10 @@ require_once 'templates/header.html';
         <br>
         <div class="preferVoyage">
             <fieldset>
-                <legend>Préférence de voyage :</legend>
+                <legend>J'accepte de voyager avec  :</legend>
     
             <div>
-                <label for="Cigarette">Cigarette</label>
+                <label for="Cigarette">Fumeur</label>
                 <input type="checkbox" id="cigarette" name="cigarette" />
             </div>
 

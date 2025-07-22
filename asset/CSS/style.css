@@ -330,12 +330,37 @@ input{
 .userInfo{
     display: grid;
     grid-template-columns: 0.3fr 1fr; 
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
 }
 #photoProfil{
     grid-column: 1/2;
     grid-row: 1/5;
     place-content: center;
+}
+.etoiles {
+    display: inline-flex;
+    align-items: center;
+}
+.etoile {
+    font-size: 1.5em;
+    margin-right: 3px;
+    color: #ccc;
+    position: relative;
+}
+.etoilePleine {
+    color: #FFD700;
+}
+.etoileMoitie {
+    background: linear-gradient(90deg, #FFD700 50%, #ccc 50%);
+    -webkit-text-fill-color: transparent;
+}
+.etoileVide {
+    color: #ccc;
+}
+.score {
+    margin-left: 8px;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 a{

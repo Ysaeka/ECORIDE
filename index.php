@@ -11,7 +11,7 @@
     </div>
 
     <div class="searchBar">
-      <form method="GET" id="formSearch" action="covoiturage.php">
+      <form method="GET" id="formSearch" action="covoiturages.php">
         <input type="text" name="lieu_depart" placeholder="Ville de départ">
         <input type="text" name="lieu_arrivee"placeholder="Ville d'arrivée">
         <input type="date" name="date"placeholder="Date ?">

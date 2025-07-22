@@ -3,6 +3,19 @@
 
     require_once 'templates/header.html';
     require_once 'libs/bdd.php';
+
+    $ville_depart = $_GET ['lieu_depart'] ?? '';
+    $ville_arrivee = $_GET ['lieu_arrivee'] ?? '';
+    $date = $_GET ['date_depart'] ??'';
+
+    $result = [];
+
+    if ($ville_depart && $ville_arrivee && $date) {
+        $recup_covoiturage = $bdd->prepare("SELECT c.*, u.first_name, u.last_name, u.photo FROM covoiturage c JOIN users u ON c.conducteur_id = u.users_id WHERE c.lieu_depart LIKE :lieu_depart AND c.lieu_arrivee LIKE :lieu_arrivee AND c.date_depart = :date");
+        $recup_covoiturage->execute(['lieu_depart' => "%$ville_depart", 'lieu_arrivee' => "%$ville_arrivee", 'date' => $date]);
+
+        $result = $recup_covoiturage-> fetchALL(PDO::FETCH_ASSOC);
+    }
     ?>
 
 <body>

@@ -6,8 +6,7 @@
     ?>
 
 <body>
-        <section>
-            <div class = "containerResult">
+        <section class = "containerResult">
                 <div class = "triResult">
                     <h3> TRIER PAR : </h3>
                     <h3> <a href = ""> Tout effacer </a>
@@ -35,7 +34,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
         </section>
     
     

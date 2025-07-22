@@ -23,8 +23,9 @@ try {
     <div class = "containerTrajet">
         <div class = "trajetResult">
             <h2> Mes Trajets </h2>
+            <hr>
             <div class = trajet>
-                <h3> Historique des trajets </h3>
+                <h3> DATE </h3>
                 <h3> <?=count($user_trajets); ?> trajets </h3>
             </div>
 
@@ -39,7 +40,7 @@ try {
                                 $date = new DateTime($trajet['date_depart']);
                                 $heure = new DateTime($trajet['heure_depart']);
                             ?>
-                            <span class ="date"> Date : <?= $date->format('d/m/Y')?></span>
+                            <span class ="date"> <?= $date->format('d/m/Y')?></span>
                             <span class ="lieu depart_arrivee"> <?= ($trajet['lieu_depart'])?> ---> <?=($trajet ['lieu_arrivee'])?></span>
                             <span class ="prixTrajet"><?= ($trajet['prix_personne']) ?> € </span>
                             <?php if ($trajet['statut'] !== 'terminé') : ?>

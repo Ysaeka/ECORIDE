@@ -259,20 +259,55 @@ input{
     cursor: pointer;
 }
 /*FORMULAIRE PROPOSER UN TRAJET*/
-
+.visiteur{
+    height: 100%;
+}
+.linkVisiteur{
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+}
+.visiteurConn{
+    width: 50%;
+    text-align: center;
+    background-color: #0b7e34;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#proposerTrajet{
+    height: 100%;
+}
 #formTrajet{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; 
     grid-template-rows: repeat(4, 1fr, 1fr);
     width: 50%;
+    height: 50%;
     margin: auto;
-    height: 70%;
     gap : 2%;
     align-items: center;
 }
+textarea{
+    height: 120px;
+}
 #valider{
-  grid-column: 1/5;
-  grid-row: 6/7;
+    grid-column: 1/5;
+    grid-row: 6/7;
+    background-color: #0b7e34;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
 }
 /*FORMULAIRE CONTACT*/
 #formContact{

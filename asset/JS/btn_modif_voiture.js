@@ -6,7 +6,6 @@ document.querySelectorAll('.btnModifier').forEach(button => {
         const marque = row.querySelector('.marque');
         const modele = row.querySelector('.modele');
         const couleur = row.querySelector('.couleur');
-        const energie = row.querySelector('.energie');
         const immatriculation = row.querySelector('.immatriculation');
         const datePlaque = row.querySelector('.datePlaque');
 
@@ -14,7 +13,6 @@ document.querySelectorAll('.btnModifier').forEach(button => {
             marque: marque.innerText,
             modele: modele.innerText,
             couleur: couleur.innerText,
-            energie: energie.innerText,
             immatriculation: immatriculation.innerText,
             datePlaque: datePlaque.innerText
         };
@@ -22,7 +20,6 @@ document.querySelectorAll('.btnModifier').forEach(button => {
         marque.innerHTML = `<input type="text" name ="marque" value="${oldValues.marque}">`;
         modele.innerHTML = `<input type="text" name ="modele" value="${oldValues.modele}">`;
         couleur.innerHTML = `<input type="text" name ="couleur" value="${oldValues.couleur}">`;
-        energie.innerHTML = `<input type="text" name ="energie" value="${oldValues.energie}">`;
         immatriculation.innerHTML = `<input type="text" name ="immatriculation" value="${oldValues.immatriculation}">`;
         datePlaque.innerHTML = `<input type="text" name ="datePlaque" value="${oldValues.datePlaque}">`;
 
@@ -40,7 +37,6 @@ document.querySelectorAll('.btnModifier').forEach(button => {
                 marque: row.querySelector('.marque input').value,
                 modele: row.querySelector('.modele input').value,
                 couleur: row.querySelector('.couleur input').value,
-                energie: row.querySelector('.energie input').value,
                 immatriculation: row.querySelector('.immatriculation input').value,
                 datePlaque: row.querySelector('.datePlaque input').value
             };

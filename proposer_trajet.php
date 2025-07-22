@@ -50,6 +50,9 @@
                 <label for="heure_depart"> Heure de départ* :  </label>
                 <input type="time" name="heure_depart" id="heure_depart"/>
 
+                <label for="heure_depart"> Heure de d'arrivée* :  </label>
+                <input type="time" name="heure_arrivee" id="heure_arrivee"/>
+
                 <label for="places"> Nombre de places disponibles (1-7)* : </label>
                 <input type="number" name="places" id="places" min="1" max="7" required>
 

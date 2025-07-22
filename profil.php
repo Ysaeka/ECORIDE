@@ -48,7 +48,6 @@ require_once 'templates/header.html';
                         <th> Marque </th>
                         <th> Modèle </th>
                         <th> Couleur </th>
-                        <th> Energie </th>
                         <th> Numéro de la plaque </th>
                         <th> Date de la 1ere immatriculation </th>
                         <th> Modifier/supprimer le vehicule </th>
@@ -62,7 +61,6 @@ require_once 'templates/header.html';
                             <td class="marque"> <?php echo ($voiture['marque']); ?></td>
                             <td class="modele"> <?php echo ($voiture['modele']); ?></td>
                             <td class="couleur"> <?php echo ($voiture['couleur']); ?> </td>
-                            <td class="energie"> <?php echo ($voiture['energie']); ?> </td>
                             <td class="immatriculation"> <?php echo ($voiture['immatriculation']); ?> </td>
                             <td class="datePlaque"> <?php echo ($voiture['date_premiere_immatriculation']); ?> </td>
                             <td> 
@@ -89,19 +87,6 @@ require_once 'templates/header.html';
 
                 <label for="couleur"> Couleur: </label>
                 <input type="text" name="couleur" id="couleur" placeholder="Ex: Rouge" required>
-
-                <label>
-                <input type="radio" name="energie" value="Electrique"> 100% Électrique
-                </label>
-                <label>
-                <input type="radio" name="energie" value="Hybride"> Hybride
-                </label>
-                <label>
-                    <input type="radio" name="energie" value="Diesel"> Essence
-                </label>
-                  <label>
-                    <input type="radio" name="energie" value="Essence"> Diesel
-                </label>
 
                 <label for="numPlaque"> Numéro de la plaque d'immatriculation : </label>
                 <input type="text" name="numPlaque" id="numPlaque" placeholder="Ex: AB-123-CD">

@@ -12,12 +12,11 @@ $userId = $_SESSION ['users_id'];
 $marque = htmlspecialchars($_POST['marque']);
 $modele = htmlspecialchars($_POST['modele']);
 $couleur = htmlspecialchars($_POST['couleur']);
-$energie = htmlspecialchars($_POST['energie']);
 $numPlaque = htmlspecialchars($_POST['numPlaque']);
 $datePlaque = $_POST['datePlaque'];
 
 
-if(isset($_POST['submit']) && !empty($marque) && !empty($modele) && !empty($couleur) && !empty($energie) && !empty($numPlaque) && !empty($datePlaque)){
+if(isset($_POST['submit']) && !empty($marque) && !empty($modele) && !empty($couleur) && !empty($numPlaque) && !empty($datePlaque)){
 
 $verifMarque = $bdd->prepare("SELECT marque_id  FROM marque WHERE libelle = ?");
 $verifMarque->execute([$marque]);
@@ -31,8 +30,8 @@ if($marqueData) {
     $marque_id = $bdd->lastInsertID();
 }
 
-$insertionVoiture = $bdd->prepare("INSERT INTO voiture (modele, immatriculation,energie, couleur, date_premiere_immatriculation, marque_id, users_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$insertionVoiture->execute([$modele, $numPlaque, $energie, $couleur, $datePlaque, $marque_id, $userId]);
+$insertionVoiture = $bdd->prepare("INSERT INTO voiture (modele, immatriculation, couleur, date_premiere_immatriculation, marque_id, users_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$insertionVoiture->execute([$modele, $numPlaque, $couleur, $datePlaque, $marque_id, $userId]);
 
 header("Location: profil.php");
 exit;

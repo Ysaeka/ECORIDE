@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date_depart = $_POST['date_depart'] ?? '';
     $heure_depart = $_POST['heure_depart'] ?? '';
     $date_arrivee = null;
-    $heure_arrivee = null;
+    $heure_arrivee = $_POST['heure_arrivee'];
     $places = $_POST['places'] ?? 1;
     $prix = $_POST['prix'] ?? 0;
     $trajetEco = isset($_POST['VoyageEco']) ? 1 : 0;

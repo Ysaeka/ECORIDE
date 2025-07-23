@@ -30,7 +30,7 @@ if($marqueData) {
     $marque_id = $bdd->lastInsertID();
 }
 
-$insertionVoiture = $bdd->prepare("INSERT INTO voiture (modele, immatriculation, couleur, date_premiere_immatriculation, marque_id, users_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$insertionVoiture = $bdd->prepare("INSERT INTO voiture (modele, immatriculation, couleur, date_premiere_immatriculation, marque_id, users_id) VALUES (?, ?, ?, ?, ?, ?)");
 $insertionVoiture->execute([$modele, $numPlaque, $couleur, $datePlaque, $marque_id, $userId]);
 
 header("Location: profil.php");

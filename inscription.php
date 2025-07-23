@@ -39,7 +39,7 @@ if(isset($_POST['valider'])){
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['users_id'] = $user['users_id'];
                 echo"<script>alert('inscription réussie !');
-                window.location.href = 'connexion.php';
+                window.location.href = 'profil.php';
                 </script>";
                 exit();
             }

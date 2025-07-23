@@ -31,7 +31,7 @@ try {
 
             <?php if(empty($user_trajets)) : ?>
                 <p> Vous n'avez pas encore proposé de trajet. </p>
-                <p><a href="proposer_trajet.php"> Proposer un nouveau trajet </a>
+                <p><a href="proposer_trajet.php"> Proposer un nouveau trajet </a></p>
             <?php else: ?>
                 <?php foreach ($user_trajets as $trajet) : ?>
                     <div class="historique">

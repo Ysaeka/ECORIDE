@@ -500,6 +500,14 @@ form {
     display: flex;
     justify-content: space-between;
 }
+.trajetResult p a{
+    background-color: #0b7e34;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
 .linkResult{
     background-color: #F5F1E6;
     border-radius: 1em;

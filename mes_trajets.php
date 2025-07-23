@@ -64,6 +64,12 @@ try {
                             <span class="statutTermine"> ✅ Trajet terminé </span>
                             <?php endif; ?>
                         </span>
+                            <?php if ($trajet['statut'] !== 'terminé') : ?>
+                                <form class="formAnnule" method="POST" action="annuler_covoiturage.php" onsubmit="return confirm('Etre-vous sûr de vouloir annuler le trajet ?');"
+                                    <input type="hidden" name="trajet_id" value="<?= $trajet['covoiturage_id'] ?>">
+                                    <button type="submit" class="btnAnnuler"> ❌ Annuler le trajet </button>
+                                </form>
+                            <?php endif; ?>                              
                     </div>
                 <?php endforeach ?>
             <?php endif; ?>

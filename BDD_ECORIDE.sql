@@ -113,7 +113,7 @@ ALTER TABLE covoiturage
 MODIFY statut ENUM ('non_démarré', 'en_cours', 'terminé') DEFAULT 'non_démarré';
 
 ALTER TABLE covoiturage
-MODIFY statut ENUM ('non_démarré', 'terminé') DEFAULT 'non_démarré';
+MODIFY statut ENUM ('non_démarré', 'en_cours', 'terminé') DEFAULT 'non_démarré';
 
 CREATE TABLE reservation (
     reservation_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -144,6 +144,8 @@ ALTER TABLE avis
 ADD FOREIGN KEY (reviewer_id) REFERENCES users(users_id),
 ADD FOREIGN KEY (reviewed_user_id) REFERENCES users(users_id),
 ADD FOREIGN KEY (covoiturage_id) REFERENCES covoiturage(covoiturage_id);
+
+ALTER TABLE avis ADD UNIQUE (reviewer_id, covoiturage_id);
 
 
 /*INSERT*/

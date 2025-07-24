@@ -29,6 +29,14 @@ MODIFY COLUMN photo VARCHAR(255);
 ALTER TABLE users
 ADD FOREIGN KEY (role_id) REFERENCES role(role_id);
 
+CREATE TABLE preferences (
+    pref_id INT PRIMARY KEY,
+    animaux BOOLEAN DEFAULT FALSE,
+    fumeur BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (pref_id) REFERENCES users(users_id) ON DELETE CASCADE
+);
+
+
 
 CREATE TABLE configuration (
     id_configuration INT AUTO_INCREMENT PRIMARY KEY

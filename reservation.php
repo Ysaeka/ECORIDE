@@ -39,43 +39,43 @@
 
     <body>
         <section class = "containerResa">
-           
-                <div class = "trajetResult">
-                    <?php if(!empty($results)): ?>
-                        <div class = trajet>
-                            <h3> <?= htmlspecialchars(date('d/m/Y', strtotime($date))) ?>, <?= ucfirst(htmlspecialchars($ville_depart))?> -> <?= ucfirst(htmlspecialchars($ville_arrivee))?></h3>
-                        </div>
-                        
-                        <?php foreach ($results as $trajet):
-                            $heure_depart = (new DateTime($trajet['heure_depart']))->format('H:i');
-                            $heure_arrivee = (new DateTime($trajet['heure_arrivee']))->format('H:i');
-                            $duree = $heure_depart->diff($heure_arrivee)->format('%h h %i');
-                            $nom_conducteur = ucfirst($trajet['first_name']) .' ' . strtoupper($trajet['last_name']);
-                        ?>
-                            <div class="linkResult">
-                                    <span class = "detailsTrajet">
-                                        <span class ="horaires"><?= $heure_depart ?> o----- <?= $duree ?> ----o <?= $heure_arrivee ?> </span>
-                                        <span class = "placesDispo"> Places restantes : <?= $trajet['nb_place'] ?> </span>
-                                        <span class ="prixTrajet"><?=number_format($trajet['prix_personne'], 2) ?> € </span>
-                                    </span>
-                                    <br><hr><br>
-                                    <span class = "detailsTrajet">
-                                        <span class = "chauffeur"> 
-                                            <?= $trajet['photo'] ? "<img src='{$trajet['photo']}' alt='photo' width='30'>" : '' ?>
-                                            <?= $nom_conducteur ?> ----- * 4.7 </span>
-                                        <?php if ($trajet['trajet_Ecologique']) : ?>
-                                            <span class =  "voyageEco"> 🌳 Voyage écologique </span>
-                                        <?php endif; ?>
-                                        <span class = "details"> Details ---> </span>
-                                        </span>
-                            </div>
-                        <?php endforeach ?>
+            <div class = "trajetResult">
+                <h2><?= ucfirst($trajet['lieu_depart']) ?> → <?= ucfirst($trajet['lieu_arrivee']) ?></h2>
+                    <p>Date : <?= htmlspecialchars($trajet['date_depart']) ?> | <?= $heure_depart ?> → <?= $heure_arrivee ?></p>
+                    <p>Places restantes : <?= $trajet['nb_place'] ?></p>
+                    <p>Prix : <?= number_format($trajet['prix_personne'], 2) ?> €</p>
+
+                <h3>Conducteur</h3>
+                    <p><?= ucfirst($trajet['first_name']) . " " . strtoupper($trajet['last_name']) ?></p>
+                    <?php if ($trajet['photo']) : ?>
+                        <img src="<?= $trajet['photo'] ?>" width="60" alt="Conducteur">
                     <?php endif; ?>
-                </div>
+
+                <h4>Avis</h4>
+                    <?php if ($recupAvis): ?>
+                        <?php foreach ($recupAvis as $avis): ?>
+                            <p><strong><?= htmlspecialchars($avis['first_name']) ?> :</strong> 
+                            <?= str_repeat("⭐", $avis['note']) ?> - <?= htmlspecialchars($a['commentaire']) ?> (<?= $avis['date'] ?>)</p>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                            <p>Aucun avis pour ce conducteur.</p>
+                    <?php endif; ?>
+
+                <h4>Véhicule</h4>
+                    <p><?= $trajet['marque'] ?> <?= $trajet['modele'] ?> (<?= $trajet['energie'] ?>)</p>
+
+                <h4>Préférences conducteur</h4>
+                    <ul>
+                        <li>Animaux : <?= $trajet['animaux'] ? "Oui" : "Non" ?></li>
+                        <li>Fumeur : <?= $trajet['fumeur'] ? "Oui" : "Non" ?></li>
+                    </ul>
+            </div>
+
+            <div class="btnActions">
+                <a href="covoiturage.php" class="btn-retour"> Retour à la liste </a>
+                <a href="participation_covoiturage.php?id=<?= $trajet['covoiturage_id'] ?>" class="btn-reserver"> Participer à ce trajet</a>
+            </div>
         </section>
-
-
-
     <script src="asset/JS/btn_login.js"></script> 
 </body>
 

@@ -155,6 +155,8 @@ ADD FOREIGN KEY (covoiturage_id) REFERENCES covoiturage(covoiturage_id);
 
 ALTER TABLE avis ADD UNIQUE (reviewer_id, covoiturage_id);
 
+ALTER TABLE avis ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
 
 /*INSERT*/
 INSERT INTO users (last_name, first_name, email, password, phone_number, adresse, photo) VALUES 

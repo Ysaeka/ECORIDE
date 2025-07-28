@@ -1,3 +1,11 @@
+<?php 
+  require_once __DIR__ . '/../libs/bdd.php';
+
+    if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -31,6 +39,9 @@
 
               <div class="menu" id="dropdownMenu">
                 <a href="profil.php">Mon profil</a>
+                <?php if (isset($_SESSION ['role_id']) && $_SESSION ['role_id'] === 2 ){?> 
+                  <a href="acceuil_admin.php">Espace administrateur</a>
+                <?php } ?>
                 <a href="inscription.php">Inscription</a>
                 <a href="http://localhost/ecoride/connexion.php">Connexion</a>
                 <a href="deconnexion.php">Deconnexion</a>

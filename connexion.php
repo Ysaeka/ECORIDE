@@ -17,6 +17,7 @@ if (isset($_POST['formConnexion'])) {
             $userInfo = $reqUser->fetch();
             if (password_verify($passwordConnect, $userInfo['password'])) {
                 $_SESSION['users_id'] = $userInfo['users_id'];
+                $_SESSION['role_id'] = $userInfo ['role_id'];
                 $_SESSION['email'] = $userInfo['email'];
 
                 if (isset($_SESSION['redirection']) && !empty($_SESSION['redirection'])) {

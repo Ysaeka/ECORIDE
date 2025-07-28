@@ -594,6 +594,35 @@ form {
     color : #888;
     font-weight: bold;
 }
+/*ESPACE ADMIN*/
+.containerCard{ 
+    max-width: 1200px; 
+    margin: 30px auto; 
+    padding: 0 20px;
+}
+.cards{ 
+    display:flex; 
+    gap:20px; 
+    margin-bottom:30px; 
+    flex-wrap:wrap; 
+}
+.card{ 
+    flex:1;
+    min-width:200px; 
+    background:#fff; 
+    padding:20px; 
+    border-radius:10px; 
+    box-shadow:0 0 5px rgba(0,0,0,0.1);
+}
+.charts canvas{ 
+    width: 750px;
+    height: 400px;
+    background:#fff;
+    padding:20px; 
+    margin-bottom:40px; 
+    border-radius:10px; 
+    box-shadow:0 0 10px rgba(0,0,0,0.1); 
+}
 
 /* FOOTER */
 footer {

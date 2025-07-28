@@ -1,7 +1,7 @@
 <body>
     <?php
     session_start();
-    require_once 'templates/header.html';
+    require_once 'templates/header.php';
     require_once 'libs/bdd.php';
     /* US 5 : vue détaillée d’un covoiturage
     Utilisateur concerné : Visiteur, Utilisateur

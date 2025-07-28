@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once 'templates/header.html';
+    require_once 'templates/header.php';
     require_once 'libs/bdd.php';
     require_once 'templates/villes.php';
 

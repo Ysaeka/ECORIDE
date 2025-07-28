@@ -44,7 +44,7 @@ if (isset($_POST['formConnexion'])) {
 
 <body>
     <?php
-    require_once 'templates/header.html'
+    require_once 'templates/header.php'
     ?>
 
         <div class="seConnecter">

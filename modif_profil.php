@@ -26,7 +26,7 @@ require_once "libs/bdd.php";
 ?>
 
 <?php
-require_once "templates/header.html"
+require_once "templates/header.php"
 ?>
 <body>
     <h2> Modifier mes informations </h2>

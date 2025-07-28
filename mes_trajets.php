@@ -1,7 +1,7 @@
 <?php
 require_once "libs/auth_users.php";
 require_once "libs/bdd.php";
-require_once "templates/header.html";
+require_once "templates/header.php";
 
 $users_id = $_SESSION['users_id'];
 

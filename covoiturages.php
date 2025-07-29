@@ -22,8 +22,35 @@
 <body>
         <section class = "containerResult">
                 <div class = "triResult">
-                    <h3> TRIER PAR : </h3>
-                    <h3> <a href = ""> Tout effacer </a>
+                    <form id="filtreForm">
+                        <input type="hidden" name="lieu_depart" value="<?= htmlspecialchars($ville_depart) ?>">
+                        <input type="hidden" name="lieu_arrivee" value="<?= htmlspecialchars($ville_arrivee) ?>">
+                        <input type="hidden" name="date" value="<?= htmlspecialchars($date) ?>">
+
+                        <div class="filtreBlock">
+                            <h3>Trier par :</h3>
+                            <label><input type="radio" name="tri" value="depart"> Départ le + tôt</label><br>
+                            <label><input type="radio" name="tri" value="prix"> Prix le + bas</label><br>
+                            <label><input type="radio" name="tri" value="eco"> Voyage écologique</label>
+                        </div>
+
+                        <div class="filtreBlock">
+                            <h4>Note du conducteur :</h4>
+                            <label><input type="radio" name="note_min" value="5"> ⭐⭐⭐⭐⭐</label><br>
+                            <label><input type="radio" name="note_min" value="4"> ⭐⭐⭐⭐ et +</label><br>
+                            <label><input type="radio" name="note_min" value="3"> ⭐⭐⭐ et +</label>
+                        </div><br>
+
+                        <div class="filtreBlock">
+                            <label>Prix max (€) :</label>
+                            <input type="number" name="prix_max" min="0">
+                        </div>
+
+                        <div class="filtreBlock">
+                            <label>Durée max du trajet (h) : </label>
+                            <input type="number" name="duree_max" min="0">
+                        </div>
+                    </form>
                 </div>
 
                 <div class = "trajetResult">

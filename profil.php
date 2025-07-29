@@ -9,10 +9,7 @@ require_once 'templates/header.php';
         <div class = "userInfo">
             <form id="uploadForm" action="upload_photo.php" method="POST" enctype="multipart/form-data">
                 <label for="photoInput">
-                    <img src="<?= htmlspecialchars($userInfo['photo'] ?? 'asset/images/icone_photo_150.png') ?>"
-                    alt="Photo de profil"
-                    id="photoPreview"
-                    style="cursor:pointer; width:150px; height:150px; border-radius:50%; object-fit:cover;">
+                    <img src="<?= htmlspecialchars($userInfo['photo'] ?? 'asset/images/icone_photo_150.png') ?>" alt="Photo de profil" id="photoPreview">
                 </label>
                 <input type="file" name="photo" id="photoInput" accept="image/*" style="display:none">
             </form>

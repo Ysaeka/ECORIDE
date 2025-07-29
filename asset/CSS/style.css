@@ -372,6 +372,14 @@ textarea{
     grid-row: 1/5;
     place-content: center;
 }
+#photoPreview{
+   cursor:pointer; 
+   width:150px; 
+   height:150px; 
+   border-radius:50%; 
+   object-fit:cover;
+   
+}
 .etoiles {
     display: inline-flex;
     align-items: center;

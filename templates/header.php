@@ -37,7 +37,7 @@
               <button class="avatar-btn" onclick="toggleMenu()">
                 <img src="<?= htmlspecialchars($_SESSION['photo'] ?? 'asset/images/icon-park-solid--people.png') ?>" 
                     alt="avatar" 
-                    style="width:40px; height:40px; border-radius:50%; object-fit:cover;" />
+                    style="width:50px; height:50px; border-radius:50%; object-fit:cover;" />
                     <span class="arrow">&#709;</span> 
               </button>
 

@@ -7,7 +7,22 @@ require_once 'templates/header.php';
 <body>
     <div class ="profil">
         <div class = "userInfo">
-            <a href= "photo profil" id="photoProfil"><img src="asset/images/icone_photo_150.png"></a>
+            <form id="uploadForm" action="upload_photo.php" method="POST" enctype="multipart/form-data">
+                <label for="photoInput">
+                    <img src="<?= htmlspecialchars($userInfo['photo'] ?? 'asset/images/icone_photo_150.png') ?>"
+                    alt="Photo de profil"
+                    id="photoPreview"
+                    style="cursor:pointer; width:150px; height:150px; border-radius:50%; object-fit:cover;">
+                </label>
+                <input type="file" name="photo" id="photoInput" accept="image/*" style="display:none">
+            </form>
+
+            <script>
+            document.getElementById('photoInput').addEventListener('change', function() {
+            document.getElementById('uploadForm').submit();
+            });
+            </script>
+            
             <p> <?php echo $userInfo['last_name'] . " " . $userInfo['first_name']?></p>
             <p> <a href="modif_profil.php"> Adresse : </a> <?php echo $userInfo['adresse'] ?></p>
             <p> <?php echo $userInfo['email']?></p>

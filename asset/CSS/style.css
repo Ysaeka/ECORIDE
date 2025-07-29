@@ -367,7 +367,7 @@ textarea{
     grid-template-columns: 0.3fr 1fr; 
     grid-template-rows: repeat(6, 1fr);
 }
-#photoProfil{
+#uploadForm{
     grid-column: 1/2;
     grid-row: 1/5;
     place-content: center;

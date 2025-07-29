@@ -47,11 +47,11 @@
                                         <span class = "placesDispo"> Places restantes : <?= $trajet['nb_place'] ?> </span>
                                         <span class ="prixTrajet"><?=number_format($trajet['prix_personne'], 2) ?> € </span>
                                     </span>
-                                    <br><hr><br>
+                                    <br><hr>
                                     <span class = "detailsTrajet">
                                         <span class = "chauffeur"> 
-                                            <?= $trajet['photo'] ? "<img src='{$trajet['photo']}' alt='photo' width='30'>" : '' ?>
-                                            <?= $nom_conducteur ?> ----- * 4.7 </span>
+                                            <?= $trajet['photo'] ? "<img src='{$trajet['photo']}' id='photoChauffeur' alt='photo'>" : '' ?>
+                                            <?= $nom_conducteur ?> <br> ----- * 4.7 </span>
                                         <?php if ($trajet['trajet_Ecologique']) : ?>
                                             <span class =  "voyageEco"> 🌳 Voyage écologique </span>
                                         <?php endif; ?>

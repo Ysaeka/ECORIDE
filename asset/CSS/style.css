@@ -522,6 +522,23 @@ form {
     padding:1%;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
 }
+.chauffeur{
+    display: flex;
+    align-items: center;
+    gap:5%;
+
+}
+#photoChauffeur{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: solid 5px #0b7e34;
+}
+.details{
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+}
 .detailsTrajet{
     display: flex;
     justify-content: space-between;

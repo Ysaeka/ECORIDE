@@ -1,21 +1,17 @@
 <?php
-require_once 'libs/auth_users.php';
 require_once 'libs/bdd.php';
 
-if(!isset($userInfo['users_id'])) {
-    return;
-}
+function afficherNote($conducteur_id){
+    global $bdd;
 
+    $req_moyenne_note = $bdd->prepare ("SELECT ROUND(AVG(note), 1) AS moyenne_note FROM avis WHERE reviewed_user_id = ?");
+    $req_moyenne_note->execute([$conducteur_id]);
+    
+    $result = $req_moyenne_note->fetch(PDO::FETCH_ASSOC);
+    $moyenne = $result['moyenne_note'] ?? 0;
 
-$conducteur_id = $userInfo['users_id'];
-
-$req_moyenne_note = $bdd->prepare ("SELECT ROUND(AVG(note), 1) AS moyenne_note FROM avis WHERE reviewed_user_id = ?");
-$req_moyenne_note->execute([$conducteur_id]);
-
-$result = $req_moyenne_note->fetch(PDO::FETCH_ASSOC);
-$moyenne = $result['moyenne_note'] ?? 0;
+    ob_start();
 ?>
-
 <div class="noteContainer">
     <strong> Note : </strong>
     <div class="etoiles">
@@ -36,3 +32,8 @@ $moyenne = $result['moyenne_note'] ?? 0;
         <span class="score">(<?=$moyenne ?> /5) </span>
     </div>
 </div>
+<?php
+return ob_get_clean();
+}
+?>
+

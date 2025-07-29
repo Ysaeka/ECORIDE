@@ -3,6 +3,7 @@
 
     require_once 'templates/header.php';
     require_once 'libs/bdd.php';
+    require_once 'libs/notes_conducteur.php';
 
     $ville_depart = $_GET ['lieu_depart'] ?? '';
     $ville_arrivee = $_GET ['lieu_arrivee'] ?? '';
@@ -51,7 +52,7 @@
                                     <span class = "detailsTrajet">
                                         <span class = "chauffeur"> 
                                             <?= $trajet['photo'] ? "<img src='{$trajet['photo']}' id='photoChauffeur' alt='photo'>" : '' ?>
-                                            <?= $nom_conducteur ?> <br> ----- * 4.7 </span>
+                                            <?= $nom_conducteur ?> <br> <?= afficherNote($trajet['conducteur_id']) ?> </span>
                                         <?php if ($trajet['trajet_Ecologique']) : ?>
                                             <span class =  "voyageEco"> 🌳 Voyage écologique </span>
                                         <?php endif; ?>

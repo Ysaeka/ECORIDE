@@ -2,6 +2,7 @@
 require_once 'libs/auth_users.php';
 require_once 'libs/bdd.php';
 require_once 'templates/header.php';
+require_once 'libs/notes_conducteur.php';
 ?>
 
 <body>
@@ -24,7 +25,7 @@ require_once 'templates/header.php';
             <p> <a href="modif_profil.php"> Adresse : </a> <?php echo $userInfo['adresse'] ?></p>
             <p> <?php echo $userInfo['email']?></p>
             <p> <a href="modif_profil.php"> Téléphone : </a><?php echo $userInfo['phone_number']?></p>
-            <p> <?php include 'notes_conducteur.php';?> </P>
+            <p> <?= afficherNote($userInfo['users_id']);?> </P>
             <p> Crédit en cours : <?php echo $userInfo['Credit']?> € </p>
         </div>
         <hr>

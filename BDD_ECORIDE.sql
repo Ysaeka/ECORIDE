@@ -3,31 +3,26 @@
 CREATE DATABASE IF NOT EXISTS Ecoride;
 USE Ecoride;
 
--- Table des utilisateurs
+CREATE TABLE role (
+    role_id INT AUTO_INCREMENT PRIMARY KEY,
+    libelle VARCHAR(50)
+);
+
 CREATE TABLE users (
     users_id INT AUTO_INCREMENT PRIMARY KEY,
     last_name VARCHAR(100),
     first_name VARCHAR(100),
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    photo BLOB,
     phone_number VARCHAR(20),
-    adresse VARCHAR (50),
+    adresse VARCHAR (255),
+    photo_profil VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    Credit INT
+    Credit INT,
+    role_id INT DEFAULT 1,
+    FOREIGN KEY (role_id) REFERENCES role(role_id);
 );
-ALTER TABLE users
-ADD COLUMN role_id INT DEFAULT 1;
-
-ALTER TABLE users
-MODIFY COLUMN adresse VARCHAR(255);
-
-ALTER TABLE users
-MODIFY COLUMN photo_profil VARCHAR(255);
-
-ALTER TABLE users
-ADD FOREIGN KEY (role_id) REFERENCES role(role_id);
 
 CREATE TABLE preferences (
     pref_id INT PRIMARY KEY,
@@ -36,22 +31,10 @@ CREATE TABLE preferences (
     FOREIGN KEY (pref_id) REFERENCES users(users_id) ON DELETE CASCADE
 );
 
-
-
-CREATE TABLE configuration (
-    id_configuration INT AUTO_INCREMENT PRIMARY KEY
-);
-DROP TABLE configuration;
-
 CREATE TABLE parametre (
     parametre_id INT AUTO_INCREMENT PRIMARY KEY,
     propriete VARCHAR(50),
     valeur VARCHAR(50)
-);
-
-CREATE TABLE role (
-    role_id INT AUTO_INCREMENT PRIMARY KEY,
-    libelle VARCHAR(50)
 );
 
 CREATE TABLE marque (
@@ -65,70 +48,38 @@ CREATE TABLE voiture (
     immatriculation VARCHAR(50),
     energie VARCHAR(50),
     couleur VARCHAR(50),
-    date_premiere_immatriculation VARCHAR(50),
+    date_premiere_immatriculation DATE,
     marque_id INT,
-    FOREIGN KEY (marque_id) REFERENCES marque(marque_id)
+    users_id INT,
+    FOREIGN KEY (marque_id) REFERENCES marque(marque_id),
+    FOREIGN KEY (users_id) REFERENCES users(users_id)
 );
-ALTER TABLE voiture
-ADD COLUMN users_id INT,
-ADD FOREIGN KEY (users_id) REFERENCES users(users_id);
-
-ALTER TABLE voiture
-MODIFY COLUMN date_premiere_immatriculation DATE;
 
 CREATE TABLE covoiturage (
     covoiturage_id INT AUTO_INCREMENT PRIMARY KEY,
     date_depart DATE,
-    heure_depart DATE,
+    heure_depart TIME,
     lieu_depart VARCHAR(50),
     date_arrivee DATE,
-    heure_arrivee VARCHAR(50),
+    heure_arrivee TIME,
     lieu_arrivee VARCHAR(50),
-    statut VARCHAR(50),
+    statut ENUM ('non_démarré', 'en_cours', 'terminé') DEFAULT 'non_démarré',
     nb_place INT,
-    prix_personne FLOAT
+    prix_personne DECIMAL(10,2),
+    voiture_id INT,
+    conducteur_id INT,
+    trajet_Ecologique BOOLEAN,
+    Details TEXT,
+    FOREIGN KEY (voiture_id) REFERENCES voiture(voiture_id),
+    FOREIGN KEY (conducteur_id) REFERENCES users(users_id)
 );
-
-ALTER TABLE covoiturage
-MODIFY heure_depart TIME,
-MODIFY heure_arrivee TIME;
-
-ALTER TABLE covoiturage
-MODIFY prix_personne DECIMAL(10,2);
-
-ALTER TABLE covoiturage
-ADD COLUMN voiture_id INT,
-ADD FOREIGN KEY (voiture_id) REFERENCES voiture(voiture_id);
-
-ALTER TABLE covoiturage
-ADD COLUMN conducteur_id INT,
-ADD FOREIGN KEY (conducteur_id) REFERENCES users(users_id);
-
-ALTER TABLE covoiturage
-ADD COLUMN trajet_Ecologique BOOLEAN,
-ADD COLUMN Details VARCHAR(255);
-
-ALTER TABLE covoiturage
-MODIFY Details TEXT (5000);
-
-ALTER TABLE covoiturage
-DROP COLUMN statut;
-
-ALTER TABLE covoiturage
-ADD COLUMN statut ENUM('non_démarré', 'en_cours', 'termniné') DEFAULT 'non_demarré';
-
-ALTER TABLE covoiturage
-MODIFY statut ENUM ('non_démarré', 'en_cours', 'terminé') DEFAULT 'non_démarré';
-
-ALTER TABLE covoiturage
-MODIFY statut ENUM ('non_démarré', 'en_cours', 'terminé') DEFAULT 'non_démarré';
 
 CREATE TABLE reservation (
     reservation_id INT AUTO_INCREMENT PRIMARY KEY,
     covoiturage_id INT NOT NULL,
     passager_id INT NOT NULL,
     reservation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    statut VARCHAR(50) DEFAULT 'en attente de confirmation',
+    statut ENUM('en attente', 'validée', 'en cours') DEFAULT 'en attente',
     nb_places_reservees INT NOT NULL DEFAULT 1,
     FOREIGN KEY (covoiturage_id) REFERENCES covoiturage(covoiturage_id),
     FOREIGN KEY (passager_id) REFERENCES users(users_id),
@@ -138,24 +89,26 @@ CREATE TABLE reservation (
 CREATE TABLE avis (
     avis_id INT AUTO_INCREMENT PRIMARY KEY,
     commentaire VARCHAR(50),
-    note VARCHAR(50),
-    statut VARCHAR(50)
+    note TINYINT,
+    statut VARCHAR(50),
+    reviewer_id INT,
+    reviewed_user_id INT,
+    covoiturage_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (reviewer_id, covoiturage_id),
+    FOREIGN KEY (reviewer_id) REFERENCES users(users_id),
+    FOREIGN KEY (reviewed_user_id) REFERENCES users(users_id),
+    FOREIGN KEY (covoiturage_id) REFERENCES covoiturage(covoiturage_id);
 );
 
-ALTER TABLE avis
-ADD COLUMN reviewer_id INT,
-ADD COLUMN reviewed_user_id INT,
-ADD COLUMN covoiturage_id INT,
-MODIFY COLUMN note TINYINT;
-
-ALTER TABLE avis
-ADD FOREIGN KEY (reviewer_id) REFERENCES users(users_id),
-ADD FOREIGN KEY (reviewed_user_id) REFERENCES users(users_id),
-ADD FOREIGN KEY (covoiturage_id) REFERENCES covoiturage(covoiturage_id);
-
-ALTER TABLE avis ADD UNIQUE (reviewer_id, covoiturage_id);
-
-ALTER TABLE avis ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+CREATE TABLE signalement (
+    signalement_id INT AUTO_INCREMENT PRIMARY KEY,
+    reservation_id INT NOT NULL,
+    commentaire TEXT NOT NULL,
+    statut ENUM('ouvert', 'résolu') DEFAULT 'ouvert',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (reservation_id) REFERENCES reservation(reservation_id)
+);
 
 
 /*INSERT*/

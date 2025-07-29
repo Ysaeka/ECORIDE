@@ -373,12 +373,12 @@ textarea{
     place-content: center;
 }
 #photoPreview{
-   cursor:pointer; 
-   width:150px; 
-   height:150px; 
-   border-radius:50%; 
-   object-fit:cover;
-   
+    cursor:pointer; 
+    width:150px; 
+    height:150px; 
+    border-radius:50%; 
+    object-fit:cover;
+    border: solid 5px #0b7e34;
 }
 .etoiles {
     display: inline-flex;

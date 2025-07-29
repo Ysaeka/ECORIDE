@@ -9,6 +9,11 @@
     $ville_arrivee = $_GET ['lieu_arrivee'] ?? '';
     $date = $_GET ['date'] ??'';
 
+    $tri =$_GET['tri'] ?? '';
+    $note_min = $_GET['note_min'] ?? '';
+    $prix_max = $_GET['prix_max'] ?? '';
+    $duree_max = $_GET['duree_max'] ?? '';
+
     $results = [];
 
     if ($ville_depart && $ville_arrivee && $date) {
@@ -16,6 +21,33 @@
         $recup_covoiturage->execute(['lieu_depart' => "%$ville_depart%", 'lieu_arrivee' => "%$ville_arrivee%", 'date' => $date]);
 
         $results = $recup_covoiturage-> fetchALL(PDO::FETCH_ASSOC);
+
+        if ($prix_max != '') {
+            $results = array_filter($results, fn($trajet) => $trajet['prix_personne'] <= $prix_max);
+        }
+
+        if ($note_min != '') {
+            $results = array_filter($results, function($trajet) use ($note_min, $bdd) {
+            return getNoteConducteur($trajet['conducteur_id'], $bdd) >= $note_min;
+            });
+        }
+
+        if ($duree_max != '') {
+            $results = array_filter($results, function($trajet) use ($duree_max) {
+                $depart = new DateTime($trajet['heure_depart']);
+                $arrivee = new DateTime($trajet['heure_arrivee']);
+                $dureeHeures = $depart->diff($arrivee)->h + ($depart->diff($arrivee)->i / 60);
+                return $dureeHeures <= $duree_max;
+            });
+        }
+
+        if ($tri == 'depart') {
+            usort($results, fn($a, $b) => strtotime($a['heure_depart']) - strtotime($b['heure_depart']));
+        } elseif ($tri == 'prix') {
+            usort($results, fn($a, $b) => $a['prix_personne'] <=> $b['prix_personne']);
+        } elseif ($tri == 'eco') {
+            usort($results, fn($a, $b) => $b['trajet_Ecologique'] <=> $a['trajet_Ecologique']);
+        }
     }
     ?>
 
@@ -50,6 +82,8 @@
                             <label>Durée max du trajet (h) : </label>
                             <input type="number" name="duree_max" min="0">
                         </div>
+                        <br>
+                        <button type="submit" id="btnFiltre"> Appliquer </button>
                     </form>
                 </div>
 
@@ -102,7 +136,6 @@
                     <?php endif; ?>
                 </div>
         </section>
-    
     <?php
     require_once 'templates/footer.html'
     ?>

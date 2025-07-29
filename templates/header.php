@@ -35,8 +35,10 @@
 
             <div class="dropdown">
               <button class="avatar-btn" onclick="toggleMenu()">
-              <img src="asset/images/icon-park-solid--people.png" alt="avatar" />
-              <span class="arrow">&#709;</span> 
+                <img src="<?= htmlspecialchars($_SESSION['photo'] ?? 'asset/images/icon-park-solid--people.png') ?>" 
+                    alt="avatar" 
+                    style="width:40px; height:40px; border-radius:50%; object-fit:cover;" />
+                    <span class="arrow">&#709;</span> 
               </button>
 
               <div class="menu" id="dropdownMenu">

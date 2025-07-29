@@ -19,6 +19,7 @@ if (isset($_POST['formConnexion'])) {
                 $_SESSION['users_id'] = $userInfo['users_id'];
                 $_SESSION['role_id'] = $userInfo ['role_id'];
                 $_SESSION['email'] = $userInfo['email'];
+                $_SESSION['photo'] = $userInfo['photo'];
 
                 if (isset($_SESSION['redirection']) && !empty($_SESSION['redirection'])) {
                     $redirectionUrl = $_SESSION['redirection'];

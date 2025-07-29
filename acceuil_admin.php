@@ -20,9 +20,9 @@ capable de suspendre un compte, aussi bien utilisateur qu’employé */
 
         <div class="charts">
             <h2> Nombres de covoiturage par jour </h2>
-                <canvas id="chartCovoit" width="750" height="400"></canvas>
+                <canvas id="chartCovoit"></canvas>
             <h2> Revenus de la plateforme par jour </h2>
-                <canvas id="chartRevenus" width="750" height="400"></canvas>
+                <canvas id="chartRevenus"></canvas>
         </div>
     </div>
 

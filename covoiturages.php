@@ -112,7 +112,7 @@
                                     <br><hr>
                                     <span class = "detailsTrajet">
                                         <span class = "chauffeur"> 
-                                            <?= $trajet['photo'] ? "<img src='{$trajet['photo']}' id='photoChauffeur' alt='photo'>" : '' ?>
+                                            <?= $trajet['photo'] ? "<img src='{$trajet['photo']}' class='photoChauffeur' alt='photo'>" : '' ?>
                                             <?= $nom_conducteur ?> <br> <?= afficherNote($trajet['conducteur_id']) ?> </span>
                                         <?php if ($trajet['trajet_Ecologique']) : ?>
                                             <span class =  "voyageEco"> 🌳 Voyage écologique </span>

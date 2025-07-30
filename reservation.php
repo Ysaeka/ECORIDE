@@ -3,14 +3,7 @@
     session_start();
     require_once 'templates/header.php';
     require_once 'libs/bdd.php';
-    /* US 5 : vue détaillée d’un covoiturage
-    Utilisateur concerné : Visiteur, Utilisateur
-    Un visiteur, peut au clic sur le bouton « détail » d’un covoiturage, accéder à une page web qui
-    détailles les éléments du voyage. Il doit pouvoir visionner tous les éléments présents dans la
-    page précédente, mais, également :
-     Les avis du conducteur
-     Le modèle ainsi que la marque de véhicule (également l’énergie utilisé)
-     Visionner les préférences du conducteur */
+    require_once 'libs/notes_conducteur.php';
 
     $id = $_GET['id'] ?? null;
 
@@ -30,35 +23,36 @@
 
     $recupAvis = $bdd->prepare("SELECT a.note, a.commentaire, a.created_at, u.first_name FROM avis a JOIN users u ON a.reviewer_id = u.users_id WHERE a.reviewed_user_id = :id ORDER BY a.created_at DESC");
     $recupAvis->execute(['id' => $trajet['conducteur_id']]);
-    $recupAvis->fetchAll(PDO::FETCH_ASSOC);
+    $avisConducteur = $recupAvis->fetchAll(PDO::FETCH_ASSOC);
 
     $heure_depart = (new DateTime($trajet['heure_depart']))->format('H:i');
     $heure_arrivee = (new DateTime($trajet['heure_arrivee']))->format('H:i');
+    $date_depart = (new DateTime ($trajet['date_depart']))->format('d/m/Y');
     ?>
 
 
     <body>
         <section class = "containerResa">
-            <div class = "trajetResult">
-                <h2><?= ucfirst($trajet['lieu_depart']) ?> → <?= ucfirst($trajet['lieu_arrivee']) ?></h2>
-                    <p>Date : <?= htmlspecialchars($trajet['date_depart']) ?> | <?= $heure_depart ?> → <?= $heure_arrivee ?></p>
+            <div class = "resaResult">
+                <h2>Réservation du trajet : <?= ucfirst($trajet['lieu_depart']) ?> → <?= ucfirst($trajet['lieu_arrivee']) ?></h2>
+                    <p>Date : <?= htmlspecialchars($date_depart)?> | <?= $heure_depart ?> → <?= $heure_arrivee ?></p>
                     <p>Places restantes : <?= $trajet['nb_place'] ?></p>
-                    <p>Prix : <?= number_format($trajet['prix_personne'], 2) ?> €</p>
+                    <p>Prix par personne : <?= number_format($trajet['prix_personne'], 2) ?> €</p>
 
                 <h3>Conducteur</h3>
                     <p><?= ucfirst($trajet['first_name']) . " " . strtoupper($trajet['last_name']) ?></p>
                     <?php if ($trajet['photo']) : ?>
-                        <img src="<?= $trajet['photo'] ?>" width="60" alt="Conducteur">
+                        <img class="photoChauffeur" src="<?= $trajet['photo'] ?>" width="60" alt="Conducteur">
                     <?php endif; ?>
 
                 <h4>Avis</h4>
-                    <?php if ($recupAvis): ?>
-                        <?php foreach ($recupAvis as $avis): ?>
+                    <?php if ($avisConducteur): ?>
+                        <?php foreach ($avisConducteur as $avis): ?>
                             <p><strong><?= htmlspecialchars($avis['first_name']) ?> :</strong> 
-                            <?= str_repeat("⭐", $avis['note']) ?> - <?= htmlspecialchars($a['commentaire']) ?> (<?= $avis['date'] ?>)</p>
+                            <?= str_repeat("⭐", $avis['note']) ?> - <?= htmlspecialchars($a['commentaire']) ?> (<?= $avis['created_at'] ?>)</p>
                         <?php endforeach; ?>
                     <?php else: ?>
-                            <p>Aucun avis pour ce conducteur.</p>
+                            <p>Aucun avis pour ce conducteur</p>
                     <?php endif; ?>
 
                 <h4>Véhicule</h4>
@@ -72,11 +66,14 @@
             </div>
 
             <div class="btnActions">
-                <a href="covoiturage.php" class="btn-retour"> Retour à la liste </a>
+                <a href="covoiturages.php" class="btn-retour"> Retour à la liste </a>
                 <a href="participation_covoiturage.php?id=<?= $trajet['covoiturage_id'] ?>" class="btn-reserver"> Participer à ce trajet</a>
             </div>
         </section>
     <script src="asset/JS/btn_login.js"></script> 
+    <?php
+    require_once 'templates/footer.html'
+    ?>
 </body>
 
 

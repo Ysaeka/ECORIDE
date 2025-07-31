@@ -35,15 +35,19 @@
         <section class = "containerResa">
             <div class = "resaResult">
                 <h2>Réservation du trajet : <?= ucfirst($trajet['lieu_depart']) ?> → <?= ucfirst($trajet['lieu_arrivee']) ?></h2>
-                    <p>Date : <?= htmlspecialchars($date_depart)?> | <?= $heure_depart ?> → <?= $heure_arrivee ?></p>
-                    <p>Places restantes : <?= $trajet['nb_place'] ?></p>
-                    <p>Prix par personne : <?= number_format($trajet['prix_personne'], 2) ?> €</p>
+                    <span class = "detailsTrajet">
+                        <p>Date : <?= htmlspecialchars($date_depart)?> | <?= $heure_depart ?> → <?= $heure_arrivee ?></p>
+                        <p>Places restantes : <?= $trajet['nb_place'] ?></p>
+                        <p>Prix par personne : <?= number_format($trajet['prix_personne'], 2) ?> €</p>
+                    </span>
 
                 <h3>Conducteur</h3>
-                    <p><?= ucfirst($trajet['first_name']) . " " . strtoupper($trajet['last_name']) ?></p>
-                    <?php if ($trajet['photo']) : ?>
-                        <img class="photoChauffeur" src="<?= $trajet['photo'] ?>" width="60" alt="Conducteur">
-                    <?php endif; ?>
+                    <span class = "chauffeur">
+                        <?php if ($trajet['photo']) : ?>
+                            <img class="photoChauffeur" src="<?= $trajet['photo'] ?>" width="60" alt="Conducteur">
+                        <?php endif; ?>
+                        <?= ucfirst($trajet['first_name']) . " " . strtoupper($trajet['last_name']) ?>
+                    </span>
 
                 <h4>Avis</h4>
                     <?php if ($avisConducteur): ?>

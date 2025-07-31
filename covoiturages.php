@@ -101,7 +101,7 @@
                             $h_depart =$heure_depart->format('H:i');
                             $h_arrivee =$heure_arrivee->format('H:i');
                             $nom_conducteur = ucfirst($trajet['first_name']) .' ' . strtoupper($trajet['last_name']);
-                        ?>
+                            ?>
                             <div class="linkResult">
                                 <a href = "reservation.php?id=<?= $trajet['covoiturage_id'] ?>">
                                     <span class = "detailsTrajet">
@@ -112,7 +112,7 @@
                                     <br><hr>
                                     <span class = "detailsTrajet">
                                         <span class = "chauffeur"> 
-                                            <?= $trajet['photo'] ? "<img src='{$trajet['photo']}' class='photoChauffeur' alt='photo'>" : '' ?>
+                                            <?= $trajet['photo'] ? "<img src='{$trajet['photo']}' class='photoChauffeur' alt='photo'>" : "<img src='asset/images/icone_photo_150.png' class='photoChauffeur' alt='photo_defaut'>" ?>
                                             <?= $nom_conducteur ?> <br> <?= afficherNote($trajet['conducteur_id']) ?> </span>
                                         <?php if ($trajet['trajet_Ecologique']) : ?>
                                             <span class =  "voyageEco"> 🌳 Voyage écologique </span>
@@ -122,18 +122,19 @@
                                 </a>
                             </div>
                         <?php endforeach ?>
-                    <?php elseif ($ville_depart || $ville_arrivee || $date): ?>
-                        <p>Aucun trajet trouvé pour cette recherche.</p>
-                    <?php else: ?>
-                            <div class="searchBar">
-                                <form method="GET" id="formSearch" action="covoiturages.php">
-                                    <input type="text" name="lieu_depart" placeholder="Ville de départ">
-                                    <input type="text" name="lieu_arrivee"placeholder="Ville d'arrivée">
-                                    <input type="date" name="date"placeholder="Date ?">
-                                    <button type ="submit">Rechercher</button>
-                                </form>
-                            </div>
-                    <?php endif; ?>
+                            <?php elseif ($ville_depart || $ville_arrivee || $date): ?>
+                                <p>Aucun trajet trouvé pour cette recherche.</p>
+                                <?php else: ?>
+                                        <h2> Faites votre recherche de covoiturage : </h2>
+                                        <div class="searchBar">
+                                            <form method="GET" id="formSearch" action="covoiturages.php">
+                                                <input type="text" name="lieu_depart" placeholder="Ville de départ">
+                                                <input type="text" name="lieu_arrivee"placeholder="Ville d'arrivée">
+                                                <input type="date" name="date"placeholder="Date ?">
+                                                <button type ="submit">Rechercher</button>
+                                            </form>
+                                        </div>
+                            <?php endif; ?>
                 </div>
         </section>
     <?php

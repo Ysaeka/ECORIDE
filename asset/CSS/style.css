@@ -75,8 +75,9 @@ img{
     width: 952.5px;
 }
 .searchBar input{
+    display: flex;
     border:none;
-    height : 77px;
+    height : 76px;
     width: 160px;
     background-color: #F5F1E6;
     margin: auto;
@@ -552,6 +553,10 @@ form {
 .detailsTrajet{
     display: flex;
     justify-content: space-between;
+}
+.voyageEco{
+    display: flex;
+    align-items: flex-end;
 }
 .containerTrajet{
     display: flex;

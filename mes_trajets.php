@@ -17,14 +17,23 @@ try {
     echo "Erreur lors du chargement des données" .$e->getMessage();
 }
 
+$user_reservations = [];
+try {
+    $recupResa = $bdd->prepare("SELECT r.reservation_id, c.covoiturage_id, c.date_depart, c.heure_depart, c.lieu_depart, c.lieu_arrivee, c.prix_personne, c.statut, u.first_name, u.last_name FROM reservation r JOIN covoiturage c ON r.covoiturage_id = c.covoiturage_id 
+        JOIN users u ON c.conducteur_id = u.users_id WHERE r.passager_id = ? ORDER BY c.date_depart DESC, c.heure_depart DESC");
+    $recupResa->execute([$users_id]);
+    $user_reservations = $recupResa->fetchAll(PDO::FETCH_ASSOC);   
+} catch (PDOException $e){
+    echo "Erreur lors du chargement des réservations : " .$e->getMessage();
+}
 ?>
 
 <section class="mesTrajets">
     <div class = "containerTrajet">
         <div class = "trajetResult">
-            <h2> Mes Trajets </h2>
+            <h2> Mes Trajets proposés </h2>
             <hr>
-            <div class = trajet>
+            <div class = "trajet">
                 <h3> DATE </h3>
                 <h3> <?=count($user_trajets); ?> trajets </h3>
             </div>
@@ -65,11 +74,48 @@ try {
                             <?php endif; ?>
                         </span>
                             <?php if ($trajet['statut'] !== 'terminé') : ?>
-                                <form class="formAnnule" method="POST" action="annuler_covoiturage.php" onsubmit="return confirm('Etre-vous sûr de vouloir annuler le trajet ?');">
-                                    <input type="hidden" name="trajet_id" value="<?= $trajet['covoiturage_id'] ?>">
+                                <form class="formAnnule" method="POST" action="annuler_covoiturage.php" onsubmit="return confirm('Etre-vous sûr de vouloir annuler le res$resa ?');">
+                                    <input type="hidden" name="trajet_id" value="<?= $resa['covoiturage_id'] ?>">
                                     <button type="submit" class="btnAnnuler"> ❌ Annuler le trajet </button>
                                 </form>
                             <?php endif; ?>                              
+                    </div>
+                <?php endforeach ?>
+            <?php endif; ?>
+        </div>
+
+        <div class = "trajetResult">
+            <h2> Mes réservations passager </h2>
+            <hr>
+            <div class = res$resa>
+                <h3> DATE </h3>
+                <h3> <?=count($user_reservations); ?> trajets </h3>
+            </div>
+
+            <?php if(empty($user_reservations)) : ?>
+                <p> Vous n'avez pas encore participé à un trajet. </p>
+            <?php else: ?>
+                <?php foreach ($user_reservations as $resa) : ?>
+                    <div class="historique">
+                        <span class = "detailsTrajet">
+                            <?php 
+                                $date = new DateTime($resa['date_depart']);
+                                $heure = new DateTime($resa['heure_depart']);
+                            ?>
+                            <span class ="date"> <?= $date->format('d/m/Y')?></span>
+                            <span class ="lieu depart_arrivee"> <?= ($resa['lieu_depart'])?> ---> <?=($resa ['lieu_arrivee'])?></span>
+                            <span class ="prixTrajet"><?= ($resa['prix_personne']) ?> € </span>
+                            <span class ="chauffeur"> Conducteur : <?=ucfirst($resa['first_name'])?><?=strtoupper($resa['last_name']) ?> </span>
+                        </span>
+
+                        <?php if ($resa['statut'] !== 'terminé') : ?>
+                            <form method="POST" action="annuler_covoiturage.php" onsubmit="return confirm('Êtes-vous sûr d\'annuler votre participation ?');">
+                                <input type="hidden" name="reservation_id" value="<?= $resa['reservation_id'] ?>">
+                                <button type="submit" class="btnAnnuler"> Annuler ma participation</button>
+                            </form>
+                        <?php else: ?>
+                            <span class="statutTermine"> ✅ Trajet terminé </span>
+                        <?php endif; ?>                        
                     </div>
                 <?php endforeach ?>
             <?php endif; ?>

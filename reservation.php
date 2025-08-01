@@ -16,6 +16,10 @@
     $recupTrajet->execute(['id' => $id]);
     $trajet = $recupTrajet->fetch(PDO::FETCH_ASSOC);
 
+    if (isset($_GET['erreur']) && $_GET['erreur'] === 'credit_insuffisant') {
+    echo "<script>alert('Vous n\\'avez pas assez de crédits pour effectuer cette réservation.');</script>";
+    }
+    
     if (!$trajet) {
         echo "<p>Ce trajet n'existe pas.</p>";
         exit;
@@ -71,7 +75,7 @@
                 <a href="covoiturages.php" class="btnRetour"> Retour à la liste </a>
 
                 <?php if($trajet['nb_place'] > 0): ?>
-                    <form method="POST" action="participation_covoiturage.php">
+                    <form method="POST" action="participation_covoiturage.php" onsubmit="return confirmerReservation();">
                         <input type="hidden" name="covoiturage_id" value="<?= $trajet['covoiturage_id'] ?>">
                         <button type="submit" class="btnReserver"> Participer à ce trajet</button>
                     </form>
@@ -81,6 +85,12 @@
             </div>
         </section>
     <script src="asset/JS/btn_login.js"></script> 
+    <script>
+        function confirmerReservation(){
+            return confirm("Vous serez débité de <?=number_format($trajet['prix_personne'], 2)?> € pour participer à ce covoituragen, voulez-vous continuer ? Si oui vous recevrez un mail avec les informations du covoiturage.");
+        }
+    </script>
+    
     <?php
     require_once 'templates/footer.html'
     ?>

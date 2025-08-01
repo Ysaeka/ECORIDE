@@ -105,11 +105,11 @@ try {
                             <span class ="date"> <?= $date->format('d/m/Y')?></span>
                             <span class ="lieu depart_arrivee"> <?= ($resa['lieu_depart'])?> ---> <?=($resa ['lieu_arrivee'])?></span>
                             <span class ="prixTrajet"><?= ($resa['prix_personne']) ?> € </span>
-                            <span class ="chauffeur"> Conducteur : <?=ucfirst($resa['first_name'])?><?=strtoupper($resa['last_name']) ?> </span>
+                            <span class ="chauffeur"> Conducteur : <?=ucfirst($resa['first_name'])?> <?=strtoupper($resa['last_name']) ?> </span>
                         </span>
-
+                        <br>
                         <?php if ($resa['statut'] !== 'terminé') : ?>
-                            <form method="POST" action="annuler_covoiturage.php" onsubmit="return confirm('Êtes-vous sûr d\'annuler votre participation ?');">
+                            <form method="POST" class="formAnnule" action="annuler_covoiturage.php" onsubmit="return confirm('Êtes-vous sûr d\'annuler votre participation ?');">
                                 <input type="hidden" name="reservation_id" value="<?= $resa['reservation_id'] ?>">
                                 <button type="submit" class="btnAnnuler"> Annuler ma participation</button>
                             </form>

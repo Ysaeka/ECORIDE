@@ -21,7 +21,7 @@ CREATE TABLE users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     Credit INT,
     role_id INT DEFAULT 1,
-    FOREIGN KEY (role_id) REFERENCES role(role_id);
+    FOREIGN KEY (role_id) REFERENCES role(role_id)
 );
 
 CREATE TABLE preferences (

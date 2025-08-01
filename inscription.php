@@ -34,19 +34,19 @@ if(isset($_POST['valider'])){
         $recupUser = $bdd->prepare('SELECT * FROM users WHERE email = ?');
         $recupUser->execute([$email]);
         $user = $recupUser->fetch();
-        if($recupUser->rowCount() > 0){
-            if (password_verify($password, $user['password'])) {
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['users_id'] = $user['users_id'];
-                echo"<script>alert('inscription réussie !');
-                window.location.href = 'profil.php';
-                </script>";
-                exit();
-            }
+
+        if (isset($_SESSION['redirection']) && !empty($_SESSION['redirection'])) {
+            $redirectionUrl = $_SESSION['redirection'];
+            unset($_SESSION['redirection']);
+            header("Location: " . $redirectionUrl);
+            exit();
+        } else {
+            header("Location: profil.php?users_id=" .$_SESSION['users_id']);
+            exit();
         }
-            }else{
-                echo "<script>alert('Veuillez compléter les champs obligatoires!')</script>";
-            }
+    }else{
+        echo "<script>alert('Veuillez compléter les champs obligatoires!')</script>";
+    }
 }
 ?>
 

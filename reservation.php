@@ -30,8 +30,6 @@
     $date_depart = (new DateTime ($trajet['date_depart']))->format('d/m/Y');
     ?>
 
-
-    <body>
         <section class = "containerResa">
             <div class = "resaResult">
                 <h2>Réservation du trajet : <?= ucfirst($trajet['lieu_depart']) ?> → <?= ucfirst($trajet['lieu_arrivee']) ?></h2>
@@ -70,8 +68,16 @@
             </div>
 
             <div class="btnActions">
-                <a href="covoiturages.php" class="btn-retour"> Retour à la liste </a>
-                <a href="participation_covoiturage.php?id=<?= $trajet['covoiturage_id'] ?>" class="btn-reserver"> Participer à ce trajet</a>
+                <a href="covoiturages.php" class="btnRetour"> Retour à la liste </a>
+
+                <?php if($trajet['nb_place'] > 0): ?>
+                    <form method="POST" action="participation_covoiturage.php">
+                        <input type="hidden" name="covoiturage_id" value="<?= $trajet['covoiturage_id'] ?>">
+                        <button type="submit" class="btnReserver"> Participer à ce trajet</button>
+                    </form>
+                <?php else: ?>
+                    <button class="btnReserver" disabled> Complet </button>
+                <?php endif; ?>
             </div>
         </section>
     <script src="asset/JS/btn_login.js"></script> 

@@ -710,6 +710,24 @@ form {
     box-shadow:0 0 10px rgba(0,0,0,0.1); 
     width: 700px;
 }
+.gestionUsers ul{
+    display: flex;
+    margin: auto;
+    width: 50%;
+    justify-content: space-around;
+    list-style: none;
+}
+.gestionUsers ul li{
+    background-color: #0b7e34;
+    color: white;
+    padding: 1%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.gestionUsers ul li a{
+    color: white;
+}
 .tableauUsers{
     border-collapse: collapse;
     margin: auto;

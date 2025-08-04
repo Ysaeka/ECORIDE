@@ -20,15 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const revenus = data.revenus_jour.map(item => parseFloat(item.revenu));
 
         new Chart(document.getElementById('chartCovoit'), {
-        type: 'bar',
+        type: 'line',
         data: {
           labels: dates,
           datasets: [{
             label: 'Covoiturages',
             data: nbCovoits,
-            backgroundColor: '#0b7e34',
+            backgroundColor: 'rgba(0, 128, 0, 0.2)',
             borderColor: '#28a745',
-            borderWidth: 1
+            fill: false,
+            tension: 0.1
           }]
         },
         options: {
@@ -38,16 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
         new Chart(document.getElementById('chartRevenus'), {
-        type: 'line',
+        type: 'bar',
         data: {
           labels: jours,
           datasets: [{
             label: 'Revenus (€)',
             data: revenus,
-            borderColor: 'green',
-            backgroundColor: 'rgba(0, 128, 0, 0.2)',
+            borderColor: '#28a745',
+            backgroundColor: '#0b7e34',
             fill: true,
-            tension: 0.4
           }]
         },
         options: {

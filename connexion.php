@@ -66,7 +66,7 @@ if (isset($_POST['formConnexion'])) {
 
    <script src="asset/JS/btn_login.js"></script>
    <?php
-    require_once 'template/footer.html'
+    require_once 'templates/footer.html'
     ?>
     
 </body>

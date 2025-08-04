@@ -679,7 +679,7 @@ form {
 }
 /*ESPACE ADMIN*/
 .containerCard{ 
-    max-width: 1200px; 
+    width: 90%;
     margin: 30px auto; 
     padding: 0 20px;
 }
@@ -697,19 +697,22 @@ form {
     border-radius:10px; 
     box-shadow:0 0 5px rgba(0,0,0,0.1);
 }
+.charts{
+    max-width: 1800px;
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+}
 .charts canvas{ 
-    width: 750px;
-    height: 400px;
     background:#fff;
-    padding:20px; 
-    margin-bottom:40px; 
+    padding:20px;
     border-radius:10px; 
     box-shadow:0 0 10px rgba(0,0,0,0.1); 
+    width: 700px;
 }
 
 /* FOOTER */
 footer {
-    
     display: flex;
     align-items: center;
     justify-content: center;

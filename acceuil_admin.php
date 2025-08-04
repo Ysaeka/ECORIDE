@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . '/libs/bdd.php';
 require_once __DIR__ . '/templates/header.php';
-/* Depuis son espace, l’administrateur doit pouvoir concevoir les comptes des employés:
-capable de suspendre un compte, aussi bien utilisateur qu’employé */
 ?>
 
 <body>
@@ -27,7 +25,7 @@ capable de suspendre un compte, aussi bien utilisateur qu’employé */
             <h2> Gestion des utilisateurs </h2>
             <ul>
                 <li> <a href="creation_employe.php"> Créer un compte employé </a> </li>
-                <li> <a href=""> Suspendre un compte </a> </li>
+                <li> <a href="suspendre_compte.php"> Suspendre un compte </a> </li>
             </ul>
         </div>
     </div>

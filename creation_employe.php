@@ -24,11 +24,11 @@ require_once __DIR__ . '/libs/bdd.php';
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Mot de passe" required>
             <button class ="btnInscription" type="submit">Créer l'employé</button>
-        </form>     
 
-        <?php if (isset($message)) : ?>
-        <p style="color:green; font-weight:bold;"><?= $message ?></p>
-        <?php endif; ?>
+            <?php if (isset($message)) : ?>
+            <p style="color:green; font-weight:bold;"><?= $message ?></p>
+            <?php endif; ?>
+        </form>     
     </div>
 
     <script src="asset/JS/btn_login.js"></script>

@@ -710,6 +710,32 @@ form {
     box-shadow:0 0 10px rgba(0,0,0,0.1); 
     width: 700px;
 }
+.tableauUsers{
+    border-collapse: collapse;
+    margin: auto;
+    min-width: 80%;
+    width: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border : 2px solid #0b7e34;
+}
+thead tr{
+    background-color: #0b7e34;
+    color : #F5F1E6;
+    text-align: center;
+}
+tbody tr, td, th{
+    border : 1px solid #ddd;
+}
+.btnSuspendre{
+    background-color: #0b7e34;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btnSuspendre:hover{
+    background-color: #21c56e;
+}
 
 /* FOOTER */
 footer {

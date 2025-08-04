@@ -57,7 +57,7 @@ if(isset($_POST['valider'])){
 
     <div class="inscription">
         <h2> VOUS INSCRIRE </h2>
-        <form method ="POST" action ="" id="formInscription">
+        <form method ="POST" action ="" class="formInscription">
 
             <label for="last_name"> Nom* :  </label>
             <input type="text" name="last_name" placeholder="Votre nom" required/>
@@ -73,7 +73,7 @@ if(isset($_POST['valider'])){
 
             <p> Le mot de passe doit comporter au moins 8 caractères dont 1 majuscule, 1 chiffre et 1 caractère spécial.</p>
 
-            <input type="submit" name="valider" value="valider" id="btnInscription"/>
+            <input type="submit" name="valider" value="valider" class="btnInscription"/>
             <P> *champs obligatoires</p>
         </form>
     </div>

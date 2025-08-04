@@ -26,7 +26,7 @@ capable de suspendre un compte, aussi bien utilisateur qu’employé */
         <div class="gestionUsers">
             <h2> Gestion des utilisateurs </h2>
             <ul>
-                <li> <a href=""> Créer un compte employé </a> </li>
+                <li> <a href="creation_employe.php"> Créer un compte employé </a> </li>
                 <li> <a href=""> Suspendre un compte </a> </li>
             </ul>
         </div>

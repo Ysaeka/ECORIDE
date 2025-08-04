@@ -23,6 +23,8 @@ CREATE TABLE users (
     role_id INT DEFAULT 1,
     FOREIGN KEY (role_id) REFERENCES role(role_id)
 );
+ALTER TABLE users 
+ADD statut ENUM('actif','suspendu') DEFAULT 'actif';
 
 CREATE TABLE preferences (
     pref_id INT PRIMARY KEY,

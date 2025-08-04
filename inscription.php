@@ -28,7 +28,7 @@ if(isset($_POST['valider'])){
             return;
         }
 
-        $insertUser = $bdd->prepare("INSERT INTO users(last_name, first_name, email, password, Credit) VALUES(?,?,?,?, 20)");
+        $insertUser = $bdd->prepare("INSERT INTO users(last_name, first_name, email, password, Credit, statut) VALUES(?,?,?,?, 20,?)");
         $insertUser->execute(array($last_name, $first_name, $email, $password_hashed));
 
         $recupUser = $bdd->prepare('SELECT * FROM users WHERE email = ?');

@@ -75,6 +75,7 @@ CREATE TABLE covoiturage (
     FOREIGN KEY (voiture_id) REFERENCES voiture(voiture_id),
     FOREIGN KEY (conducteur_id) REFERENCES users(users_id)
 );
+ALTER TABLE covoiturage MODIFY statut ENUM ('non_démarré', 'en_cours', 'terminé', 'annulé') DEFAULT 'non_démarré';
 
 CREATE TABLE reservation (
     reservation_id INT AUTO_INCREMENT PRIMARY KEY,

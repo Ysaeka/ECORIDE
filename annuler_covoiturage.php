@@ -16,13 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'], $_SESSIO
             die("Trajet non trouvé.");
         }
 
-        $recupParticipant = $bdd->prepare("SELECT r.users_id, u.email FROM reservation r JOIN users u ON r.users_id = u.users_id WHERE r.covoiturage_id = ?");
+        $recupParticipant = $bdd->prepare("SELECT r.passager_id, u.email FROM reservation r JOIN users u ON r.passager_id = u.users_id WHERE r.covoiturage_id = ?");
         $recupParticipant->execute([$trajet_id]);
 
         $participants = $recupParticipant->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($participants as $participant) {
-            $user_id = $participant['users_id'];
+            $user_id = $participant['passager_id'];
             $email = $participant['email'];
 
             $remboursement = $bdd->prepare("UPDATE users SET Credit = Credit + ? WHERE users_id = ? ");

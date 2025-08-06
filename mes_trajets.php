@@ -52,33 +52,33 @@ try {
                             <span class ="date"> <?= $date->format('d/m/Y')?></span>
                             <span class ="lieu depart_arrivee"> <?= ($trajet['lieu_depart'])?> ---> <?=($trajet ['lieu_arrivee'])?></span>
                             <span class ="prixTrajet"><?= ($trajet['prix_personne']) ?> € </span>
-                            <?php if ($trajet['statut'] !== 'terminé') : ?>
-                                <form method="POST" action="statut_covoiturage.php" class="formStatut">
-                                    <input type="hidden" name="trajet_id" value="<?= $trajet['covoiturage_id'] ?>">
 
-                                    <?php
-                                        $prochaine_action = 'demarrer';
-                                        if ($trajet['statut'] === 'en_cours'){
-                                            $prochaine_action = "terminer";
-                                        }
-                                    ?>
-                                    <input type="hidden" name ="action" value="<?= $prochaine_action ?>">
-                                    <label class="switch">
-                                        <input type ="checkbox" onchange="this.form.submit()" <?=$trajet['statut'] === 'en_cours' ? 'checked' : '' ?>>
-                                        <span class="slider"></span>
-                                    </label>
-                                        <span><?= $prochaine_action === 'demarrer' ? 'Démarrer le covoiturage' : 'Arrivée à destination'?></span>
-                                </form>
-                            <?php else: ?>
+                        <?php if ($trajet['statut'] === 'terminé') : ?>
                             <span class="statutTermine"> ✅ Trajet terminé </span>
-                            <?php endif; ?>
-                        </span>
-                            <?php if ($trajet['statut'] !== 'terminé') : ?>
-                                <form class="formAnnule" method="POST" action="annuler_covoiturage.php" onsubmit="return confirm('Etre-vous sûr de vouloir annuler le res$resa ?');">
-                                    <input type="hidden" name="trajet_id" value="<?= $resa['covoiturage_id'] ?>">
-                                    <button type="submit" class="btnAnnuler"> ❌ Annuler le trajet </button>
-                                </form>
-                            <?php endif; ?>                              
+                        <?php elseif ($trajet['statut'] === 'annulé') : ?>
+                            <span class="statutAnnule"> 🚫 Trajet annulé </span>
+                        <?php else: ?>
+                            <form method="POST" action="statut_covoiturage.php" class="formStatut">
+                                <input type="hidden" name="trajet_id" value="<?= $trajet['covoiturage_id'] ?>">
+                                <?php
+                                    $prochaine_action = 'demarrer';
+                                    if ($trajet['statut'] === 'en_cours') {
+                                        $prochaine_action = 'terminer';
+                                    }
+                                ?>
+                                <input type="hidden" name="action" value="<?= $prochaine_action ?>">
+                                <label class="switch">
+                                    <input type="checkbox" onchange="this.form.submit()" <?= $trajet['statut'] === 'en_cours' ? 'checked' : '' ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <span><?= $prochaine_action === 'demarrer' ? 'Démarrer le covoiturage' : 'Arrivée à destination' ?></span>
+                            </form>
+
+                            <form class="formAnnule" method="POST" action="annuler_covoiturage.php" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler le trajet ?');">
+                                <input type="hidden" name="trajet_id" value="<?= $trajet['covoiturage_id'] ?>">
+                                <button type="submit" class="btnAnnuler"> ❌ Annuler le trajet </button>
+                            </form>
+                        <?php endif; ?>       
                     </div>
                 <?php endforeach ?>
             <?php endif; ?>
@@ -87,7 +87,7 @@ try {
         <div class = "trajetResult">
             <h2> Mes réservations passager </h2>
             <hr>
-            <div class = res$resa>
+            <div class = resa>
                 <h3> DATE </h3>
                 <h3> <?=count($user_reservations); ?> trajets </h3>
             </div>

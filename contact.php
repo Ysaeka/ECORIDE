@@ -1,6 +1,11 @@
 <body>
     <?php
-    require_once 'templates/header.php'
+
+    use PHPMailer\PHPMailer\PHPMailer;
+
+    require_once 'templates/header.php';
+    require_once 'libs/envoi_mail.php';
+
     ?>
 
     <div class = "imgSlogan">
@@ -25,16 +30,24 @@
             <label for="message"> Votre message*  </label>
             <textarea name="message" id="message" placeholder="Entrez votre message" required></textarea>
 
-            <button type="submit" id=btnContact> SOUMETTRE </button>
+            <button type="submit" name="soumettre" value="soumettre" id=btnContact> SOUMETTRE </button>
         </form>
         <div id="champs"><p>*Champs obligatoires</P></div>
 
     <?php
+
+        $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $envoiMail = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $btnEnvoyer = filter_input(INPUT_POST, "soumettre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+               
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
             $last_name = htmlspecialchars($_POST['last_name']);
             $message = htmlspecialchars($_POST['message']);
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+            $first_name = htmlspecialchars($_POST['first_name']);
+            $subject = htmlspecialchars($_POST['subject']);
                 
             if (empty($last_name) || empty($email) || empty($message)) {
                 echo '<p>Veuillez remplir les champs obligatoires.</p>';
@@ -44,22 +57,18 @@
                 echo "Votre adresse mail est invalide.";
             }
 
-            $headers  = 'MIME-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-            $headers .= 'From: contact@ecoride.com' . "\r\n";
-            $headers .= 'Reply-To: ' . $email;
+           if (isset($btnEnvoyer) && $btnEnvoyer === "soumettre"){
+                $mail = new PHPMailer(true);
 
-            $originMessage = '<h1>Message envoyé depuis la page Contact de Ecoride </h1>
-            <p><b> Nom : </b>' . $last_name . '<br>
-            <b>Email : </b>' . $email . '<br>
-            <b>Message : </b>' . $message . '</p>';
-            
-            $retour = mail('destinataire@free.fr', 'Envoi depuis page Contact', $originMessage, $headers);
-            if($retour) {
-                echo "<script>alert('Votre message à bien été envoyé !');</script>";
-            }else{
-                echo "<script>alert('Une erreur est survenue');</script>";
-                }
+                   $content = "
+                        <p><strong>Nom :</strong> $last_name</p>
+                        <p><strong>Prénom :</strong> $first_name</p>
+                        <p><strong>Email :</strong> $email</p>
+                        <p><strong>Sujet :</strong> $subject</p>
+                        <p><strong>Message :</strong><br>$message</p>
+                    ";
+                EnvoieMail($mail, $envoiMail, $content);
+           }
         }
     ?>
     

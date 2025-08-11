@@ -4,7 +4,7 @@
     use PHPMailer\PHPMailer\PHPMailer;
 
     require_once 'templates/header.php';
-    require_once 'libs/envoi_mail.php';
+    require_once 'libs/envoi_mail_contact.php';
 
     ?>
 

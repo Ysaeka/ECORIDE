@@ -9,6 +9,7 @@ if(isset($_POST['valider'])){
         $first_name = htmlspecialchars($_POST['first_name']);
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
         $password= $_POST['password'];
+        $statut='actif';
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
             echo "<script>alert('Votre adresse mail est invalide !')</script>";
@@ -29,7 +30,7 @@ if(isset($_POST['valider'])){
         }
 
         $insertUser = $bdd->prepare("INSERT INTO users(last_name, first_name, email, password, Credit, statut) VALUES(?,?,?,?, 20,?)");
-        $insertUser->execute(array($last_name, $first_name, $email, $password_hashed));
+        $insertUser->execute(array($last_name, $first_name, $email, $password_hashed, $statut));
 
         $recupUser = $bdd->prepare('SELECT * FROM users WHERE email = ?');
         $recupUser->execute([$email]);

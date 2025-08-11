@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'], $_SESSIO
         if ($participants){
             foreach ($participants as $participant) {
                 $remboursement = $bdd->prepare("UPDATE users SET Credit = Credit + ? WHERE users_id = ? ");
-                $remboursement->execute([$trajet['prix_personne'], $user_id]);
+                $remboursement->execute([$trajet['prix_personne'], $participant['passager_id']]);
             }
 
             $trajetInfo = [

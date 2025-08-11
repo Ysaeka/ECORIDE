@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "libs/bdd.php";
+require_once "libs/mail_annulation.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'], $_SESSION['users_id'])) {
     $trajet_id = intval($_POST['trajet_id']);
@@ -16,40 +17,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'], $_SESSIO
             die("Trajet non trouvé.");
         }
 
-        $recupParticipant = $bdd->prepare("SELECT r.passager_id, u.email FROM reservation r JOIN users u ON r.passager_id = u.users_id WHERE r.covoiturage_id = ?");
+        $recupParticipant = $bdd->prepare("SELECT r.passager_id, u.email, u.first_name FROM reservation r JOIN users u ON r.passager_id = u.users_id WHERE r.covoiturage_id = ?");
         $recupParticipant->execute([$trajet_id]);
 
         $participants = $recupParticipant->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($participants as $participant) {
-            $user_id = $participant['passager_id'];
-            $email = $participant['email'];
+        if ($participants){
+            foreach ($participants as $participant) {
+                $remboursement = $bdd->prepare("UPDATE users SET Credit = Credit + ? WHERE users_id = ? ");
+                $remboursement->execute([$trajet['prix_personne'], $user_id]);
+            }
 
-            $remboursement = $bdd->prepare("UPDATE users SET Credit = Credit + ? WHERE users_id = ? ");
-            $remboursement->execute([$trajet['prix_personne'], $user_id]);
+            $trajetInfo = [
+                'date' => (new DateTime($trajet['date_depart']))->format('d/m/Y'),
+                'depart' => htmlspecialchars($trajet['lieu_depart']),
+                'arrivee' => htmlspecialchars($trajet['lieu_arrivee']),
+                'prix'=> $trajet['prix_personne']
+            ];
 
-            $date = (new DateTime($trajet['date_depart']))->format('d/m/Y');
-            $lieu_depart = htmlspecialchars($trajet['lieu_depart']);
-            $lieu_arrivee = htmlspecialchars($trajet['lieu_arrivee']);
-
-            $headers = "MIME-Version 1.0\r\n";
-            $headers .= "Content-type: text/html; charset-UTF-8\r\n";
-            $headers .= "From: contact@ecoride.com\r\n";
-            $headers .= "Reply-To: contact@ecoride.com\r\n";
-
-            $message = "
-                <html>
-                <body>
-                    <h2> Annulation de votre covoiturage </h2>
-                    <p>Bonjour,</p>
-                    <p>Le covoiturage prévu de <strong>$lieu_depart</strong> à <strong>$lieu_arrivee</strong> le <strong>$date</strong> a été annulé par le conducteur.</p>
-                    <p>Votre crédit a été automatiquement remboursé.</p>
-                    <p>Merci de votre compréhension, <br> L'équipe Ecoride.</p>
-                </body>
-                </html>
-            ";
-
-            mail($email, 'Annulation de votre covoiturage' , $message, $headers);
+            envoyerMailAnnulationGroupe($participants, $trajetInfo);
         }
 
         $update = $bdd->prepare("UPDATE covoiturage SET statut = 'annulé' WHERE covoiturage_id = ?");

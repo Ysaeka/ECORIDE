@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 
 $mail = new PHPMailer(true);
 
-function EnvoieMail($mail, $envoiMail, $content){
+function EnvoieMail($mail, $envoiMail, $content, $subject){
 
     try {
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
@@ -24,8 +24,9 @@ function EnvoieMail($mail, $envoiMail, $content){
         
         $mail->Debugoutput = 'html';
 
-        $mail->setFrom('contactus.ecoride@gmail.com', 'Email test');
+        $mail->setFrom($envoiMail, $subject);
         $mail->addAddress('contactus.ecoride@gmail.com', 'Ecoride Contact');  
+        $mail->addReplyTo($envoiMail);
 
     
         $mail->isHTML(true);                                
@@ -40,8 +41,7 @@ function EnvoieMail($mail, $envoiMail, $content){
         <body>
 
             <div class = "mailContainer">
-                <h1> Mail envoyé avec succès : <h1>
-                <p> Essai de mail <p>
+                <h1> Mail reçu de la page contact : <h1>
                 <div class="formContact">'. $content .'</div>
             </div>
         

@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 
 $mail = new PHPMailer(true);
 
-function EnvoieMail($mail, $envoiMail, $content, $subject){
+function EnvoieMailContact($mail, $envoiMail, $content, $subject){
 
     try {
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      

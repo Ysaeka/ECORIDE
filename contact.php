@@ -67,7 +67,7 @@
                         <p><strong>Sujet :</strong> $subject</p>
                         <p><strong>Message :</strong><br>$message</p>
                     ";
-                EnvoieMail($mail, $envoiMail, $content, $subject);
+                EnvoieMailContact($mail, $envoiMail, $content, $subject);
            }
         }
     ?>

@@ -8,6 +8,7 @@
     $ville_depart = $_GET ['lieu_depart'] ?? '';
     $ville_arrivee = $_GET ['lieu_arrivee'] ?? '';
     $date = $_GET ['date'] ??'';
+    
 
     $tri =$_GET['tri'] ?? '';
     $note_min = $_GET['note_min'] ?? '';
@@ -17,7 +18,7 @@
     $results = [];
 
     if ($ville_depart && $ville_arrivee && $date) {
-        $recup_covoiturage = $bdd->prepare("SELECT c.*, u.first_name, u.last_name, u.photo FROM covoiturage c JOIN users u ON c.conducteur_id = u.users_id WHERE c.lieu_depart LIKE :lieu_depart AND c.lieu_arrivee LIKE :lieu_arrivee AND c.date_depart = :date AND c.nb_place > 0");
+        $recup_covoiturage = $bdd->prepare("SELECT c.*, u.first_name, u.last_name, u.photo FROM covoiturage c JOIN users u ON c.conducteur_id = u.users_id WHERE c.lieu_depart LIKE :lieu_depart AND c.lieu_arrivee LIKE :lieu_arrivee AND c.date_depart = :date AND c.nb_place > 0 AND c.statut = 'non_demarré'");
         $recup_covoiturage->execute(['lieu_depart' => "%$ville_depart%", 'lieu_arrivee' => "%$ville_arrivee%", 'date' => $date]);
 
         $results = $recup_covoiturage-> fetchALL(PDO::FETCH_ASSOC);

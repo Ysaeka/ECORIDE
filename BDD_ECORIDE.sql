@@ -101,7 +101,7 @@ CREATE TABLE avis (
     UNIQUE (reviewer_id, covoiturage_id),
     FOREIGN KEY (reviewer_id) REFERENCES users(users_id),
     FOREIGN KEY (reviewed_user_id) REFERENCES users(users_id),
-    FOREIGN KEY (covoiturage_id) REFERENCES covoiturage(covoiturage_id);
+    FOREIGN KEY (covoiturage_id) REFERENCES covoiturage(covoiturage_id)
 );
 
 CREATE TABLE signalement (

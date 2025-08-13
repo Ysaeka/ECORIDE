@@ -25,7 +25,7 @@ function EnvoieMailContact($mail, $envoiMail, $content, $subject){
         $mail->Debugoutput = 'html';
 
         $mail->setFrom($envoiMail, $subject);
-        $mail->addAddress('contactus.ecoride@gmail.com', 'Ecoride Contact');  
+        $mail->addAddress('contactus.ecoride@gmail.com', 'Contact Ecoride');  
         $mail->addReplyTo($envoiMail);
 
     

@@ -33,7 +33,7 @@ function envoyerMailAvis($participants, $trajet) {
         <body>
             <div class = 'mailContainer'>
                 <h1> Bonjour, </h1>
-                <p>Nous espérons que votre covoiturage du {$trajet['date_depart']} s’est bien déroulé !</p><br>  
+                <p>Nous espérons que votre covoiturage du {$trajet['date_depart']->format('d/m/Y')} s’est bien déroulé !</p><br>  
                 <p> Pour partager votre expérience, il vous suffit de vous connecter à votre espace : <p><br>
                 <p> <a href='http://localhost/ecoride/profil.php'></a> <p> 
 

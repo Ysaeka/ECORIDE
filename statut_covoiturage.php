@@ -1,7 +1,7 @@
 <?php
 require_once 'libs/bdd.php';
 require_once 'libs/auth_users.php';
-require_once 'mail_avis.php';
+require_once 'libs/mail_avis.php';
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $trajet_id = $_POST['trajet_id'] ?? null;

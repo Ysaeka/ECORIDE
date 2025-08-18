@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once "libs/bdd.php";
 
 if(isset($_SESSION['users_id']) AND $_SESSION['users_id'] > 0){

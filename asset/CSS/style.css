@@ -748,11 +748,23 @@ tbody tr, td, th{
     background-color: #0b7e34;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 0.5em;
     cursor: pointer;
 }
 .btnSuspendre:hover{
     background-color: #21c56e;
+}
+.btnReactiver{
+    background-color: #0b7e34;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+.actionAdmin{
+    display: flex;
+    justify-content: space-around;
+    border: none;
 }
 
 /* FOOTER */

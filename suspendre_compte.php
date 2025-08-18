@@ -2,15 +2,24 @@
 require_once __DIR__ . '/libs/bdd.php';
 require_once __DIR__ . '/templates/header.php';
 
-$users = $bdd->query("
-    SELECT u.users_id, u.last_name, u.first_name, u.email, IFNULL(u.statut, 'actif') AS statut, r.libelle FROM users u JOIN role r ON u.role_id = r.role_id ORDER BY u.created_at DESC")->fetchAll();
+$users = $bdd->query("SELECT u.users_id, u.last_name, u.first_name, u.email, IFNULL(u.statut, 'actif') AS statut, r.libelle FROM users u JOIN role r ON u.role_id = r.role_id ORDER BY u.created_at DESC")->fetchAll();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['suspend_user_id'])) {
         $userId = intval($_POST['suspend_user_id']);
         $suspendreCompte = $bdd->prepare("UPDATE users SET statut = 'suspendu' WHERE users_id = ?");
         $suspendreCompte->execute([$userId]);
-        $message = "Le compte a été suspendu avec succès.";
+        header("Location: " . $_SERVER['PHP_SELF'] . "?success=suspend");
+        exit();
     }
+
+    if (isset($_POST['reactivate_user_id'])){
+        $userId = intval($_POST['reactivate_user_id']);
+        $reactiverCompte = $bdd->prepare("UPDATE users SET statut = 'actif' WHERE users_id = ?");
+        $reactiverCompte->execute([$userId]);
+        header("Location: " . $_SERVER['PHP_SELF'] . "?success=reactivate");
+        exit();
+    }
+
     ?>
 
 <h2> Gestion des comptes utilisateurs </h2>
@@ -33,7 +42,7 @@ $users = $bdd->query("
                 <td><?= htmlspecialchars($user['email']) ?></td>
                 <td><?= htmlspecialchars($user['libelle']) ?></td>
                 <td><?= htmlspecialchars($user['statut']) ?></td>
-                <td>
+                <td class="actionAdmin">
                     <?php if ($user['statut'] === 'actif'): ?>
                         <form method="POST">
                             <input type="hidden" name="suspend_user_id" value="<?= $user['users_id'] ?>">
@@ -41,6 +50,10 @@ $users = $bdd->query("
                         </form>
                     <?php else: ?>
                         <em>Compte suspendu</em>
+                        <form method="POST" style="display:inline;">
+                            <input type="hidden" name="reactivate_user_id" value="<?= $user['users_id'] ?>">
+                            <button type="submit" class="btnReactiver">Réactiver</button>
+                        </form>
                     <?php endif; ?>
                 </td>
             </tr>

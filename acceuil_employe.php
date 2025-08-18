@@ -22,7 +22,7 @@ require_once __DIR__ . '/templates/header.php';
                     <th>Action</th>
                 </tr>
             </thead>
-            <?php foreach ($users as $user): ?>
+            <?php foreach ($avis as $user): ?>
                 <tr>
                     <td><?= htmlspecialchars($user['date_depart']) ?></td>
                     <td><?= htmlspecialchars($user['reservation_id']) ?></td>

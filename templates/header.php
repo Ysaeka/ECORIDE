@@ -34,22 +34,25 @@
             <a href="contact.php"> Contact</a>
 
             <div class="dropdown">
-              <button class="avatar-btn" onclick="toggleMenu()">
-                <img src="<?= htmlspecialchars($_SESSION['photo'] ?? 'asset/images/icon-park-solid--people.png') ?>" 
-                    alt="avatar" 
-                    style="width:50px; height:50px; border-radius:50%; object-fit:cover;" />
-                    <span class="arrow">&#709;</span> 
-              </button>
+                <button class="avatar-btn" onclick="toggleMenu()">
+                    <img src="<?= htmlspecialchars($_SESSION['photo'] ?? 'asset/images/icon-park-solid--people.png') ?>" 
+                        alt="avatar" 
+                        style="width:50px; height:50px; border-radius:50%; object-fit:cover;" />
+                        <span class="arrow">&#709;</span> 
+                </button>
 
-              <div class="menu" id="dropdownMenu">
-                <a href="profil.php">Mon profil</a>
-                <?php if (isset($_SESSION ['role_id']) && $_SESSION ['role_id'] === 2 ){?> 
-                  <a href="acceuil_admin.php">Espace administrateur</a>
-                <?php } ?>
-                <a href="inscription.php">Inscription</a>
-                <a href="http://localhost/ecoride/connexion.php">Connexion</a>
-                <a href="deconnexion.php">Deconnexion</a>
-              </div>
+            <div class="menu" id="dropdownMenu">
+                <?php if (isset($_SESSION['users_id'])): ?>
+                    <a href="profil.php">Mon profil</a>
+                <?php if (isset($_SESSION ['role_id']) && $_SESSION ['role_id'] === 2 ): ?> 
+                    <a href="acceuil_admin.php">Espace administrateur</a>
+                <?php endif; ?>
+                    <a href="deconnexion.php">Deconnexion</a>
+                <?php else: ?>
+                    <a href="inscription.php">Inscription</a>
+                    <a href="http://localhost/ecoride/connexion.php">Connexion</a>
+                <?php endif; ?>
+            </div>
         </div>
     </nav>
   </header>

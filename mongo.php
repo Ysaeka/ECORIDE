@@ -16,13 +16,12 @@ function getAvisMongo(int $covoiturage_id): array {
 
     $filtre = [ 'covoiturage_id' => $covoiturage_id ];
     $options = [
-        'sort' => [ 'date_creation' => -1 ] // trie par date desc
+        'sort' => [ 'date_creation' => -1 ]
     ];
 
     $query = new MongoDB\Driver\Query($filtre, $options);
     $cursor = $mongoClient->executeQuery('ecoride_nosql.avis', $query);
 
-    // On transforme le cursor en tableau PHP
     $results = [];
     foreach ($cursor as $doc) {
         $results[] = (array) $doc;
@@ -32,5 +31,4 @@ function getAvisMongo(int $covoiturage_id): array {
 }
 ?>
 
-?>
 

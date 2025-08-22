@@ -18,7 +18,7 @@ try {
 
 $user_reservations = [];
 try {
-    $recupResa = $bdd->prepare("SELECT r.reservation_id, c.covoiturage_id, c.date_depart, c.heure_depart, c.lieu_depart, c.lieu_arrivee, c.prix_personne, c.statut, u.first_name, u.last_name FROM reservation r JOIN covoiturage c ON r.covoiturage_id = c.covoiturage_id 
+    $recupResa = $bdd->prepare("SELECT r.reservation_id, c.covoiturage_id, c.date_depart, c.heure_depart, c.lieu_depart, c.lieu_arrivee, c.prix_personne, c.statut, u.users_id AS conducteur_id, u.first_name, u.last_name FROM reservation r JOIN covoiturage c ON r.covoiturage_id = c.covoiturage_id 
         JOIN users u ON c.conducteur_id = u.users_id WHERE r.passager_id = ? ORDER BY c.date_depart DESC, c.heure_depart DESC");
     $recupResa->execute([$users_id]);
     $user_reservations = $recupResa->fetchAll(PDO::FETCH_ASSOC);   
@@ -26,7 +26,6 @@ try {
     echo "Erreur lors du chargement des réservations : " .$e->getMessage();
 }
 ?>
-<main>
     <section class="mesTrajets">
         <div class = "containerTrajet">
             <div class = "trajetResult">
@@ -117,6 +116,8 @@ try {
 
                                 <form method="POST" action="avis_trajet.php" class="formAvis">
                                     <input type="hidden" name="covoiturage_id" value="<?= $resa['covoiturage_id'] ?>">
+                                    <input type="hidden" name="reviewed_user_id" value="<?= $resa['conducteur_id'] ?>">
+                                    <input type="hidden" name="statut" value="en attente">
 
                                     <label>Le trajet s'est-il bien passé ?</label>
                                     <label><input type="radio" name="bien_passe" value="oui" required> Oui</label>
@@ -138,7 +139,7 @@ try {
                                 <label>Commentaire :</label>
                                     <textarea name="commentaire" placeholder="Votre avis sur ce trajet..." rows="3"></textarea>
 
-                                    <br><button type="submit">Envoyer mon avis</button>
+                                    <br><button type="submit" class="btnAvis">Envoyer</button>
                                 </form>
 
                                 <script>
@@ -156,7 +157,6 @@ try {
             </div>
         </div>
     </section>
-</main>
 
 <?php 
 require_once 'templates/footer.html';

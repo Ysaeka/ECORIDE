@@ -2,8 +2,6 @@
 require_once __DIR__ . '/libs/bdd.php';
 require_once __DIR__ . '/templates/header.php';
 
-
-
 ?>
 
 <body>
@@ -22,7 +20,7 @@ require_once __DIR__ . '/templates/header.php';
                     <th>Action</th>
                 </tr>
             </thead>
-            <?php foreach ($avis as $user): ?>
+            <?php foreach ($avisList as $avis): ?>
                 <tr>
                     <td><?= htmlspecialchars($user['date_depart']) ?></td>
                     <td><?= htmlspecialchars($user['reservation_id']) ?></td>

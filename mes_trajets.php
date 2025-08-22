@@ -115,7 +115,40 @@ try {
                             </form>
                         <?php else: ?>
                             <span class="statutTermine"> ✅ Trajet terminé </span>
-                        <?php endif; ?>                        
+
+                            <form method="POST" action="avis_trajet.php" class="formAvis">
+                                <input type="hidden" name="covoiturage_id" value="<?= $resa['covoiturage_id'] ?>">
+
+                                <label>Le trajet s'est-il bien passé ?</label><br>
+                                <label><input type="radio" name="bien_passe" value="oui" required> Oui</label>
+                                <label><input type="radio" name="bien_passe" value="non" required> Non</label>
+
+                                <div id="raisonContainer" style="display:none;">
+                                    <label>Sinon, pourquoi ?</label><br>
+                                    <textarea name="raison" placeholder="Expliquez nous ce qu'il c'est passé..." rows="3"></textarea>
+                                </div>
+
+                                <label>Note :</label><br>
+                                <?php for ($i=1; $i<=5; $i++): ?>
+                                    <input type="radio" id="star<?= $i ?>" name="note" value="<?= $i ?>" required>
+                                    <label for="star<?= $i ?>">⭐</label>
+                                <?php endfor; ?>
+
+                                <br><label>Commentaire :</label><br>
+                                <textarea name="commentaire" placeholder="Votre avis sur ce trajet..." rows="3"></textarea>
+
+                                <br><button type="submit">Envoyer mon avis</button>
+                            </form>
+
+                            <script>
+                                document.querySelectorAll('input[name="bien_passe"]').forEach(el => {
+                                    el.addEventListener('change', function() {
+                                        document.getElementById('raisonContainer').style.display =
+                                            (this.value === 'non') ? 'block' : 'none';
+                                    });
+                                });
+                            </script>
+                        <?php endif; ?>                         
                     </div>
                 <?php endforeach ?>
             <?php endif; ?>

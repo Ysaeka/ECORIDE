@@ -51,11 +51,11 @@
                         <?= ucfirst($trajet['first_name']) . " " . strtoupper($trajet['last_name']) ?>
                     </span>
 
-                <h4>Avis</h4>
+                <h4>Avis reçus :</h4>
                     <?php if ($avisConducteur): ?>
                         <?php foreach ($avisConducteur as $avis): ?>
                             <p><strong><?= htmlspecialchars($avis['first_name']) ?> :</strong> 
-                            <?= str_repeat("⭐", $avis['note']) ?> - <?= htmlspecialchars($a['commentaire']) ?> (<?= $avis['created_at'] ?>)</p>
+                            <?= str_repeat("⭐", $avis['note']) ?> - <?= htmlspecialchars($avis['commentaire']) ?> (<?= $avis['created_at'] ?>)</p>
                         <?php endforeach; ?>
                     <?php else: ?>
                             <p>Aucun avis pour ce conducteur</p>

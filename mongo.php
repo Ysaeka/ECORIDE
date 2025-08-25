@@ -23,8 +23,8 @@ function getAvisMongo(int $covoiturage_id): array {
     $cursor = $mongoClient->executeQuery('ecoride_nosql.avis', $query);
 
     $results = [];
-    foreach ($cursor as $doc) {
-        $results[] = (array) $doc;
+    foreach ($cursor as $document) {
+        $results[] = (array) $document;
     }
 
     return $results;

@@ -18,7 +18,7 @@ try {
 
 $user_reservations = [];
 try {
-    $recupResa = $bdd->prepare("SELECT r.reservation_id, c.covoiturage_id, c.date_depart, c.heure_depart, c.lieu_depart, c.lieu_arrivee, c.prix_personne, c.statut, u.users_id AS conducteur_id, u.first_name, u.last_name FROM reservation r JOIN covoiturage c ON r.covoiturage_id = c.covoiturage_id 
+    $recupResa = $bdd->prepare("SELECT r.reservation_id, c.covoiturage_id, c.date_depart, c.heure_depart, c.lieu_depart, c.lieu_arrivee, c.prix_personne, c.statut, u.users_id AS conducteur_id, u.first_name, u.last_name, a.avis_id FROM reservation r JOIN covoiturage c ON r.covoiturage_id = c.covoiturage_id 
         JOIN users u ON c.conducteur_id = u.users_id WHERE r.passager_id = ? ORDER BY c.date_depart DESC, c.heure_depart DESC");
     $recupResa->execute([$users_id]);
     $user_reservations = $recupResa->fetchAll(PDO::FETCH_ASSOC);   
@@ -113,34 +113,35 @@ try {
                                 </form>
                             <?php else: ?>
                                 <span class="statutTermine"> ✅ Trajet terminé </span>
+                                <?php if (empty($resa['avis_id'])): ?>
+                                    <form method="POST" action="avis_trajet.php" class="formAvis">
+                                        <input type="hidden" name="covoiturage_id" value="<?= $resa['covoiturage_id'] ?>">
+                                        <input type="hidden" name="reviewed_user_id" value="<?= $resa['conducteur_id'] ?>">
+                                        <input type="hidden" name="statut" value="en attente">
 
-                                <form method="POST" action="avis_trajet.php" class="formAvis">
-                                    <input type="hidden" name="covoiturage_id" value="<?= $resa['covoiturage_id'] ?>">
-                                    <input type="hidden" name="reviewed_user_id" value="<?= $resa['conducteur_id'] ?>">
-                                    <input type="hidden" name="statut" value="en attente">
+                                        <label>Le trajet s'est-il bien passé ?</label>
+                                        <label><input type="radio" name="bien_passe" value="oui" required> Oui</label>
+                                        <label><input type="radio" name="bien_passe" value="non" required> Non</label>
 
-                                    <label>Le trajet s'est-il bien passé ?</label>
-                                    <label><input type="radio" name="bien_passe" value="oui" required> Oui</label>
-                                    <label><input type="radio" name="bien_passe" value="non" required> Non</label>
+                                        <div id="raisonContainer" style="display:none;">
+                                            <label>Sinon, pourquoi ?</label><br>
+                                            <textarea name="raison" placeholder="Expliquez nous ce qu'il c'est passé..." rows="3"></textarea>
+                                        </div>
 
-                                    <div id="raisonContainer" style="display:none;">
-                                        <label>Sinon, pourquoi ?</label><br>
-                                        <textarea name="raison" placeholder="Expliquez nous ce qu'il c'est passé..." rows="3"></textarea>
-                                    </div>
+                                        <label>Note :</label>
+                                        <div class ="notation" > 
+                                            <?php for ($i=1; $i<=5; $i++): ?>
+                                            <input type="radio" id="star<?= $i ?>" name="note" value="<?= $i ?>" required>
+                                            <label for="star<?= $i ?>"></label>
+                                            <?php endfor; ?>
+                                        </div>
 
-                                    <label>Note :</label>
-                                    <div class ="notation" > 
-                                        <?php for ($i=1; $i<=5; $i++): ?>
-                                        <input type="radio" id="star<?= $i ?>" name="note" value="<?= $i ?>" required>
-                                        <label for="star<?= $i ?>"></label>
-                                        <?php endfor; ?>
-                                    </div>
+                                    <label>Commentaire :</label>
+                                        <textarea name="commentaire" placeholder="Votre avis sur ce trajet..." rows="3"></textarea>
 
-                                <label>Commentaire :</label>
-                                    <textarea name="commentaire" placeholder="Votre avis sur ce trajet..." rows="3"></textarea>
-
-                                    <br><button type="submit" class="btnAvis">Envoyer</button>
-                                </form>
+                                        <br><button type="submit" class="btnAvis">Envoyer</button>
+                                    </form>
+                                <?php endif; ?>
 
                                 <script>
                                     document.querySelectorAll('input[name="bien_passe"]').forEach(el => {

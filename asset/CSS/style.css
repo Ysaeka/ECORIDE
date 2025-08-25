@@ -789,6 +789,14 @@ tbody tr, td, th{
     justify-content: space-around;
     border: none;
 }
+.tableauAvis{
+    border-collapse: collapse;
+    margin: auto;
+    min-width: 80%;
+    width: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border : 2px solid #0b7e34;
+}
 
 /* FOOTER */
 footer {

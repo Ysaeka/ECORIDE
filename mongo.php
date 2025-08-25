@@ -38,11 +38,28 @@ function getAllAvis() : array {
 
     $results = [];
     foreach ($cursor as $document) {
-        $doc[] = (array) $document;
+        $doc = (array) $document;
 
         if(isset($doc['_id'])) {
             $doc['_id'] = (string) $doc['_id'];
         }
+
+        if (isset($doc['date_creation']) && $doc['date_creation'] instanceof MongoDB\BSON\UTCDateTime) {
+            $doc['date_creation'] = $doc['date_creation']->toDateTime()->format('Y-m-d H:i:s');
+        }
+
+        if (isset($doc['infos_sql'])) {
+            $doc['conducteur_nom'] = $doc['infos_sql']->conducteur_nom ?? '';
+            $doc['passager_nom'] = $doc['infos_sql']->passager_nom ?? '';
+        }
+
+        if (!isset($doc['conducteur_nom'])) {
+            $doc['conducteur_nom'] = $doc['reviewed_user_id'] ?? '';
+        }
+        if (!isset($doc['passager_nom'])) {
+            $doc['passager_nom'] = $doc['reviewer_id'] ?? '';
+        }
+
         $results[] = $doc;
     }
     return $results;

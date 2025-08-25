@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/libs/bdd.php';
 require_once __DIR__ . '/templates/header.php';
-require_once __DIR__ . 'mongo.php';
+require_once 'mongo.php';
+
+$avisList = getAllAvis();
 
 ?>
 
@@ -23,16 +25,16 @@ require_once __DIR__ . 'mongo.php';
             </thead>
             <?php foreach ($avisList as $avis): ?>
                 <tr>
-                    <td><?= htmlspecialchars($user['date_depart']) ?></td>
-                    <td><?= htmlspecialchars($user['reservation_id']) ?></td>
-                    <td><?= htmlspecialchars($user['conducteur_id']) ?></td>
-                    <td><?= htmlspecialchars($user['passager_id']) ?></td>
-                    <td><?= htmlspecialchars($user['note']) ?></td>
-                    <td><?= htmlspecialchars($user['commentaire']) ?></td>
-                    <td><?= htmlspecialchars($user['statut']) ?></td>
+                    <td><?= htmlspecialchars($avis['date_creation'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($avis['covoiturage_id'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($avis['conducteur_nom'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($avis['passager_nom'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($avis['note'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($avis['commentaire'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($avis['statut'] ?? 'en attente') ?></td>
                     <td>
-                        <a href="valider_avis.php?id=<?= urlencode($user['reservation_id']) ?>">Valider</a> |
-                        <a href="refuser_avis.php?id=<?= urlencode($user['reservation_id']) ?>">Refuser</a>
+                        <a href="valider_avis.php?id=<?= urlencode($avis['_id']) ?>">Valider</a> |
+                        <a href="refuser_avis.php?id=<?= urlencode($avis['_id']) ?>">Refuser</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -41,7 +43,7 @@ require_once __DIR__ . 'mongo.php';
    
 
     <script src="asset/JS/btn_login.js"></script>
-    <script src ="asset/JS/tableau_bord.js" defer></script>
+
    <?php
     require_once 'templates/footer.html'
     ?>

@@ -19,7 +19,7 @@ try {
 $user_reservations = [];
 try {
     $recupResa = $bdd->prepare("SELECT r.reservation_id, c.covoiturage_id, c.date_depart, c.heure_depart, c.lieu_depart, c.lieu_arrivee, c.prix_personne, c.statut, u.users_id AS conducteur_id, u.first_name, u.last_name, a.avis_id FROM reservation r JOIN covoiturage c ON r.covoiturage_id = c.covoiturage_id 
-        JOIN users u ON c.conducteur_id = u.users_id WHERE r.passager_id = ? ORDER BY c.date_depart DESC, c.heure_depart DESC");
+        JOIN users u ON c.conducteur_id = u.users_id LEFT JOIN avis a ON a.covoiturage_id = c.covoiturage_id AND reviewer_id = r.passager_id WHERE r.passager_id = ? ORDER BY c.date_depart DESC, c.heure_depart DESC");
     $recupResa->execute([$users_id]);
     $user_reservations = $recupResa->fetchAll(PDO::FETCH_ASSOC);   
 } catch (PDOException $e){

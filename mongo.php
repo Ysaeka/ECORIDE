@@ -29,6 +29,25 @@ function getAvisMongo(int $covoiturage_id): array {
 
     return $results;
 }
+
+function getAllAvis() : array {
+    global $mongoClient;
+
+    $query = new MongoDB\Driver\Query([], ['sort' => ['date_creation' => -1]]);
+    $cursor = $mongoClient->executeQuery('ecoride_nosql.avis', $query);
+
+    $results = [];
+    foreach ($cursor as $document) {
+        $doc[] = (array) $document;
+
+        if(isset($doc['_id'])) {
+            $doc['_id'] = (string) $doc['_id'];
+        }
+        $results[] = $doc;
+    }
+    return $results;
+}
+
 ?>
 
 

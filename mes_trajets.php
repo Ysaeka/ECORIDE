@@ -130,7 +130,7 @@ try {
 
                                         <label>Note :</label>
                                         <div class ="notation" > 
-                                            <?php for ($i=1; $i<=5; $i++): ?>
+                                            <?php for ($i=5; $i>=1; $i--): ?>
                                             <input type="radio" id="star<?= $i ?>" name="note" value="<?= $i ?>" required>
                                             <label for="star<?= $i ?>"></label>
                                             <?php endfor; ?>

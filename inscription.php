@@ -2,6 +2,7 @@
 session_start();
 
 require_once "libs/bdd.php";
+require_once 'templates/header.php';
 
 if(isset($_POST['valider'])){
     if(!empty($_POST['last_name']) AND !empty($_POST['first_name']) AND !empty($_POST['password']) AND !empty($_POST['email'])){
@@ -52,9 +53,6 @@ if(isset($_POST['valider'])){
 ?>
 
 <body>
-    <?php
-    require_once 'templates/header.php'
-    ?>
 
     <div class="inscription">
         <h2> VOUS INSCRIRE </h2>

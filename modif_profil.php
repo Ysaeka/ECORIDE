@@ -1,6 +1,8 @@
 <?php
 require_once "libs/auth_users.php";
 require_once "libs/bdd.php";
+require_once "templates/header.php";
+
 
         if(isset($_POST['valider'])){
             $last_name = htmlspecialchars($_POST['last_name']);
@@ -25,12 +27,9 @@ require_once "libs/bdd.php";
 
 ?>
 
-<?php
-require_once "templates/header.php"
-?>
 <body>
     <h2> Modifier mes informations </h2>
-        <form method ="POST" action ="" id="formInscription">
+        <form class="formInscription" method ="POST" action ="" id="formInscription">
 
             <label for="last_name"> Nom :  </label>
             <input type="text" name="last_name" placeholder="Votre nom" value=<?php echo $userInfo['last_name'];?>>
@@ -52,7 +51,7 @@ require_once "templates/header.php"
 
             <p> Le mot de passe doit comporter au moins 8 caractères dont 1 majuscule, 1 chiffre et 1 caractère spécial.</p>
 
-            <input type="submit" name="valider" value="Mettre à jour mes informations" id="btnInscription"/>
+            <input class="btnInscription" type="submit" name="valider" value="Mettre à jour mes informations" id="btnInscription"/>
         </form>
 
         <script src = "asset/JS/btn_login.js"></script>

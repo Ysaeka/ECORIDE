@@ -437,6 +437,24 @@ tbody tr, td, th{
 hr{
     width: 50%;
 }
+.btnModifier{
+    background-color: #0b7e34;
+    color: white;
+    padding: 2%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.btnSupprimer{
+    background-color: #0b7e34;
+    color: white;
+    padding: 2%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
 
 /*BOUTON "Ajouter vehicule"*/
 .dropdownCars {

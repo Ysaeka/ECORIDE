@@ -33,8 +33,12 @@ $avisList = getAllAvis();
                     <td><?= htmlspecialchars($avis['commentaire'] ?? '') ?></td>
                     <td><?= htmlspecialchars($avis['statut'] ?? 'en attente') ?></td>
                     <td>
-                        <a href="valider_avis.php?id=<?= urlencode($avis['_id']) ?>">Valider</a> |
-                        <a href="refuser_avis.php?id=<?= urlencode($avis['_id']) ?>">Refuser</a>
+                        <?php if (($avis['statut'] ?? '') === 'en attente'): ?>
+                            <a href="valider_avis.php?id=<?= urlencode($avis['_id']) ?>">Valider</a> |
+                            <a href="refuser_avis.php?id=<?= urlencode($avis['_id']) ?>">Refuser</a>
+                        <?php else: ?>
+                            Traité
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

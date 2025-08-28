@@ -77,6 +77,37 @@ function updateAvisStatut(string $id, string $status) {
     $mongoClient->executeBulkWrite('ecoride_nosql.avis', $bulk);
 }
 
+function getAvisValide(int $covoiturage_id): array {
+    global $mongoClient;
+
+    $filtre = [ 
+        'covoiturage_id' => $covoiturage_id,
+        'statut' => 'validé' 
+    ];
+    $options = [
+        'sort' => [ 'date_creation' => -1 ]
+    ];
+
+    $query = new MongoDB\Driver\Query($filtre, $options);
+    $cursor = $mongoClient->executeQuery('ecoride_nosql.avis', $query);
+
+    $results = [];
+    foreach ($cursor as $document) {
+        $doc = (array) $document;
+
+        if (isset($doc['_id'])) {
+            $doc['_id'] = (string) $doc['_id'];
+        }
+
+        if (isset($doc['date_creation']) && $doc['date_creation'] instanceof MongoDB\BSON\UTCDateTime) {
+            $doc['date_creation'] = $doc['date_creation']->toDateTime()->format('Y-m-d H:i:s');
+        }
+
+        $results[] = $doc;
+    }
+    return $results;
+}
+
 ?>
 
 

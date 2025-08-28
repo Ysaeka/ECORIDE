@@ -28,14 +28,15 @@
 
     <?php else : ?>
 
-        <!-- Si le visiteur est pas connecté on affiche la page suivante -->
+        <!-- Si le visiteur est connecté on affiche la page suivante -->
 
         <div class = "imgSlogan">
         <p>Solution économique pour les voyageurs soucieux de l’environnement.</p>
         </div>
 
-        <div id="proposerTrajet">
+        <div class="proposerTrajet">
             <h2> Proposer un trajet </h2>
+            
             <form method ="POST" action="enregistrer_trajet.php" id="formTrajet" novalidate>
 
                 <label for="ville_depart"> Ville de départ* :  </label>
@@ -92,9 +93,9 @@
 
     <script src="asset/JS/btn_login.js"></script>
 
-<?php
-require_once 'templates/footer.html'
-?>
+    <?php
+    require_once 'templates/footer.html'
+    ?>
 
 </body>
 </html>

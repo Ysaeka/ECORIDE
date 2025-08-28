@@ -284,17 +284,19 @@ input{
     font-size: 16px;
     cursor: pointer;
 }
-#proposerTrajet{
-    height: 100%;
+.proposerTrajet{
+    display: flex; 
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 10%;
 }
 #formTrajet{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; 
     grid-template-rows: repeat(4, 1fr, 1fr);
     width: 50%;
-    height: 50%;
     margin: auto;
-    gap : 2%;
+    gap : 7%;
     align-items: center;
 }
 textarea{
@@ -553,7 +555,7 @@ form {
     display: flex;
     flex-direction: column;
     height: auto;
-    gap: 5%;
+    gap: 1em;
 }
 .linkResult{
     background-color: #F5F1E6;

@@ -150,13 +150,11 @@ h2{
     position: relative;
     background-color: #148B4B;
 }
-
 .avatar-btn img {
     width: 80%;
     height: 80%;
     object-fit: cover;
 }
-
 .arrow {
     position: absolute;
     bottom: 25px;
@@ -168,7 +166,6 @@ h2{
     pointer-events: none;
     color: beige;
 }
-
 .menu {
     display: none;
     position: absolute;
@@ -363,7 +360,7 @@ textarea{
 /*PROFIL*/
 .profil{
     width: 60%;
-    height: 100%;
+    height: auto;
     margin: auto;
 }
 .userInfo{
@@ -435,6 +432,7 @@ tbody tr, td, th{
 .preferVoyage{
     width: 20%;
     color: #0b7e34;
+    margin-bottom: 2%;
 }
 hr{
     width: 50%;
@@ -463,7 +461,6 @@ hr{
     width: 250px;
     position: relative;
 }
-
 .carsBtn {
     border-radius: 0.5em;
     color: #f9f9f9;
@@ -471,11 +468,10 @@ hr{
     cursor: pointer;
     border: none;
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-size: 16px;
     background-color: #0b7e34;
 }
-
 .carsForm {
     display: none;
     background-color: #f9f9f9;
@@ -483,18 +479,15 @@ hr{
     border: 1px solid #ccc;
     margin-top: 5px;
 }
-
 .carsForm.show {
     display: block;
 }
-
 form {
     display: flex;
     margin : 0;
     flex-direction: column;
     gap: 8px;
 }
-
 #btnEnregistrer {
     background-color: #28a745;
     color: white;

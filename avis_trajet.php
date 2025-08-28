@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $recupAvis->execute([$commentaire, $note, $statut, $reviewer_id, $reviewed_user_id, $covoiturage_id]);
 
         $bddInfos = $bdd->prepare(" SELECT u1.first_name AS conducteur_prenom, u1.last_name AS conducteur_nom, u2.first_name AS passager_prenom, u2.last_name AS passager_nom FROM covoiturage c JOIN users u1 ON u1.users_id = c.conducteur_id JOIN users u2 ON u2.users_id = ? WHERE c.covoiturage_id = ?");
-        $bddInfos->execute([$reviewer_user_id, $covoiturage_id]);
+        $bddInfos->execute([$reviewer_id, $covoiturage_id]);
         $infos = $bddInfos->fetch(PDO::FETCH_ASSOC);
 
         //Insertion dans Mongo
@@ -26,13 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'covoiturage_id'   => (int) $covoiturage_id,
             'reviewer_id'      => (int) $reviewer_id,
             'reviewed_user_id' => (int) $reviewed_user_id,
-            'statut'           => $statut,
+            'statut'           => "en attente",
             'note'             => $note,
             'commentaire'      => $commentaire,
             'date_creation'    => new MongoDB\BSON\UTCDateTime(),
             'infos_sql'        => [
                 'conducteur_nom'   => $infos['conducteur_nom'] . ' ' . $infos['conducteur_prenom'],
-                'passager_nom'     => $infos['passager_nom'] . ' ' . $infos['passager_prenom']
+                'passager_nom'     => $_SESSION['first_name'] . ' ' . $_SESSION['last_name']
             ]
         ];
 

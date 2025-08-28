@@ -44,6 +44,10 @@ function getAllAvis() : array {
             $doc['_id'] = (string) $doc['_id'];
         }
 
+        if (!isset($doc['statut'])) {
+            $doc['statut'] = 'en attente';
+        }
+
         if (isset($doc['date_creation']) && $doc['date_creation'] instanceof MongoDB\BSON\UTCDateTime) {
             $doc['date_creation'] = $doc['date_creation']->toDateTime()->format('Y-m-d H:i:s');
         }
@@ -71,17 +75,17 @@ function updateAvisStatut(string $id, string $status) {
     $bulk = new MongoDB\Driver\BulkWrite;
     $bulk->update(
         ['_id' => new MongoDB\BSON\ObjectId($id)],
-        ['$set' => ['statut' => $statut]]
+        ['$set' => ['statut' => $status]]
     );
 
     $mongoClient->executeBulkWrite('ecoride_nosql.avis', $bulk);
 }
 
-function getAvisValide(int $covoiturage_id): array {
+function getAvisValide(int $conducteur_id): array {
     global $mongoClient;
 
     $filtre = [ 
-        'covoiturage_id' => $covoiturage_id,
+        'reviewed_user_id' => $conducteur_id,
         'statut' => 'validé' 
     ];
     $options = [
@@ -95,16 +99,23 @@ function getAvisValide(int $covoiturage_id): array {
     foreach ($cursor as $document) {
         $doc = (array) $document;
 
-        if (isset($doc['_id'])) {
-            $doc['_id'] = (string) $doc['_id'];
-        }
-
+        if (isset($doc['_id'])) $doc['_id'] = (string) $doc['_id'];
         if (isset($doc['date_creation']) && $doc['date_creation'] instanceof MongoDB\BSON\UTCDateTime) {
             $doc['date_creation'] = $doc['date_creation']->toDateTime()->format('Y-m-d H:i:s');
         }
 
+        if (isset($doc['infos_sql']) && is_array($doc['infos_sql'])) {
+            $doc['conducteur_nom'] = $doc['infos_sql']['conducteur_nom'] ?? '';
+            $doc['passager_nom']   = $doc['infos_sql']['passager_nom'] ?? '';
+        } else {
+            $doc['conducteur_nom'] = $doc['conducteur_nom'] ?? '';
+            $doc['passager_nom']   = $doc['passager_nom'] ?? '';
+        }
+
+                
         $results[] = $doc;
     }
+
     return $results;
 }
 

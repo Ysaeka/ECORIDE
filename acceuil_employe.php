@@ -24,23 +24,24 @@ $avisList = getAllAvis();
                 </tr>
             </thead>
             <?php foreach ($avisList as $avis): ?>
-                <tr>
-                    <td><?= htmlspecialchars($avis['date_creation'] ?? '') ?></td>
-                    <td><?= htmlspecialchars($avis['covoiturage_id'] ?? '') ?></td>
-                    <td><?= htmlspecialchars($avis['conducteur_nom'] ?? '') ?></td>
-                    <td><?= htmlspecialchars($avis['passager_nom'] ?? '') ?></td>
-                    <td><?= htmlspecialchars($avis['note'] ?? '') ?></td>
-                    <td><?= htmlspecialchars($avis['commentaire'] ?? '') ?></td>
-                    <td><?= htmlspecialchars($avis['statut'] ?? 'en attente') ?></td>
-                    <td>
-                        <?php if (($avis['statut'] ?? '') === 'en attente'): ?>
-                            <a href="valider_avis.php?id=<?= urlencode($avis['_id']) ?>">Valider</a> |
-                            <a href="refuser_avis.php?id=<?= urlencode($avis['_id']) ?>">Refuser</a>
-                        <?php else: ?>
-                            Traité
-                        <?php endif; ?>
-                    </td>
-                </tr>
+                <?php $statut = isset($avis['statut']) ? trim(strtolower($avis['statut'])) : 'en attente';?>
+                    <tr>
+                        <td><?= htmlspecialchars($avis['date_creation'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($avis['covoiturage_id'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($avis['conducteur_nom'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($avis['passager_nom'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($avis['note'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($avis['commentaire'] ?? '') ?></td>
+                        <td><?= var_export($avis['statut'], true) ?></td>
+                        <td>
+                            <?php if (($avis['statut'] ?? '') === 'en attente'): ?>
+                                <a href="valider_avis.php?id=<?= urlencode($avis['_id']) ?>">Valider</a> |
+                                <a href="refuser_avis.php?id=<?= urlencode($avis['_id']) ?>">Refuser</a>
+                            <?php else: ?>
+                                Traité
+                            <?php endif; ?>
+                        </td>
+                    </tr>
             <?php endforeach; ?>
         </table>
     </div>

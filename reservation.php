@@ -4,6 +4,7 @@
     require_once 'templates/header.php';
     require_once 'libs/bdd.php';
     require_once 'libs/notes_conducteur.php';
+    require_once 'mongo.php';
 
     $id = $_GET['id'] ?? null;
 
@@ -25,7 +26,7 @@
         exit;
     }
 
-    $avisConducteur = getAvisByConducteur((int) $trajet['conducteur_id']);
+    $avisConducteur = getAvisValide((int) $trajet['conducteur_id']);
 
     $heure_depart = (new DateTime($trajet['heure_depart']))->format('H:i');
     $heure_arrivee = (new DateTime($trajet['heure_arrivee']))->format('H:i');

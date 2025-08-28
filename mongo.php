@@ -65,6 +65,18 @@ function getAllAvis() : array {
     return $results;
 }
 
+function updateAvisStatut(string $id, string $status) {
+    global $mongoClient;
+
+    $bulk = new MongoDB\Driver\BulkWrite;
+    $bulk->update(
+        ['_id' => new MongoDB\BSON\ObjectId($id)],
+        ['$set' => ['statut' => $statut]]
+    );
+
+    $mongoClient->executeBulkWrite('ecoride_nosql.avis', $bulk);
+}
+
 ?>
 
 

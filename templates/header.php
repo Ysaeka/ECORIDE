@@ -47,6 +47,9 @@
                 <?php if (isset($_SESSION ['role_id']) && $_SESSION ['role_id'] === 2 ): ?> 
                     <a href="acceuil_admin.php">Espace administrateur</a>
                 <?php endif; ?>
+                <?php if (isset($_SESSION ['role_id']) && $_SESSION ['role_id'] === 3 ): ?> 
+                    <a href="acceuil_employe.php">Espace Employé </a>
+                <?php endif; ?>
                     <a href="deconnexion.php">Deconnexion</a>
                 <?php else: ?>
                     <a href="inscription.php">Inscription</a>

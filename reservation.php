@@ -25,9 +25,7 @@
         exit;
     }
 
-    $recupAvis = $bdd->prepare("SELECT a.note, a.commentaire, a.created_at, u.first_name FROM avis a JOIN users u ON a.reviewer_id = u.users_id WHERE a.reviewed_user_id = :id ORDER BY a.created_at DESC");
-    $recupAvis->execute(['id' => $trajet['conducteur_id']]);
-    $avisConducteur = $recupAvis->fetchAll(PDO::FETCH_ASSOC);
+    $avisConducteur = getAvisByConducteur((int) $trajet['conducteur_id']);
 
     $heure_depart = (new DateTime($trajet['heure_depart']))->format('H:i');
     $heure_arrivee = (new DateTime($trajet['heure_arrivee']))->format('H:i');
@@ -54,8 +52,8 @@
                 <h4>Avis reçus :</h4>
                     <?php if ($avisConducteur): ?>
                         <?php foreach ($avisConducteur as $avis): ?>
-                            <p><strong><?= htmlspecialchars($avis['first_name']) ?> :</strong> 
-                            <?= str_repeat("⭐", $avis['note']) ?> - <?= htmlspecialchars($avis['commentaire']) ?> (<?= $avis['created_at'] ?>)</p>
+                            <p><strong><?= htmlspecialchars($avis['passager_nom']) ?> :</strong> 
+                            <?= str_repeat("⭐", $avis['note']) ?> - <?= htmlspecialchars($avis['commentaire']) ?> (<?= $avis['date_creation'] ?>)</p>
                         <?php endforeach; ?>
                     <?php else: ?>
                             <p>Aucun avis pour ce conducteur</p>

@@ -1,0 +1,84 @@
+[
+  {
+    "covoiturage_id": 1,
+    "reviewer_id": 11,
+    "reviewed_user_id": 1,
+    "statut": "validé",
+    "bien_passe": "oui",
+    "note": 5,
+    "commentaire": "Trajet très agréable, conducteur ponctuel et sympathique.",
+    "date_creation": { "$date": "2025-09-01T09:00:00Z" },
+    "infos_sql": {
+      "conducteur_nom": "Dupont Jean",
+      "passager_nom": "Thomas Alice",
+      "conducteur_email": "jean.dupont@example.com",
+      "passager_email": "alice.thomas@example.com"
+    }
+  },
+  {
+    "covoiturage_id": 3,
+    "reviewer_id": 13,
+    "reviewed_user_id": 2,
+    "statut": "validé",
+    "bien_passe": "oui",
+    "note": 4,
+    "commentaire": "Bonne ambiance mais un peu de retard au départ.",
+    "date_creation": { "$date": "2025-09-02T14:20:00Z" },
+    "infos_sql": {
+      "conducteur_nom": "Martin Sophie",
+      "passager_nom": "Garcia Camille",
+      "conducteur_email": "sophie.martin@example.com",
+      "passager_email": "camille.garcia@example.com"
+    }
+  },
+  {
+    "covoiturage_id": 5,
+    "reviewer_id": 15,
+    "reviewed_user_id": 3,
+    "statut": "en attente",
+    "bien_passe": "oui",
+    "note": 3,
+    "commentaire": "Trajet correct, conduite un peu rapide parfois.",
+    "date_creation": { "$date": "2025-09-05T08:45:00Z" },
+    "infos_sql": {
+      "conducteur_nom": "Durand Paul",
+      "passager_nom": "Roux Léa",
+      "conducteur_email": "paul.durand@example.com",
+      "passager_email": "lea.roux@example.com"
+    }
+  },
+  {
+    "covoiturage_id": 7,
+    "reviewer_id": 17,
+    "reviewed_user_id": 4,
+    "statut": "validé",
+    "bien_passe": "oui",
+    "note": 5,
+    "commentaire": "Super expérience, je recommande vivement.",
+    "date_creation": { "$date": "2025-09-06T19:30:00Z" },
+    "infos_sql": {
+      "conducteur_nom": "Bernard Lucie",
+      "passager_nom": "Muller Chloé",
+      "conducteur_email": "lucie.bernard@example.com",
+      "passager_email": "chloe.muller@example.com"
+    }
+  },
+  {
+    "covoiturage_id": 9,
+    "reviewer_id": 19,
+    "reviewed_user_id": 5,
+    "statut": "validé",
+    "bien_passe": "non",
+    "note": 2,
+    "commentaire": "Conducteur désagréable et conduite stressante.",
+    "date_creation": { "$date": "2025-09-08T12:00:00Z" },
+    "infos_sql": {
+      "conducteur_nom": "Petit Marc",
+      "passager_nom": "Andre Manon",
+      "conducteur_email": "marc.petit@example.com",
+      "passager_email": "manon.andre@example.com"
+    }
+  }
+]
+
+

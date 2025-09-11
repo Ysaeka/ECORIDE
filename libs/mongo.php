@@ -32,7 +32,7 @@ function getAvisMongo(int $covoiturage_id): array {
 }
 
 function getAllAvis(): array {
-    global $mongoClient;
+    global $mongoClient, $mongoDb, $mongoCollection;
 
     $query = new MongoDB\Driver\Query([], ['sort' => ['date_creation' => -1]]);
     $cursor = $mongoClient->executeQuery("$mongoDb.$mongoCollection", $query);

@@ -1,0 +1,52 @@
+services:
+  ecoride:
+    image: ysaeka/ecoride_karine:latest
+    container_name: ecoride
+    ports:
+      - 80:80
+    depends_on:
+      - mariadb
+      - mongodb
+    restart: always
+    environment:
+      DB_HOST: mariadb
+      DB_NAME: ecoride
+      DB_USER: root
+      DB_PASSWORD: password
+      MONGO_HOST: mongodb
+      MONGO_DB: ecoride_nosql
+      MONGO_USER: root
+      MONGO_PASSWORD: example
+      APP_ENV: http://localhost
+      volumes:
+        - uploads:/var/www/html/uploads
+  mariadb:
+    image: mariadb:10.4.32
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: demo
+    volumes:
+      - mariadata:/var/lib/mysql
+    ports:
+      - 3306:3306
+    restart: always
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  mariadata:
+    name: "mariadb-data"
+  mongodata:
+    name: "mongodb-data"
+  uploads:
+    name: "ecoride-uploads"

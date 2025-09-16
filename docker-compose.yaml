@@ -21,7 +21,7 @@ services:
       MAIL_SERVER: smtp.gmail.com
       #MAIL_USER: mettre le votre ici
       #MAIL_PASSWORD: mettre le votre ici
-      volumes:
+    volumes:
         - uploads:/var/www/html/uploads
   mariadb:
     image: mariadb:10.4.32

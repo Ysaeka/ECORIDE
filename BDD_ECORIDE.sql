@@ -126,7 +126,7 @@ INSERT INTO role (role_id, libelle) VALUES
 INSERT INTO users (last_name, first_name, email, password, phone_number, adresse, Credit, role_id, user_type, statut)
 VALUES
 ('Dupont', 'Jean', 'jean.dupont@mail.com', '$2b$12$J7kF6U4TlSBN7KncM0XqnODSu7YWQxCFSwY5Eu1fjHu45vL72vwU.', '0600000001', '12 rue de Paris, Lyon', 100, 1, 'chauffeur','actif'),
-('Fernandere', 'Jacky.fernandere@mail.com', 'sophie.martin@mail.com', '$2b$12$uKZWVVYwpW89o/lqBda4cuDt3CnoMPZBNxE.gNmtUYlNrcWVYCggi', '0600000002', '5 avenue République, Marseille', 100, 1, 'chauffeur','actif'),
+('Fernandere', 'Jacky', 'Jacky.fernandere@mail.com', '$2b$12$uKZWVVYwpW89o/lqBda4cuDt3CnoMPZBNxE.gNmtUYlNrcWVYCggi', '0600000002', '5 avenue République, Marseille', 100, 1, 'chauffeur','actif'),
 ('Durand', 'Paul', 'paul.durand@mail.com', '$2b$12$bl7NFAT9gDSfFQpuCglbOuEkeFJqXUSXJpb6o3dyYCBR5b.CfltAu', '0600000003', '8 bd Victor Hugo, Lille', 100, 1, 'chauffeur','actif'),
 ('Bernard', 'Lucie', 'lucie.bernard@mail.com', '$2b$12$1e3D1B3sOW/hDoIaT9rYFes1GTylxclU4bkmvW1I7j84ruglLOqLW', '0600000004', '3 rue des Lilas, Toulouse', 100, 1, 'chauffeur','actif'),
 ('Petit', 'Marc', 'marc.petit@mail.com', '$2b$12$Q.sYNdpNk60dq2ADx/M6kut.WVyuDWn5.Wbm9FYKXcRiB8SD5xQ2W', '0600000005', '10 chemin Vert, Nantes', 100, 1, 'chauffeur','actif'),

@@ -18,7 +18,7 @@ define('BASE_URL', getenv('APP_ENV') ?: 'http://localhost:8080');
 
 //Refaire la même chose pour mongo (ok)
 
-$mongoHost = getenv('MONGO_HOST') ?: 'localhost:27017';
+$mongoHost = getenv('MONGO_HOST') ?: '192.168.2.110:27017';
 $mongoDb   = getenv('MONGO_DB') ?: 'ecoride_nosql';
 $mongoUser = getenv('MONGO_USER') ?: 'root';
 $mongoPassword = getenv('MONGO_PASSWORD') ?: 'example';

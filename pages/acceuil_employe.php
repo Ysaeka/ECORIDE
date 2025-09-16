@@ -30,8 +30,8 @@ $avisList = getAllAvis();
                         <tr>
                             <td><?= htmlspecialchars($avis['date_creation'] ?? '') ?></td>
                             <td><?= htmlspecialchars($avis['covoiturage_id'] ?? '') ?></td>
-                            <td><?= htmlspecialchars($avis['conducteur_nom'] ?? '') ?><br><?= htmlspecialchars($avis['infos_sql']['conducteur_email'] ?? '') ?> </td>
-                            <td><?= htmlspecialchars($avis['passager_nom'] ?? '') ?><br><?= htmlspecialchars($avis['infos_sql']['passager_email'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($avis['conducteur_nom'] ?? '') ?><br><?= htmlspecialchars($avis['conducteur_email'] ?? '') ?> </td>
+                            <td><?= htmlspecialchars($avis['passager_nom'] ?? '') ?><br><?= htmlspecialchars($avis['passager_email'] ?? '') ?></td>
                             <td><?= htmlspecialchars($avis['bien_passe'] ?? '') ?></td>
                             <td><?= htmlspecialchars($avis['note'] ?? '') ?></td>
                             <td><?= htmlspecialchars($avis['commentaire'] ?? '') ?></td>

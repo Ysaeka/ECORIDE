@@ -53,5 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'], $_SESSIO
         echo "Erreur : " . $e->getMessage();
     }
 } else {
+    echo $_SERVER['REQUEST_METHOD'];
+    var_dump($_POST);
+    var_dump($_SESSION);
     echo "Requête invalide.";
 }

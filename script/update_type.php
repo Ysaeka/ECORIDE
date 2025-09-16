@@ -1,10 +1,12 @@
 <?php
+require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../libs/bdd.php';
 require_once __DIR__ . '/../libs/auth_users.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
 
 $users_id = $_SESSION['users_id'] ?? null;
 if (!$users_id) {
@@ -32,6 +34,9 @@ try {
     echo json_encode(['success' => true]);
 } catch (PDOException $e) {
     http_response_code(500); 
-    echo json_encode(['error' => 'Échec de la mise à jour']);
+    echo json_encode([
+        'error' => 'Échec de la mise à jour',
+        'details' => $e->getMessage()
+    ]);
 }
 ?>

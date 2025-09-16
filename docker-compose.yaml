@@ -18,6 +18,9 @@ services:
       MONGO_USER: root
       MONGO_PASSWORD: example
       APP_ENV: http://localhost
+      MAIL_SERVER: smtp.gmail.com
+      #MAIL_USER: mettre le votre ici
+      #MAIL_PASSWORD: mettre le votre ici
       volumes:
         - uploads:/var/www/html/uploads
   mariadb:

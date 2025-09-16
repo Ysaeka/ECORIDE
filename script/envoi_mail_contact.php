@@ -11,13 +11,14 @@ use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer(true);
 
 function EnvoieMailContact($mail, $envoiMail, $content, $subject){
+    global $mailServer, $mailUser, $mailPassword;
 
     try {                   
         $mail->isSMTP();                                            
-        $mail->Host       = 'smtp.gmail.com';                     
+        $mail->Host       = $mailServer;                     
         $mail->SMTPAuth   = true;                                   
-        $mail->Username   = 'contactus.ecoride@gmail.com';                     
-        $mail->Password   = 'oykmevrcjyoaeppl';                               
+        $mail->Username   = $mailUser;
+        $mail->Password   = $mailPassword;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
         $mail->Port       = 465;    
         

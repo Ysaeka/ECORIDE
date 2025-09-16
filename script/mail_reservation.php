@@ -8,14 +8,15 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 function envoyerMailReservation($passager, $conducteur, $trajet) {
+    global $mailServer, $mailUser, $mailPassword;
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
+        $mail->Host       = $mailServer;
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'contactus.ecoride@gmail.com';
-        $mail->Password   = 'oykmevrcjyoaeppl';
+        $mail->Username   = $mailUser;
+        $mail->Password   = $mailPassword;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
 
@@ -46,7 +47,7 @@ function envoyerMailReservation($passager, $conducteur, $trajet) {
         </body>
         </html>";
         $mail->send();
-
+        $mail->clearAllRecipients();
         $mail->addAddress($conducteur['email'], $conducteur['first_name']);
         $mail->Subject = "Nouveau passager pour votre trajet Ecoride";
         $mail->Body = "

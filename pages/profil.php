@@ -11,7 +11,7 @@ require_once __DIR__ . '/../libs/auth_users.php';
         <div class="profil">
             <div class="userInfo">
                 <!-- Formulaire upload photo -->
-                <form id="uploadForm" action="/TESTECF/script/upload_photo.php" method="POST" enctype="multipart/form-data">
+                <form id="uploadForm" action="script/upload_photo.php" method="POST" enctype="multipart/form-data">
                     <label for="photoInput">
                         <img src="<?= htmlspecialchars($userInfo['photo'] ?? 'asset/images/icone_photo_150.png') ?>" alt="Photo de profil" id="photoPreview">
                     </label>

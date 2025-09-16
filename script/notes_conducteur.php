@@ -1,5 +1,5 @@
 <?php
-if ($_SERVER['SCRIPT_NAME'] == "/TESTECF/index.php" ) {
+if ($_SERVER['SCRIPT_NAME'] == "/ECORIDE/index.php" ) {
     require_once 'libs/bdd.php';
 }else{
     require_once './libs/bdd.php';

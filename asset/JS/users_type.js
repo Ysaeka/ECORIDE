@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const form = new FormData();
             form.append('type', type);
+            console.log('FormData envoyé :', [...form.entries()]);
             const resp = await fetch('script/update_type.php', { method: 'POST', body: form });
             const data = await resp.json();
 

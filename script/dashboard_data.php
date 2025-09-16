@@ -1,4 +1,5 @@
 <?php 
+require_once '../config.php';
 require_once '../libs/bdd.php';
 header('Content-Type: application/json');
 

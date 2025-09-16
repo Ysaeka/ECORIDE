@@ -57,7 +57,7 @@
                 <h4>Avis reçus :</h4>
                     <?php if ($avisConducteur): ?>
                         <?php foreach ($avisConducteur as $avis): ?>
-                            <p><strong><?= htmlspecialchars($avis['passager_nom']) ?> :</strong> 
+                            <p><strong><?= htmlspecialchars(explode(" ", $avis['infos_sql']->passager_nom)[1]) ?> :</strong> 
                             <?= str_repeat("⭐", $avis['note']) ?> - <?= htmlspecialchars($avis['commentaire']) ?> (<?= $avis['date_creation'] ?>)</p>
                         <?php endforeach; ?>
                     <?php else: ?>

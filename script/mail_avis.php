@@ -8,14 +8,15 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 function envoyerMailAvis($participants, $trajet) {
+    global $mailServer, $mailUser, $mailPassword;
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
+        $mail->Host       = $mailServer;
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'contactus.ecoride@gmail.com';
-        $mail->Password   = 'oykmevrcjyoaeppl';
+        $mail->Username   = $mailUser;
+        $mail->Password   = $mailPassword;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
 
@@ -35,7 +36,7 @@ function envoyerMailAvis($participants, $trajet) {
         <html>
         <body>
             <div class = 'mailContainer'>
-                <h1> Bonjour, </h1>
+                <P> Bonjour, </p>
                 <p>Nous espérons que votre covoiturage du {$date_depart->format('d/m/Y')} s’est bien déroulé !</p><br>  
                 <p> Pour partager votre expérience, il vous suffit de vous connecter à votre espace : <p><br>
                 <p><a href='" . BASE_URL . "/index.php?page=mes_trajets'>Donner mon avis</a></p>

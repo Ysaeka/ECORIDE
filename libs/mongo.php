@@ -4,7 +4,7 @@ $mongoClient = new MongoDB\Driver\Manager($mongoDsn);
 $mongoCollection = 'avis';
 
 function insertAvisMongo(array $document) {
-    global $mongoClient;
+    global $mongoClient, $mongoDb, $mongoCollection;
 
     $bulk = new MongoDB\Driver\BulkWrite;
     $bulk->insert($document);
@@ -13,7 +13,7 @@ function insertAvisMongo(array $document) {
 }
 
 function getAvisMongo(int $covoiturage_id): array {
-    global $mongoClient;
+    global $mongoClient, $mongoDb, $mongoCollection;
 
     $filtre = [ 'covoiturage_id' => $covoiturage_id ];
     $options = [
@@ -32,7 +32,7 @@ function getAvisMongo(int $covoiturage_id): array {
 }
 
 function getAllAvis(): array {
-    global $mongoClient;
+    global $mongoClient, $mongoDb, $mongoCollection;
 
     $query = new MongoDB\Driver\Query([], ['sort' => ['date_creation' => -1]]);
     $cursor = $mongoClient->executeQuery("$mongoDb.$mongoCollection", $query);
@@ -76,7 +76,7 @@ function getAllAvis(): array {
 }
 
 function updateAvisStatut(string $id, string $status) {
-    global $mongoClient;
+    global $mongoClient, $mongoDb, $mongoCollection;
 
     $bulk = new MongoDB\Driver\BulkWrite;
     $bulk->update(
@@ -88,7 +88,7 @@ function updateAvisStatut(string $id, string $status) {
 }
 
 function getAvisValide(int $conducteur_id): array {
-    global $mongoClient;
+    global $mongoClient, $mongoDb, $mongoCollection;
 
     $filtre = [ 
         'reviewed_user_id' => $conducteur_id,

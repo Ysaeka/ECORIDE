@@ -4,6 +4,7 @@
 ## Prérequis :
 
 - Docker et Docker Compose installés
+- Services Docker demarré
 - Tout est inclus dans l’image docker
 - Copier/coller le contenu du fichier docker-compose.yaml qui se trouve dans le read-me du projet dans votre dossier mes documents « %HOMEPATH%\Documents »
 ou cloner le fichier depuis git à cette adresse : https://github.com/Ysaeka/ECORIDE.git (branche -> main)
